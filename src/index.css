@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #111827;
+  --surface: #f3f4f6;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-foreground: #ffffff;
+
+  --lang-rust: #b7410e;
+  --lang-python: #2b6cb0;
+  --lang-typescript: #3451d1;
+  --lang-javascript: #a16207;
+  --lang-java: #8a5a1c;
+  --lang-c: #475569;
+  --lang-cpp: #be185d;
+  --lang-csharp: #15803d;
+  --lang-go: #0e7490;
+  --lang-kotlin: #7c3aed;
+  --lang-swift: #b91c1c;
+  --lang-sql: #0f766e;
+  --lang-bash: #3f6212;
+}
+
+.dark {
+  --background: #111827;
+  --foreground: #f3f4f6;
+  --surface: #1f2937;
+  --muted: #9ca3af;
+  --border: #374151;
+  --primary: #3b82f6;
+  --primary-hover: #60a5fa;
+  --primary-foreground: #ffffff;
+
+  --lang-rust: #f0875a;
+  --lang-python: #63a4e8;
+  --lang-typescript: #8199f7;
+  --lang-javascript: #f2d24b;
+  --lang-java: #d9a45b;
+  --lang-c: #a8b5c8;
+  --lang-cpp: #f472b6;
+  --lang-csharp: #4ade80;
+  --lang-go: #38d4ea;
+  --lang-kotlin: #b197fc;
+  --lang-swift: #f87171;
+  --lang-sql: #2dd4bf;
+  --lang-bash: #a3d977;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-lang-rust: var(--lang-rust);
+  --color-lang-python: var(--lang-python);
+  --color-lang-typescript: var(--lang-typescript);
+  --color-lang-javascript: var(--lang-javascript);
+  --color-lang-java: var(--lang-java);
+  --color-lang-c: var(--lang-c);
+  --color-lang-cpp: var(--lang-cpp);
+  --color-lang-csharp: var(--lang-csharp);
+  --color-lang-go: var(--lang-go);
+  --color-lang-kotlin: var(--lang-kotlin);
+  --color-lang-swift: var(--lang-swift);
+  --color-lang-sql: var(--lang-sql);
+  --color-lang-bash: var(--lang-bash);
+}
