@@ -1,20 +1,36 @@
+import { useState, type CSSProperties } from "react";
 import { formatStarted, getImages } from "./ProjectImages";
 import { LangIcon } from "../../CustomIcon";
-import type { CSSProperties } from "react";
+import ProjectModal from "./ProjectModal";
 
 export function StandardEntry({ project: p }: { project: PersonalProject }) {
   const images = getImages(p.id);
+  const [open, setOpen] = useState(false);
 
   return (
-    <li className="grid gap-3 border-t border-border py-8 sm:grid-cols-[9rem_1fr] sm:gap-8">
+    <li
+      className="group relative isolate grid gap-3 border-t border-border py-8 sm:grid-cols-[9rem_1fr] sm:gap-8
+        before:absolute before:inset-x-0 before:inset-y-2 before:-z-10 before:rounded-xl before:bg-surface/0
+        before:transition-colors before:duration-300 before:ease-out hover:before:bg-surface/70 px-4"
+    >
       <span className="text-sm font-medium text-muted">
         {formatStarted(p.started)}
       </span>
 
       <div className="min-w-0">
         <h2 className="text-2xl font-semibold tracking-tight text-foreground">
-          {p.title}
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
+            className="cursor-pointer text-left transition-colors duration-300 group-hover:text-primary
+              focus-visible:outline-none
+              after:absolute after:inset-x-0 after:inset-y-2 after:rounded-xl
+              focus-visible:after:ring-2 focus-visible:after:ring-primary"
+          >
+            {p.title}
+          </button>
         </h2>
+
         {p.summary && (
           <p className="mt-2 max-w-2xl leading-relaxed text-foreground/75">
             {p.summary}
@@ -28,19 +44,26 @@ export function StandardEntry({ project: p }: { project: PersonalProject }) {
         </ul>
 
         {images.length > 0 && (
-          <div className="mt-5 flex gap-3 overflow-x-auto pb-1">
+          // z-10 keeps the row scrollable above the stretched button
+          <div
+            onClick={() => setOpen(true)}
+            className="relative z-10 mt-5 flex cursor-pointer gap-3 overflow-x-auto pb-1"
+          >
             {images.map((img) => (
               <img
                 key={img.src}
                 src={img.src}
                 alt={`${p.title}: ${img.name}`}
                 loading="lazy"
-                className="h-36 w-auto shrink-0 rounded-lg bg-surface shadow-sm ring-1 ring-border"
+                className="h-36 w-auto shrink-0 rounded-lg bg-surface shadow-sm ring-1 ring-border
+                  transition-transform duration-300 ease-out group-hover:-translate-y-0.5"
               />
             ))}
           </div>
         )}
       </div>
+
+      <ProjectModal project={p} open={open} onClose={() => setOpen(false)} />
     </li>
   );
 }
@@ -48,7 +71,7 @@ export function StandardEntry({ project: p }: { project: PersonalProject }) {
 const langSlug = (lang: ProgrammingLanguage) =>
   lang.toLowerCase().replace("++", "pp").replace("#", "sharp");
 
-function LangBadge({ lang }: { lang: ProgrammingLanguage }) {
+export function LangBadge({ lang }: { lang: ProgrammingLanguage }) {
   return (
     <li
       style={

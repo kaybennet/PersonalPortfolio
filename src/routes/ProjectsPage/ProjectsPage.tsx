@@ -45,12 +45,17 @@ function ProjectsPage() {
   const { listClass, Entry } = views[view];
 
   return (
-    <main className="mx-auto max-w-4xl px-6 pb-24 pt-16 text-foreground">
+    <main className="mx-auto max-w-6xl px-6 pb-24 pt-6 text-foreground">
       <div className="mb-12 flex flex-wrap items-end justify-between gap-4">
-        <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-          Personal Projects
-        </h1>
-
+        <div className="flex flex-col">
+          <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
+            Personal Projects
+          </h1>
+          <span className="text-sm font-normal tracking-tight text-muted mt-2 -mb-3">
+            *Transparency note: None of these are vibe-coded. Newer projects
+            used AI coding assistants only sparingly and responsibly.
+          </span>
+        </div>
         <div
           role="radiogroup"
           aria-label="Layout"

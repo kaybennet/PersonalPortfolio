@@ -25,6 +25,11 @@
   --lang-swift: #b91c1c;
   --lang-sql: #0f766e;
   --lang-bash: #3f6212;
+  --lang-css: #663399;
+  --lang-html: #c2410c;
+  --lang-react: #0369a1;
+  --lang-aws: #c76d00;
+  --lang-latex: #a21caf;
 }
 
 .dark {
@@ -50,6 +55,11 @@
   --lang-swift: #f87171;
   --lang-sql: #2dd4bf;
   --lang-bash: #a3d977;
+  --lang-css: #b58ce6;
+  --lang-html: #fb923c;
+  --lang-react: #61dafb;
+  --lang-aws: #ff9900;
+  --lang-latex: #e879f9;
 }
 
 @theme inline {
@@ -75,4 +85,17 @@
   --color-lang-swift: var(--lang-swift);
   --color-lang-sql: var(--lang-sql);
   --color-lang-bash: var(--lang-bash);
+  --color-lang-css: var(--lang-css);
+  --color-lang-html: var(--lang-html);
+  --color-lang-react: var(--lang-react);
+  --color-lang-aws: var(--lang-aws);
+  --color-lang-latex: var(--lang-latex);
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+html:has(dialog[open]) {
+  overflow: hidden;
 }

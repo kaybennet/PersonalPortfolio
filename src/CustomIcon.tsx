@@ -1,6 +1,15 @@
 import type { ComponentType, CSSProperties } from "react";
 import { Database, HelpCircle, Mail, Menu, Moon, Sun, X } from "lucide-react";
-import { FaGithub, FaJava, FaLinkedin, FaRust } from "react-icons/fa6";
+import {
+  FaAws,
+  FaCss3Alt,
+  FaGithub,
+  FaHtml5,
+  FaJava,
+  FaLinkedin,
+  FaReact,
+  FaRust,
+} from "react-icons/fa6";
 import { FaPython } from "react-icons/fa";
 import {
   SiC,
@@ -10,6 +19,7 @@ import {
   SiJavascript,
   SiKotlin,
   SiSwift,
+  SiLatex,
   SiTypescript,
 } from "react-icons/si";
 import { TbBrandCSharp } from "react-icons/tb";
@@ -46,6 +56,11 @@ const ICONS = {
   swift: SiSwift,
   sql: Database,
   bash: SiGnubash,
+  css: FaCss3Alt,
+  html: FaHtml5,
+  react: FaReact,
+  aws: FaAws,
+  latex: SiLatex,
 } satisfies Record<string, ComponentType<IconProps>> &
   Record<Lowercase<ProgrammingLanguage>, ComponentType<IconProps>>;
 

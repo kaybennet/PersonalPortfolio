@@ -11,14 +11,20 @@ type ProgrammingLanguage =
   | "Kotlin"
   | "Swift"
   | "SQL"
-  | "Bash";
+  | "Bash"
+  | "CSS"
+  | "HTML"
+  | "React"
+  | "AWS"
+  | "LaTeX";
 
 type PersonalProject = {
   id: string;
   title: string;
   languages: ProgrammingLanguage[];
-  is_pub: boolean;
+  github_link: string;
   started: Date;
   summary: string;
-  comment: string;
+  description: string;
+  learnings: string[];
 };
