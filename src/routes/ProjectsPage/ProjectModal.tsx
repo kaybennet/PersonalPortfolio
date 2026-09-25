@@ -4,7 +4,6 @@ import { LangBadge } from "./StandardEntry";
 import ImageMasonry from "./ImageMasonry";
 import CustomIcon from "../../CustomIcon";
 import { fmtLatex } from "../../util/helpers";
-import AssessmentBadge from "./SelfAssessmentBadge";
 
 type Props = {
   project: PersonalProject;

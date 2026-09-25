@@ -10,7 +10,7 @@ export function GridEntry({ project: p }: { project: PersonalProject }) {
           src={cover.src}
           alt={`${p.title}: ${cover.name}`}
           loading="lazy"
-          className="aspect-[16/10] w-full object-cover"
+          className="aspect-16/10 w-full object-cover"
         />
       )}
 
@@ -22,8 +22,8 @@ export function GridEntry({ project: p }: { project: PersonalProject }) {
           </p>
         </div>
 
-        {p.comment && (
-          <p className="line-clamp-3 text-[0.95rem]">{p.comment}</p>
+        {p.summary && (
+          <p className="line-clamp-3 text-[0.95rem]">{p.summary}</p>
         )}
 
         <div className="mt-auto flex flex-col gap-3 pt-2">
