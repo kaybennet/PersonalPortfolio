@@ -1,8 +1,8 @@
 import { useState, type CSSProperties } from "react";
 import { formatStarted, getImages } from "./ProjectImages";
-import { LangIcon } from "../../CustomIcon";
+import CustomIcon, { LangIcon } from "../../CustomIcon";
 import ProjectModal from "./ProjectModal";
-
+import AssessmentBadge from "./SelfAssessmentBadge";
 export function StandardEntry({ project: p }: { project: PersonalProject }) {
   const images = getImages(p.id);
   const [open, setOpen] = useState(false);
@@ -13,23 +13,32 @@ export function StandardEntry({ project: p }: { project: PersonalProject }) {
         before:absolute before:inset-x-0 before:inset-y-2 before:-z-10 before:rounded-xl before:bg-surface/0
         before:transition-colors before:duration-300 before:ease-out hover:before:bg-surface/70 px-4"
     >
-      <span className="text-sm font-medium text-muted">
+      <span className="text-sm font-medium text-muted flex flex-row gap-2">
+        <CustomIcon name="calendar" />
         {formatStarted(p.started)}
       </span>
 
       <div className="min-w-0">
-        <h2 className="text-2xl font-semibold tracking-tight text-foreground">
-          <button
-            type="button"
-            onClick={() => setOpen(true)}
-            className="cursor-pointer text-left transition-colors duration-300 group-hover:text-primary
-              focus-visible:outline-none
-              after:absolute after:inset-x-0 after:inset-y-2 after:rounded-xl
-              focus-visible:after:ring-2 focus-visible:after:ring-primary"
-          >
-            {p.title}
-          </button>
-        </h2>
+        <div className="flex items-start justify-between gap-4">
+          <h2 className="text-2xl font-semibold tracking-tight text-foreground">
+            <button
+              type="button"
+              onClick={() => setOpen(true)}
+              className="cursor-pointer text-left transition-colors duration-300 group-hover:text-primary
+                focus-visible:outline-none
+                after:absolute after:inset-x-0 after:inset-y-2 after:rounded-xl
+                focus-visible:after:ring-2 focus-visible:after:ring-primary"
+            >
+              {p.title}
+            </button>
+          </h2>
+
+          {(p.time_spent !== undefined || p.difficulty !== undefined) && (
+            <div className="flex shrink-0 flex-col">
+              <AssessmentBadge project={p} />
+            </div>
+          )}
+        </div>
 
         {p.summary && (
           <p className="mt-2 max-w-2xl leading-relaxed text-foreground/75">

@@ -23,4 +23,4 @@ dist-ssr
 *.sln
 *.sw?
 
-src/routes/ProjectsPage/images/*
+# src/routes/ProjectsPage/images/*

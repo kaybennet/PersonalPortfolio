@@ -1,5 +1,14 @@
 import type { ComponentType, CSSProperties } from "react";
-import { Database, HelpCircle, Mail, Menu, Moon, Sun, X } from "lucide-react";
+import {
+  Calendar,
+  Database,
+  HelpCircle,
+  Mail,
+  Menu,
+  Moon,
+  Sun,
+  X,
+} from "lucide-react";
 import {
   FaAws,
   FaCss3Alt,
@@ -23,6 +32,7 @@ import {
   SiTypescript,
 } from "react-icons/si";
 import { TbBrandCSharp } from "react-icons/tb";
+import { IoBulbSharp } from "react-icons/io5";
 
 type IconProps = {
   size?: number;
@@ -61,6 +71,8 @@ const ICONS = {
   react: FaReact,
   aws: FaAws,
   latex: SiLatex,
+  idea: IoBulbSharp,
+  calendar: Calendar,
 } satisfies Record<string, ComponentType<IconProps>> &
   Record<Lowercase<ProgrammingLanguage>, ComponentType<IconProps>>;
 

@@ -8,6 +8,8 @@ export const Projects: PersonalProject[] = [
     summary: "Small Website displaying my Progress over the years",
     description: "IDK YET",
     learnings: ["skill1", "skill2"],
+    time_spent: 0.6,
+    difficulty: 0.3,
   },
   {
     id: "BA",
@@ -16,8 +18,11 @@ export const Projects: PersonalProject[] = [
     languages: ["Python", "Bash", "LaTeX"],
     started: new Date(2026, 3),
     summary: "Codebase for my Bachelor's Thesis on Prior-Guided BO",
-    description: "IDK YET",
-    learnings: ["skill1", "skill2"],
+    description:
+      "Research codebase for my bachelor's thesis at the Institute of Artificial Intelligence, Leibniz University Hannover. It extends the prior-guided Bayesian optimization methods \\textit{piBO} and \\textit{DynaBO} with \\textbf{observation-adaptive prior decay} and \\textbf{adaptive prior rejection} mechanisms, which adjust how much the optimizer trusts user-provided priors as evidence accumulates. Built on SMAC3 and evaluated on PD1 (via mfpbench) and YAHPOGym benchmarks, with large-scale experiments orchestrated through PyExperimenter and SLURM on an HPC cluster.",
+    learnings: ["Research", "Writing Scientific Papers"],
+    time_spent: 0.8,
+    difficulty: 0.9,
   },
   {
     id: "StrongPro",
@@ -28,6 +33,8 @@ export const Projects: PersonalProject[] = [
     started: new Date(2025, 4),
     description: "IDK YET",
     learnings: ["skill1", "skill2"],
+    time_spent: 0.95,
+    difficulty: 0.5,
   },
   {
     id: "spaceships",
@@ -38,6 +45,8 @@ export const Projects: PersonalProject[] = [
     started: new Date(2025, 0),
     description: "IDK YET",
     learnings: ["skill1", "skill2"],
+    time_spent: 0.65,
+    difficulty: 0.7,
   },
   {
     id: "java_nn",
@@ -48,6 +57,8 @@ export const Projects: PersonalProject[] = [
     started: new Date(2024, 5),
     description: "IDK YET",
     learnings: ["skill1", "skill2"],
+    time_spent: 0.8,
+    difficulty: 0.9,
   },
   {
     id: "chess_old",
@@ -58,6 +69,8 @@ export const Projects: PersonalProject[] = [
     started: new Date(2024, 4),
     description: "IDK YET",
     learnings: ["skill1", "skill2"],
+    time_spent: 0.6,
+    difficulty: 0.65,
   },
   {
     id: "hci_proj",
@@ -69,6 +82,8 @@ export const Projects: PersonalProject[] = [
     started: new Date(2025, 0),
     description: "IDK YET",
     learnings: ["skill1", "skill2"],
+    time_spent: 0.1,
+    difficulty: 0.2,
   },
   {
     id: "java_bird",
@@ -79,6 +94,8 @@ export const Projects: PersonalProject[] = [
     started: new Date(2024, 1),
     description: "IDK YET",
     learnings: ["skill1", "skill2"],
+    time_spent: 0.1,
+    difficulty: 0.1,
   },
   {
     id: "cpp_algos",
@@ -89,6 +106,8 @@ export const Projects: PersonalProject[] = [
     started: new Date(2025, 2),
     description: "IDK YET",
     learnings: ["skill1", "skill2"],
+    time_spent: 0.1,
+    difficulty: 0.5,
   },
   {
     id: "uni_grades",
@@ -99,6 +118,8 @@ export const Projects: PersonalProject[] = [
     started: new Date(2024, 8),
     description: "IDK YET",
     learnings: ["skill1", "skill2"],
+    time_spent: 0.8,
+    difficulty: 0.6,
   },
   {
     id: "ds",
@@ -110,6 +131,8 @@ export const Projects: PersonalProject[] = [
     started: new Date(2026, 0),
     description: "IDK YET",
     learnings: ["skill1", "skill2"],
+    time_spent: 0.3,
+    difficulty: 0.3,
   },
   {
     id: "strongv1",
@@ -121,5 +144,7 @@ export const Projects: PersonalProject[] = [
     started: new Date(2024, 6),
     description: "IDK YET",
     learnings: ["skill1", "skill2"],
+    time_spent: 0.6,
+    difficulty: 0.4,
   },
 ];

@@ -27,4 +27,6 @@ type PersonalProject = {
   summary: string;
   description: string;
   learnings: string[];
+  time_spent: float;
+  difficulty: float;
 };

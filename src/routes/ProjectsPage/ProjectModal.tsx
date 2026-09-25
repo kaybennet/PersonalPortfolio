@@ -1,8 +1,10 @@
 import { useEffect, useRef } from "react";
 import { formatStarted, getImages } from "./ProjectImages";
 import { LangBadge } from "./StandardEntry";
-import ImageGallery from "./ImageGallery";
+import ImageMasonry from "./ImageMasonry";
 import CustomIcon from "../../CustomIcon";
+import { fmtLatex } from "../../util/helpers";
+import AssessmentBadge from "./SelfAssessmentBadge";
 
 type Props = {
   project: PersonalProject;
@@ -92,7 +94,7 @@ export default function ProjectModal({ project: p, open, onClose }: Props) {
 
         {p.summary && (
           <p className="mt-4 max-w-3xl text-lg leading-relaxed text-foreground/80">
-            {p.summary}
+            {fmtLatex(p.summary)}
           </p>
         )}
 
@@ -102,27 +104,27 @@ export default function ProjectModal({ project: p, open, onClose }: Props) {
           ))}
         </ul>
 
-        {images.length > 0 && (
-          <div className="mt-8">
-            <ImageGallery images={images} title={p.title} />
-          </div>
-        )}
-
         {(p.description || p.learnings.length > 0) && (
-          <div className="mt-10 grid gap-8 lg:grid-cols-[1fr_22rem] lg:gap-12">
+          <div
+            className={`mt-10 grid items-start gap-8 lg:gap-12 ${
+              p.description && p.learnings.length > 0
+                ? "lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]"
+                : ""
+            }`}
+          >
             {p.description && (
               <section>
                 <h3 className="text-xs font-semibold uppercase tracking-wider text-muted">
                   About
                 </h3>
-                <p className="mt-3 max-w-prose whitespace-pre-line leading-relaxed text-foreground/85">
-                  {p.description}
+                <p className="mt-3 whitespace-pre-line leading-relaxed text-foreground/85">
+                  {fmtLatex(p.description)}
                 </p>
               </section>
             )}
 
             {p.learnings.length > 0 && (
-              <section className="h-fit rounded-xl bg-surface p-6">
+              <section className="rounded-xl bg-surface p-6">
                 <h3 className="text-xs font-semibold uppercase tracking-wider text-muted">
                   What I learned
                 </h3>
@@ -130,27 +132,20 @@ export default function ProjectModal({ project: p, open, onClose }: Props) {
                   {p.learnings.map((l) => (
                     <li
                       key={l}
-                      className="flex gap-3 leading-snug text-foreground/85"
+                      className="flex gap-2 leading-snug text-foreground/85"
                     >
-                      <svg
-                        className="mt-0.5 shrink-0 text-primary"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M20 6 9 17l-5-5" />
-                      </svg>
-                      <span>{l}</span>
+                      <CustomIcon name="idea" size={20} className="mb-0.5" />
+                      <span>{fmtLatex(l)}</span>
                     </li>
                   ))}
                 </ul>
               </section>
             )}
+          </div>
+        )}
+        {images.length > 0 && (
+          <div className="mt-8">
+            <ImageMasonry images={images} title={p.title} />
           </div>
         )}
       </div>
