@@ -85,12 +85,12 @@ export default function Timeline({
       >
         <span
           aria-hidden
-          className="absolute top-[63px] h-0.5 rounded-full bg-border"
+          className="absolute top-15.75 h-0.5 rounded-full bg-border"
           style={{ left: `${edge}%`, right: `${edge}%` }}
         />
         <span
           aria-hidden
-          className="absolute top-[63px] h-0.5 rounded-full bg-linear-to-r from-primary/20 to-primary shadow-[0_0_12px] shadow-primary/60 transition-[width] duration-800 ease-out motion-reduce:transition-none"
+          className="absolute top-15.75 h-0.5 rounded-full bg-linear-to-r from-primary/20 to-primary shadow-[0_0_12px] shadow-primary/60 transition-[width] duration-800 ease-out motion-reduce:transition-none"
           style={{
             left: `${edge}%`,
             width: `calc(${progress} * (100% - ${2 * edge}%))`,
@@ -140,7 +140,7 @@ export default function Timeline({
                   onFocus={() => show(i)}
                   onClick={() => show(i)}
                   onBlur={() => setOpen(false)}
-                  className={`group grid h-12 w-full place-items-center rounded-xl outline-none hover:bg-foreground/[0.04] focus-visible:ring-2 focus-visible:ring-primary ${motion}`}
+                  className={`group grid h-12 w-full place-items-center rounded-xl outline-none hover:bg-foreground/4 focus-visible:ring-2 focus-visible:ring-primary ${motion}`}
                 >
                   <span
                     className={`size-4 rounded-full border-2 ${motion} ${
@@ -168,7 +168,7 @@ export default function Timeline({
         <div
           id="timeline-tooltip"
           role="tooltip"
-          className={`pointer-events-none absolute top-[80px] z-20 w-80 max-w-[calc(100vw-2rem)] rounded-2xl p-5 ${glass} transition-[left,transform,opacity,translate] duration-300 ease-out motion-reduce:transition-none ${
+          className={`pointer-events-none absolute top-20 z-20 w-80 max-w-[calc(100vw-2rem)] rounded-2xl p-5 ${glass} transition-[left,transform,opacity,translate] duration-300 ease-out motion-reduce:transition-none ${
             open ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
           }`}
           style={{

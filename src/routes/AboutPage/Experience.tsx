@@ -29,7 +29,7 @@ export default function Experience() {
       </p>
 
       <ul className="mt-6 grid gap-4 grid-cols-4">
-        {courses.map((c, i) => (
+        {courses.map((c, _) => (
           <li
             key={c.name}
             className={`group flex items-center gap-4 rounded-2xl p-5 ${glass}`}
