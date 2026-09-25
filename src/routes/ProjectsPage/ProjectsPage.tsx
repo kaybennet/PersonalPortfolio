@@ -45,7 +45,7 @@ function ProjectsPage() {
   const { listClass, Entry } = views[view];
 
   return (
-    <main className="mx-auto max-w-6xl px-6 pb-24 pt-6 text-foreground">
+    <main className="mx-auto max-w-7xl pb-24 pt-6 text-foreground">
       <div className="mb-12 flex flex-wrap items-end justify-between gap-4">
         <div className="flex flex-col">
           <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">

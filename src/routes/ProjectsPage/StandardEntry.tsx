@@ -53,20 +53,23 @@ export function StandardEntry({ project: p }: { project: PersonalProject }) {
         </ul>
 
         {images.length > 0 && (
-          // z-10 keeps the row scrollable above the stretched button
-          <div
-            onClick={() => setOpen(true)}
-            className="relative z-10 mt-5 flex cursor-pointer gap-3 overflow-x-auto pb-1"
-          >
+          <div className="relative z-10 -mx-2 mt-3 flex snap-x snap-mandatory gap-3 overflow-x-auto px-2 pt-2 pb-4 scrollbar-thin">
             {images.map((img) => (
-              <img
+              <button
                 key={img.src}
-                src={img.src}
-                alt={`${p.title}: ${img.name}`}
-                loading="lazy"
-                className="h-36 w-auto shrink-0 rounded-lg bg-surface shadow-sm ring-1 ring-border
-                  transition-transform duration-300 ease-out group-hover:-translate-y-0.5"
-              />
+                type="button"
+                onClick={() => setOpen(true)}
+                aria-label={`Open ${p.title}: ${img.name}`}
+                className="shrink-0 cursor-pointer snap-start rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              >
+                <img
+                  src={img.src}
+                  alt={`${p.title}: ${img.name}`}
+                  loading="eager"
+                  decoding="async"
+                  className="elevate h-36 w-auto max-w-72 min-w-24 rounded-lg bg-surface object-cover object-top transition-[translate] duration-300 ease-smooth hover:-translate-y-1 motion-reduce:transition-none mb-4 ml-2"
+                />
+              </button>
             ))}
           </div>
         )}

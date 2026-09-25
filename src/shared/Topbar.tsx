@@ -14,21 +14,17 @@ const defaultLinks: NavItem[] = [
 
 const defaultSocials: SocialItem[] = [
   { label: "GitHub", href: LINK_GITHUB, icon: "github" },
-  {
-    label: "LinkedIn",
-    href: LINK_LINKEDIN,
-    icon: "linkedin",
-  },
+  { label: "LinkedIn", href: LINK_LINKEDIN, icon: "linkedin" },
   { label: "Email", href: "mailto:" + LINK_EMAIL, icon: "email" },
 ];
 
 const iconButton =
-  "grid size-9 place-items-center rounded-lg text-muted hover:bg-surface hover:text-foreground";
+  "grid size-10 place-items-center rounded-lg text-muted hover:bg-surface hover:text-foreground";
 
 const linkClass = ({ isActive }: { isActive: boolean }) =>
-  `block rounded-lg px-3 py-1.5 text-sm ${
+  `block rounded-lg px-3 py-2 text-base font-medium ${
     isActive
-      ? "bg-surface font-medium text-foreground"
+      ? "bg-surface text-foreground"
       : "text-muted hover:bg-surface hover:text-foreground"
   }`;
 
@@ -67,19 +63,19 @@ export default function Topbar({
       title={label}
       className={iconButton}
     >
-      <CustomIcon name={icon} size={18} className="" />
+      <CustomIcon name={icon} size={20} className="" />
     </a>
   ));
 
   return (
-    <header className="sticky top-0 z-20 border-b border-border bg-background/70 backdrop-blur-md">
-      <nav className="mx-auto flex h-14 max-w-6xl items-center gap-2 px-4">
-        <Link to="/" className="mr-4 text-lg font-black tracking-tight">
+    <header className="sticky top-0 z-16 border-b border-border bg-background/70 backdrop-blur-md">
+      <nav className="mx-auto flex h-16 max-w-7xl items-center gap-6 -px-8">
+        <Link to="/" className="font-display text-2xl font-bold tracking-tight">
           {title}
         </Link>
         <ul className="hidden gap-1 md:flex">{navLinks}</ul>
 
-        <div className="ml-auto hidden items-center gap-1 border-r border-border pr-2 md:flex">
+        <div className="ml-auto hidden items-center gap-1 border-r border-border pr-3 md:flex">
           {socialLinks}
         </div>
         <button
@@ -103,7 +99,7 @@ export default function Topbar({
       </nav>
 
       {open && (
-        <div className="border-t border-border px-4 py-3 md:hidden">
+        <div className="border-t border-border px-8 py-3 md:hidden">
           <ul className="flex flex-col gap-1">{navLinks}</ul>
           <div className="mt-3 flex gap-1 border-t border-border pt-3">
             {socialLinks}

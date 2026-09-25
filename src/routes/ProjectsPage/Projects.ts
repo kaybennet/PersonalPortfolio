@@ -23,6 +23,21 @@ export const Projects: PersonalProject[] = [
     learnings: ["Research", "Writing Scientific Papers"],
     time_spent: 0.8,
     difficulty: 0.9,
+    thumbnail: 6,
+  },
+  {
+    id: "swp",
+    title: "Tool to migrate safety configurations from Elasticsearch",
+    github_link:
+      "https://git.floragunn.com/search-guard/search-guard-suite-enterprise",
+    languages: ["Java"],
+    started: new Date(2025, 9),
+    summary:
+      "Extensive University project to simplify switching from X-Pack to Search Guard",
+    description: "",
+    learnings: ["Research", "Writing Scientific Papers"],
+    time_spent: 0.5,
+    difficulty: 0.7,
   },
   {
     id: "StrongPro",
@@ -35,6 +50,7 @@ export const Projects: PersonalProject[] = [
     learnings: ["skill1", "skill2"],
     time_spent: 0.95,
     difficulty: 0.5,
+    thumbnail: 9,
   },
   {
     id: "spaceships",
@@ -59,6 +75,7 @@ export const Projects: PersonalProject[] = [
     learnings: ["skill1", "skill2"],
     time_spent: 0.8,
     difficulty: 0.9,
+    thumbnail: 3,
   },
   {
     id: "chess_old",
