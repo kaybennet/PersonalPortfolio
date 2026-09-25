@@ -31,3 +31,11 @@ type PersonalProject = {
   difficulty: float;
   thumbnail?: int;
 };
+
+type TimelineEvent = {
+  date: Date;
+  title: string;
+  place?: string;
+  description: string;
+  label?: string;
+};

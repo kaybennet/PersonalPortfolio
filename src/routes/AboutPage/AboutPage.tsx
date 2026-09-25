@@ -1,7 +1,25 @@
+import Now from "./Now";
+import Skills from "./Skills";
+import Thesis from "./Thesis";
+import Experience from "./Experience";
+import Timeline from "./Timeline";
+
 function AboutPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <main className="mx-auto max-w-5xl p-4">AboutPage</main>
+      <main className="mx-auto max-w-7xl">
+        <div className="grid grid-cols-3 items-center gap-8 mt-10">
+          <div className="min-w-0">
+            <Now />
+          </div>
+          <div className="col-span-2 min-w-0 ml-8">
+            <Timeline />
+          </div>
+        </div>
+        <Thesis />
+        <Skills />
+        <Experience />
+      </main>
     </div>
   );
 }
