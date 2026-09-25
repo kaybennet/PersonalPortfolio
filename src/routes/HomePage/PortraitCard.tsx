@@ -135,7 +135,6 @@ export function PortraitCard() {
 
               <dl className="grid grid-cols-3 gap-2">
                 {GRADES.map(({ label, grade }, i) => {
-                  const best = grade === 1.0;
                   return (
                     <div
                       key={label}
