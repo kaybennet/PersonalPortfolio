@@ -1,5 +1,6 @@
 import { useState, type CSSProperties } from "react";
 import profilePic from "../../assets/kaybennet_pfp.jpg";
+import blurredProfilePic from "../../assets/kaybennet_pfp_blur.jpg";
 
 const BIRTHDAY = new Date(2003, 11, 29); // month is 0-based → 29 December
 
@@ -43,14 +44,16 @@ export function PortraitCard() {
   return (
     <div className="group relative h-90 w-75 perspective-distant">
       <div
-        className={`relative size-full transform-3d transition-[transform,translate,scale] duration-700 ease-smooth group-hover:-translate-y-1.5 group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:group-hover:translate-y-0 motion-reduce:group-hover:scale-100 ${
+        className={`relative size-full transform-3d transition-[transform,translate,scale] duration-700 ease-smooth group-hover:-translate-y-1.5 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0 motion-reduce:group-hover:scale-100 ${
           flipped ? "rotate-y-180" : ""
         }`}
       >
         {/* Front */}
         <div
           aria-hidden={flipped}
-          className="elevate absolute inset-0 overflow-hidden rounded-2xl backface-hidden"
+          className={`elevate absolute inset-0 overflow-hidden rounded-2xl backface-hidden transition-[visibility] duration-0 ${
+            flipped ? "invisible delay-[350ms]" : "visible delay-0"
+          }`}
         >
           <img
             src={profilePic}
@@ -69,15 +72,16 @@ export function PortraitCard() {
         {/* Back */}
         <div
           aria-hidden={!flipped}
-          className="elevate absolute inset-0 rotate-y-180 overflow-hidden rounded-2xl backface-hidden"
+          className={`elevate absolute inset-0 rotate-y-180 overflow-hidden rounded-2xl backface-hidden transition-[visibility] duration-0 ${
+            flipped ? "visible delay-0" : "invisible delay-[350ms]"
+          }`}
         >
           <img
-            src={profilePic}
+            src={blurredProfilePic}
             alt=""
-            className="absolute inset-0 size-full scale-125 object-cover blur-2xl"
+            aria-hidden
+            className="absolute inset-0 size-full object-cover"
           />
-          <div className="absolute inset-0 bg-background/70 bg-linear-to-b from-white/20 to-white/5 dark:from-white/5 dark:to-transparent" />
-          <div className="absolute -top-16 -right-16 size-48 rounded-full bg-primary/25 blur-3xl" />
 
           <div className="relative flex size-full flex-col gap-4 p-5">
             {/* Header */}
@@ -101,7 +105,7 @@ export function PortraitCard() {
             <dl
               {...reveal(
                 1,
-                "flex divide-x divide-foreground/10 rounded-xl bg-background/55 py-2.5 shadow-glass",
+                "flex divide-x divide-foreground/10 rounded-xl bg-background/85 py-2.5 shadow-glass",
               )}
             >
               <div className="flex-1 px-3">
@@ -140,7 +144,7 @@ export function PortraitCard() {
                       key={label}
                       {...reveal(
                         3 + i,
-                        `rounded-xl px-2.5 pt-2 pb-2.5 shadow-glass ${"bg-background/55"}`,
+                        `rounded-xl px-2.5 pt-2 pb-2.5 shadow-glass ${"bg-background/85"}`,
                       )}
                     >
                       <dt className="font-mono text-[10px] tracking-wider text-muted uppercase">

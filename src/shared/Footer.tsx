@@ -1,0 +1,52 @@
+import CustomIcon, { type IconName } from "../CustomIcon";
+import { LINK_EMAIL, LINK_GITHUB, LINK_LINKEDIN } from "../util/consts";
+
+const socials: { icon: IconName; href: string; label: string }[] = [
+  { icon: "github", href: LINK_GITHUB, label: "GitHub" },
+  {
+    icon: "linkedin",
+    href: LINK_LINKEDIN,
+    label: "LinkedIn",
+  },
+  { icon: "email", href: "mailto:" + LINK_EMAIL, label: "Email" },
+];
+
+function scrollToTop() {
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+}
+
+export default function Footer() {
+  return (
+    <footer className="mt-16 border-t border-border">
+      <div className="mx-auto grid max-w-screen-3xl items-center gap-4 px-4 py-3 text-sm text-muted sm:grid-cols-3">
+        <p className="text-center sm:text-left">
+          © {new Date().getFullYear()} Kay Bennet Staeding
+        </p>
+
+        <nav aria-label="Social links" className="flex justify-center gap-1">
+          {socials.map((s) => (
+            <a
+              key={s.icon}
+              href={s.href}
+              target={s.href.startsWith("mailto:") ? undefined : "_blank"}
+              rel="noreferrer"
+              aria-label={s.label}
+              className="rounded-lg p-2 transition-colors hover:bg-foreground/6 hover:text-foreground"
+            >
+              <CustomIcon name={s.icon} size={18} className="" />
+            </a>
+          ))}
+        </nav>
+
+        <button
+          type="button"
+          onClick={scrollToTop}
+          className="justify-self-center rounded-lg px-3 py-1.5 font-mono text-xs transition-colors hover:bg-foreground/6 hover:text-foreground sm:justify-self-end"
+        >
+          Back to top ↑
+        </button>
+      </div>
+    </footer>
+  );
+}

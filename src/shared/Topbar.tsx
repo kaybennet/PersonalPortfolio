@@ -8,7 +8,7 @@ type SocialItem = { label: string; href: string; icon: IconName };
 
 const defaultLinks: NavItem[] = [
   { label: "Home", to: "/" },
-  { label: "About", to: "/about" },
+  { label: "Career", to: "/about" },
   { label: "Projects", to: "/projects" },
 ];
 

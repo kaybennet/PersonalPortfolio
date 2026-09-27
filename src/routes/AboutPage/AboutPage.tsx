@@ -3,6 +3,7 @@ import Skills from "./Skills";
 import Thesis from "./Thesis";
 import Experience from "./Experience";
 import Timeline from "./Timeline";
+import { GitHubActivity } from "./GitHubActivity";
 
 function AboutPage() {
   return (
@@ -18,6 +19,9 @@ function AboutPage() {
         </div>
         <Thesis />
         <Skills />
+        <div className="mt-6 mb-12 mx-auto max-w-7xl">
+          <GitHubActivity />
+        </div>
         <Experience />
       </main>
     </div>

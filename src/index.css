@@ -47,6 +47,10 @@
   --lang-react: #0369a1;
   --lang-aws: #c76d00;
   --lang-latex: #a21caf;
+  --lang-pytorch: #d63a1c;
+  --lang-pandas: #4c3a9e;
+  --lang-tailwind: #0e7490;
+  --lang-node: #3c873a;
 }
 
 .dark {
@@ -84,6 +88,10 @@
   --lang-react: #61dafb;
   --lang-aws: #ff9900;
   --lang-latex: #e879f9;
+  --lang-pytorch: #ff7a5c;
+  --lang-pandas: #a99cf0;
+  --lang-tailwind: #38bdf8;
+  --lang-node: #6cc24a;
 }
 
 @theme inline {

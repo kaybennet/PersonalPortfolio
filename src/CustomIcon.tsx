@@ -30,6 +30,9 @@ import {
   SiSwift,
   SiLatex,
   SiTypescript,
+  SiPytorch,
+  SiPandas,
+  SiNodedotjs,
 } from "react-icons/si";
 import { TbBrandCSharp } from "react-icons/tb";
 import { IoBulbSharp } from "react-icons/io5";
@@ -73,6 +76,9 @@ const ICONS = {
   latex: SiLatex,
   idea: IoBulbSharp,
   calendar: Calendar,
+  pytorch: SiPytorch,
+  pandas: SiPandas,
+  node: SiNodedotjs,
 } satisfies Record<string, ComponentType<IconProps>> &
   Record<Lowercase<ProgrammingLanguage>, ComponentType<IconProps>>;
 

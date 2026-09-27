@@ -10,7 +10,7 @@ export function ProjectCard({ project: p }: { project: PersonalProject }) {
 
   return (
     <>
-      <article className="group relative isolate h-96 transform-gpu overflow-hidden rounded-2xl bg-surface elevate transition-[translate,box-shadow] duration-500 ease-smooth hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-primary/20 focus-within:-translate-y-1.5 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+      <article className="group relative isolate h-76 transform-gpu overflow-hidden rounded-2xl bg-surface elevate transition-[translate,box-shadow] duration-500 ease-smooth hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-primary/20 focus-within:-translate-y-1.5 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
         {cover ? (
           <img
             src={cover.src}

@@ -10,7 +10,9 @@ export function FeaturedProjects() {
   return (
     <section className="mx-auto max-w-7xl">
       <div className="mb-8 flex items-end justify-between">
-        <h2 className="font-display text-4xl font-bold">Selected projects</h2>
+        <h2 className="font-display text-4xl font-bold">
+          Some Featured Projects
+        </h2>
         <Link
           to="/projects"
           className="font-semibold text-primary hover:underline"
