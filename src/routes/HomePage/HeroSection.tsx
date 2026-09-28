@@ -17,7 +17,9 @@ export function HeroSection() {
           Staeding
         </h1>
         <p className="text-lg leading-relaxed">
-          I work on AutoML and build web interfaces. My{" "}
+          I enjoy the field of technology and whatever I can get my hands on.
+          Primarly I like Machine Learning and anything needing creativity from
+          WebDev to GameDev. For my{" "}
           <a
             href={thesisPdf}
             target="_blank"
@@ -26,7 +28,7 @@ export function HeroSection() {
           >
             Bachelor's thesis
           </a>{" "}
-          explored how prior knowledge can guide Bayesian optimization.
+          I did research on how prior knowledge can guide Bayesian optimization.
         </p>
 
         <div className="flex gap-4">

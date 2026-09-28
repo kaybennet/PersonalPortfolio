@@ -7,13 +7,13 @@ import TechnicalSkills from "./TechnicalSkills";
 function HomePage() {
   return (
     <div>
-      <div className="my-18 mt-8">
+      <div className="mt-8 mb-16">
         <HeroSection />
       </div>
-      <div className="mx-auto my-12 max-w-7xl">
+      <div className="mx-auto my-10 max-w-7xl">
         <TechnicalSkills />
       </div>
-      <div className="my-18">
+      <div className="mt-16 mb-16">
         <FeaturedProjects />
       </div>
       <div className="mx-auto max-w-7xl">

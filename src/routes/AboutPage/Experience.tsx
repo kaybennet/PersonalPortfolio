@@ -1,19 +1,36 @@
+import type { CSSProperties } from "react";
+
 const glass =
-  "bg-surface/25 bg-linear-to-b from-white/30 to-white/0 dark:from-white/[0.05] " +
-  "backdrop-blur-2xl backdrop-saturate-120 shadow-glass " +
+  "elevate backdrop-blur-3xl backdrop-saturate-150 " +
+  "bg-[color-mix(in_oklab,var(--c)_7%,color-mix(in_oklab,var(--surface)_12%,transparent))] " +
+  "ring-3 ring-inset ring-[color-mix(in_oklab,var(--c)_18%,rgb(255_255_255/0.25))] " +
+  "dark:ring-[color-mix(in_oklab,var(--c)_22%,rgb(255_255_255/0.06))] " +
+  "inset-shadow-[0_1px_0_rgb(255_255_255/0.55)] dark:inset-shadow-[0_1px_0_rgb(255_255_255/0.1)] " +
   "transition-[translate,box-shadow] duration-300 ease-smooth " +
-  "hover:-translate-y-1 hover:shadow-glass-hover motion-reduce:transition-none";
+  "hover:-translate-y-1 hover:shadow-glass-hover " +
+  "hover:ring-[color-mix(in_oklab,var(--c)_35%,rgb(255_255_255/0.3))] " +
+  "motion-reduce:transition-none motion-reduce:hover:translate-y-0";
 
 const courses = [
-  { name: "Programming II", detail: "Teaching OOP via Java" },
-  { name: "Fundamentals of Computer Science", detail: "Teaching C and Python" },
+  {
+    name: "Programming II",
+    detail: "Teaching OOP via Java",
+    color: "var(--lang-java)",
+  },
+  {
+    name: "Fundamentals of Computer Science",
+    detail: "Teaching C and Python",
+    color: "var(--lang-python)",
+  },
   {
     name: "Human-Computer Interaction",
-    detail: "JavaScript, Design and evaluation",
+    detail: "JavaScript, design and evaluation",
+    color: "var(--lang-javascript, #f7df1e)",
   },
   {
     name: "Fundamentals of Digital Systems",
-    detail: "Basics of Binary Logic and hardware components",
+    detail: "Binary logic and hardware components",
+    color: "var(--primary)",
   },
 ];
 
@@ -28,11 +45,12 @@ export default function Experience() {
         university.
       </p>
 
-      <ul className="mt-6 grid gap-4 grid-cols-4">
-        {courses.map((c, _) => (
+      <ul role="list" className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {courses.map((c) => (
           <li
             key={c.name}
             className={`group flex items-center gap-4 rounded-2xl p-5 ${glass}`}
+            style={{ "--c": c.color } as CSSProperties}
           >
             <div className="min-w-0">
               <p className="font-semibold">{c.name}</p>

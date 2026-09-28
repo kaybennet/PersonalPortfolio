@@ -19,10 +19,10 @@ export function ContactCTA() {
         Open to working-student roles & internships
       </p>
       <h2 className="mt-2 font-display text-4xl font-bold tracking-tight">
-        Let's build something.
+        Let's connect.
       </h2>
       <p className="mt-3 text-foreground/80">
-        Always happy to talk about interesting problems.
+        Always happy to dive into new issues.
       </p>
 
       <div className="mt-6 flex flex-wrap justify-center gap-3">

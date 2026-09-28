@@ -1,43 +1,41 @@
-import { formatStarted, getImages } from "./ProjectImages";
+import { getImages } from "./ProjectImages";
+
+const glassCaption =
+  "bg-surface/55 backdrop-blur-xl backdrop-saturate-150 " +
+  "ring-2 ring-inset ring-white/35 dark:ring-white/10 " +
+  "inset-shadow-[0_1px_0_rgb(255_255_255/0.5)] dark:inset-shadow-[0_1px_0_rgb(255_255_255/0.08)]";
 
 export function GridEntry({ project: p }: { project: PersonalProject }) {
   const cover = getImages(p.id)[0];
 
   return (
-    <li className="flex flex-col overflow-hidden rounded-lg border border-slate-200">
-      {cover && (
+    <li
+      className={
+        "group relative mb-8 break-inside-avoid overflow-hidden rounded-lg elevate " +
+        "after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] " +
+        "after:ring-1 after:ring-inset after:ring-white/25 dark:after:ring-white/10"
+      }
+    >
+      {cover ? (
         <img
           src={cover.src}
           alt={`${p.title}: ${cover.name}`}
           loading="lazy"
-          className="aspect-16/10 w-full object-cover"
+          className="block h-auto w-full transition-transform duration-500 ease-smooth group-hover:scale-[1.03] motion-reduce:transition-none"
         />
+      ) : (
+        <div className="aspect-4/3 w-full bg-surface" aria-hidden />
       )}
 
-      <div className="flex flex-1 flex-col gap-3 p-5">
-        <div>
-          <h2 className="text-xl font-semibold tracking-tight">{p.title}</h2>
-          <p className="text-sm text-slate-500">
-            Started {formatStarted(p.started)}
-          </p>
-        </div>
-
-        {p.summary && (
-          <p className="line-clamp-3 text-[0.95rem]">{p.summary}</p>
-        )}
-
-        <div className="mt-auto flex flex-col gap-3 pt-2">
-          <ul className="flex flex-wrap gap-1.5">
-            {p.languages.map((lang) => (
-              <li
-                key={lang}
-                className="rounded-full border border-slate-300 px-2.5 py-0.5 text-sm"
-              >
-                {lang}
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div
+        className={`absolute inset-x-2 bottom-2 flex items-baseline justify-between gap-8 rounded-xl px-3 py-2 ${glassCaption}`}
+      >
+        <h2 className="truncate text-sm font-semibold tracking-tight">
+          {p.title}
+        </h2>
+        <span className="shrink-0 text-xs text-muted">
+          {p.started.getFullYear()}
+        </span>
       </div>
     </li>
   );

@@ -18,7 +18,7 @@ const views: Record<ViewStyle, ViewConfig> = {
   grid: {
     label: "Grid view",
     icon: LayoutGrid,
-    listClass: "grid gap-4 sm:grid-cols-2 lg:grid-cols-3",
+    listClass: "gap-8 columns-4",
     Entry: GridEntry,
   },
   standard: {
