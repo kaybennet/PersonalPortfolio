@@ -18,6 +18,8 @@ type ProgrammingLanguage =
   | "AWS"
   | "LaTeX";
 
+type ProjectCardSize = "w-xl" | "w-md" | "w-sm" | "h-xl" | "h-md" | "h-sm";
+
 type PersonalProject = {
   id: string;
   title: string;
@@ -29,7 +31,6 @@ type PersonalProject = {
   learnings: string[];
   time_spent: float;
   difficulty: float;
-  thumbnail?: int;
 };
 
 type TimelineEvent = {

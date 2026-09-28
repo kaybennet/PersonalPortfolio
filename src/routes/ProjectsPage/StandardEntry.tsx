@@ -1,5 +1,5 @@
 import { useState, type CSSProperties } from "react";
-import { formatStarted, getImages } from "./ProjectImages";
+import { formatStarted, getImages } from "../../util/images";
 import CustomIcon, { LangIcon } from "../../CustomIcon";
 import ProjectModal from "./ProjectModal";
 import AssessmentBadge from "./SelfAssessmentBadge";

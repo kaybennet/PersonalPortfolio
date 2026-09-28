@@ -10,9 +10,15 @@ export function FeaturedProjects() {
   return (
     <section className="mx-auto max-w-7xl">
       <div className="mb-8 flex items-end justify-between">
-        <h2 className="font-display text-4xl font-bold">
-          Some Featured Projects
-        </h2>
+        <div className="flex flex-col">
+          <h2 className="font-display text-4xl font-bold">
+            Some Featured Projects
+          </h2>
+          <p className="mt-3 text-muted">
+            My projects are mostly done out of enjoyment and for private use
+            cases. Some projects I am very proud of include:
+          </p>
+        </div>
         <Link
           to="/projects"
           className="font-semibold text-primary hover:underline"

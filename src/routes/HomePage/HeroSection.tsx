@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import thesisPdf from "../../docs/bachelors_thesis_kay_bennet_staeding.pdf";
 import cv from "../../docs/Curriculum Vitae.pdf";
 import { PortraitCard } from "./PortraitCard";
+import { fmtLatex } from "../../util/helpers";
 
 export function HeroSection() {
   return (
@@ -17,9 +18,10 @@ export function HeroSection() {
           Staeding
         </h1>
         <p className="text-lg leading-relaxed">
-          I enjoy the field of technology and whatever I can get my hands on.
-          Primarly I like Machine Learning and anything needing creativity from
-          WebDev to GameDev. For my{" "}
+          {fmtLatex(
+            "I enjoy the field of technology and whatever I can get my hands on. Primarily I work in \\textbf{Machine Learning} and anything needing creativity from \\textbf{WebDev} to \\textbf{GameDev}. ",
+          )}
+          <br></br>For my{" "}
           <a
             href={thesisPdf}
             target="_blank"

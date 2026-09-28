@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { formatStarted, getImages } from "./ProjectImages";
+import { formatStarted, getImages } from "../../util/images";
 import { LangBadge } from "./StandardEntry";
 import ImageMasonry from "./ImageMasonry";
 import CustomIcon from "../../CustomIcon";

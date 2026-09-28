@@ -52,7 +52,7 @@ export function PortraitCard() {
         <div
           aria-hidden={flipped}
           className={`elevate absolute inset-0 overflow-hidden rounded-2xl backface-hidden transition-[visibility] duration-0 ${
-            flipped ? "invisible delay-[350ms]" : "visible delay-0"
+            flipped ? "invisible delay-350" : "visible delay-0"
           }`}
         >
           <img
@@ -73,7 +73,7 @@ export function PortraitCard() {
         <div
           aria-hidden={!flipped}
           className={`elevate absolute inset-0 rotate-y-180 overflow-hidden rounded-2xl backface-hidden transition-[visibility] duration-0 ${
-            flipped ? "visible delay-0" : "invisible delay-[350ms]"
+            flipped ? "visible delay-0" : "invisible delay-350"
           }`}
         >
           <img

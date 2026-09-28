@@ -1,6 +1,6 @@
 import { useState, type CSSProperties } from "react";
 import { LangIcon } from "../../CustomIcon";
-import { formatStarted } from "./ProjectImages";
+import { formatStarted } from "../../util/images";
 import ProjectModal from "./ProjectModal";
 
 export function CompactEntry({ project: p }: { project: PersonalProject }) {

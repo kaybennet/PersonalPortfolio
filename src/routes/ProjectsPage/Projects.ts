@@ -23,7 +23,6 @@ export const Projects: PersonalProject[] = [
     learnings: ["Research", "Writing Scientific Papers"],
     time_spent: 0.8,
     difficulty: 0.9,
-    thumbnail: 6,
   },
   {
     id: "swp",
@@ -50,7 +49,6 @@ export const Projects: PersonalProject[] = [
     learnings: ["skill1", "skill2"],
     time_spent: 0.95,
     difficulty: 0.5,
-    thumbnail: 9,
   },
   {
     id: "spaceships",
@@ -75,7 +73,6 @@ export const Projects: PersonalProject[] = [
     learnings: ["skill1", "skill2"],
     time_spent: 0.8,
     difficulty: 0.9,
-    thumbnail: 3,
   },
   {
     id: "chess_old",
