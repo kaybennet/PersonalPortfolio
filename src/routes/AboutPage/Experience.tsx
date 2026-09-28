@@ -1,15 +1,10 @@
 import type { CSSProperties } from "react";
 
-const glass =
-  "elevate backdrop-blur-3xl backdrop-saturate-150 " +
-  "bg-[color-mix(in_oklab,var(--c)_7%,color-mix(in_oklab,var(--surface)_12%,transparent))] " +
-  "ring-3 ring-inset ring-[color-mix(in_oklab,var(--c)_18%,rgb(255_255_255/0.25))] " +
-  "dark:ring-[color-mix(in_oklab,var(--c)_22%,rgb(255_255_255/0.06))] " +
-  "inset-shadow-[0_1px_0_rgb(255_255_255/0.55)] dark:inset-shadow-[0_1px_0_rgb(255_255_255/0.1)] " +
-  "transition-[translate,box-shadow] duration-300 ease-smooth " +
-  "hover:-translate-y-1 hover:shadow-glass-hover " +
-  "hover:ring-[color-mix(in_oklab,var(--c)_35%,rgb(255_255_255/0.3))] " +
-  "motion-reduce:transition-none motion-reduce:hover:translate-y-0";
+const card =
+  "glass glass-hover relative flex items-center gap-4 rounded-2xl p-5 cursor-default " +
+  "[--glass-lift:-0.25rem] " +
+  "[--glass-tint:color-mix(in_oklab,var(--c)_7%,color-mix(in_oklab,var(--surface)_12%,transparent))] " +
+  "[--glass-tint-hover:color-mix(in_oklab,var(--c)_14%,color-mix(in_oklab,var(--surface)_30%,transparent))]";
 
 const courses = [
   {
@@ -25,7 +20,7 @@ const courses = [
   {
     name: "Human-Computer Interaction",
     detail: "JavaScript, design and evaluation",
-    color: "var(--lang-javascript, #f7df1e)",
+    color: "var(--lang-javascript)",
   },
   {
     name: "Fundamentals of Digital Systems",
@@ -49,7 +44,7 @@ export default function Experience() {
         {courses.map((c) => (
           <li
             key={c.name}
-            className={`group flex items-center gap-4 rounded-2xl p-5 ${glass}`}
+            className={card}
             style={{ "--c": c.color } as CSSProperties}
           >
             <div className="min-w-0">

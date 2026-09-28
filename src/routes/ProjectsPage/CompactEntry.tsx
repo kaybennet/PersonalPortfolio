@@ -8,13 +8,13 @@ export function CompactEntry({ project: p }: { project: PersonalProject }) {
 
   return (
     <li
-      className="relative -mx-2 flex items-center gap-4 rounded-md border-t border-border px-2 py-3 transition-colors
+      className="relative -mx-2 flex items-center gap-4 border-t border-border px-2 py-3 transition-colors
         hover:bg-surface has-focus-visible:ring-2 has-focus-visible:ring-primary"
     >
       <span className="w-20 shrink-0 text-sm tabular-nums text-muted">
         {formatStarted(p.started)}
       </span>
-      <h2 className="min-w-0 flex-1 truncate font-medium text-foreground">
+      <h2 className="min-w-0 flex-1 truncate font-semibold text-foreground">
         <button
           type="button"
           onClick={() => setOpen(true)}

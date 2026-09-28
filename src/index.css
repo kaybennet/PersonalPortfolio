@@ -19,6 +19,7 @@
   --glass-border-mid: rgb(255 255 255 / 0.15);
   --glass-border-end: rgb(255 255 255 / 0.05);
   --glass-brightness: 1.1;
+  --glass-tint-hover: color-mix(in oklab, var(--background) 45%, transparent);
 }
 
 .dark {
@@ -29,6 +30,7 @@
   --glass-border-mid: rgb(255 255 255 / 0.08);
   --glass-border-end: transparent;
   --glass-brightness: 0.9;
+  --glass-tint-hover: color-mix(in oklab, var(--background) 65%, transparent);
 }
 
 @utility glass {
@@ -67,6 +69,39 @@
     mask:
       linear-gradient(#000 0 0) content-box exclude,
       linear-gradient(#000 0 0);
+  }
+}
+@utility glass-hover {
+  transition:
+    translate 500ms var(--ease-smooth),
+    background-color 500ms var(--ease-smooth),
+    box-shadow 500ms var(--ease-smooth);
+
+  @media (hover: hover) {
+    &:hover,
+    :where(.group):hover & {
+      translate: 0 -0.5rem;
+      background-color: var(--glass-tint-hover);
+      --glass-drop: 0 18px 40px -12px rgb(0 0 0 / 0.55);
+    }
+  }
+
+  &:focus-within,
+  :where(.group):focus-within & {
+    translate: 0 -0.5rem;
+    background-color: var(--glass-tint-hover);
+    --glass-drop: 0 18px 40px -12px rgb(0 0 0 / 0.55);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+
+    &:hover,
+    :where(.group):hover &,
+    &:focus-within,
+    :where(.group):focus-within & {
+      translate: none;
+    }
   }
 }
 

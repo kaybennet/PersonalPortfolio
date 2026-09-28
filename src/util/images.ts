@@ -1,12 +1,9 @@
-import noCoverSrc from "../routes/ProjectsPage/images/no_cover.png";
+import { ERR_IMG } from "./consts";
 
-// Load every image in images/<id>/ at build time and group by folder name.
 const imageModules = import.meta.glob(
   "../routes/ProjectsPage/images/*/*.{png,jpg,jpeg,webp,avif,gif}",
   { eager: true, import: "default" },
 ) as Record<string, string>;
-
-export type ProjectImage = { src: string; name: string };
 
 const normalize = (s: string) => s.toLowerCase().replace(/[-_]/g, " ");
 
@@ -19,15 +16,21 @@ for (const [path, src] of Object.entries(imageModules).sort()) {
   (imagesById[id] ??= []).push({ src, name });
 }
 
-const noCover: ProjectImage = { src: noCoverSrc, name: "no cover" };
+const RESERVED = new Set(["cover", "header", "cover_main"].map(normalize));
 
-export const getImages = (id: string): ProjectImage[] => imagesById[id] ?? [];
+export const getImages = (id: string, getAll = false): ProjectImage[] =>
+  (imagesById[id] ?? []).filter(
+    (img) => getAll || !RESERVED.has(normalize(img.name)),
+  );
 
 const findImage = (id: string, name: string) =>
-  getImages(id).find((img) => normalize(img.name) === normalize(name));
+  getImages(id, true).find((img) => normalize(img.name) === normalize(name));
 
 export const getCover = (id: string): ProjectImage =>
-  findImage(id, "cover") ?? noCover;
+  findImage(id, "cover") ?? ERR_IMG;
+
+export const getHeaderPic = (id: string): ProjectImage =>
+  findImage(id, "header") ?? ERR_IMG;
 
 export const getMainCover = (id: string): ProjectImage =>
   findImage(id, "cover_main") ?? getCover(id);

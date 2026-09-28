@@ -4,13 +4,6 @@ import { getMainCover } from "../../util/images";
 import ProjectModal from "../ProjectsPage/ProjectModal";
 import { LangBadge } from "../ProjectsPage/StandardEntry";
 
-const glassPanel =
-  "glass transition-[translate,background-color,box-shadow] duration-500 ease-smooth " +
-  "group-hover:-translate-y-2 group-hover:bg-background/45 " +
-  "group-hover:[--glass-drop:0_18px_40px_-12px_rgb(0_0_0/0.55)] " +
-  "group-focus-within:-translate-y-2 group-focus-within:bg-background/45 " +
-  "motion-reduce:transition-none motion-reduce:group-hover:translate-y-0";
-
 export function ProjectCard({ project: p }: { project: PersonalProject }) {
   const [open, setOpen] = useState(false);
   const cover = getMainCover(p.id);
@@ -63,9 +56,7 @@ export function ProjectCard({ project: p }: { project: PersonalProject }) {
           className="absolute inset-0 z-10 cursor-pointer rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset"
         />
 
-        <div
-          className={`pointer-events-none absolute inset-x-3 bottom-3 z-20 transform-gpu rounded-xl p-5 ${glassPanel}`}
-        >
+        <div className="glass glass-hover pointer-events-none absolute inset-x-3 bottom-3 z-20 transform-gpu rounded-xl p-5">
           <div className="flex items-start justify-between gap-3">
             <div>
               <p className="font-mono text-sm text-muted">

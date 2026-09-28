@@ -4,11 +4,6 @@ import { EVENTS } from "./TimelineEvents";
 const formatDate = (d: Date) =>
   d.toLocaleDateString("en-US", { month: "short", year: "numeric" });
 
-const glass =
-  "bg-surface/25 backdrop-blur-md " +
-  "shadow-[inset_0_1px_0_0_rgb(255_255_255/0.3),0_12px_32px_-12px_rgb(0_0_0/0.3)] " +
-  "dark:shadow-[inset_0_1px_0_0_rgb(255_255_255/0.06),0_12px_32px_-12px_rgb(0_0_0/0.7)]";
-
 const INTRO_MS = 1500;
 
 const motion =
@@ -119,7 +114,7 @@ export default function Timeline({
                 <div className="relative hidden h-10 w-full sm:block">
                   {e.label && (
                     <span
-                      className={`pointer-events-none absolute bottom-1 whitespace-nowrap rounded-lg px-2.5 py-1 text-sm font-medium ${glass} ${motion} ${align} ${
+                      className={`pointer-events-none absolute bottom-1 whitespace-nowrap rounded-lg px-2.5 py-1 text-sm font-medium glass$ ${motion} ${align} ${
                         isActive
                           ? "-translate-y-0.5 text-primary"
                           : "text-muted"
@@ -168,7 +163,7 @@ export default function Timeline({
         <div
           id="timeline-tooltip"
           role="tooltip"
-          className={`pointer-events-none absolute top-20 z-20 w-80 max-w-[calc(100vw-2rem)] rounded-2xl p-5 ${glass} transition-[left,transform,opacity,translate] duration-300 ease-out motion-reduce:transition-none ${
+          className={`pointer-events-none absolute top-20 z-20 w-80 max-w-[calc(100vw-2rem)] rounded-2xl p-5 glass transition-[left,transform,opacity,translate] duration-300 ease-out motion-reduce:transition-none ${
             open ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
           }`}
           style={{
