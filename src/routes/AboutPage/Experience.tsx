@@ -35,7 +35,7 @@ export default function Experience() {
       <h2 className="font-display text-3xl font-bold tracking-tight">
         Experience
       </h2>
-      <p className="mt-6 text-lg text-foreground/80">
+      <p className="mt-2 text-lg text-foreground/80">
         Since 2024 I've tutored for different computer science courses at the
         university.
       </p>

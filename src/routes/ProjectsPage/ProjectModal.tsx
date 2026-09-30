@@ -2,7 +2,7 @@ import { useEffect, useRef, type ReactNode } from "react";
 import { ArrowUpRight, Lock, X } from "lucide-react";
 import { formatStarted, getHeaderPic, getImages } from "../../util/images";
 import { LangBadge } from "./StandardEntry";
-import ImageMasonry from "./ImageMasonry";
+import ImageMasonry from "../../shared/ImageMasonry";
 import CustomIcon from "../../CustomIcon";
 import { fmtLatex } from "../../util/helpers";
 import { ERR_IMG } from "../../util/consts";

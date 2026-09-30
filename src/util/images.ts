@@ -1,7 +1,7 @@
-import { ERR_IMG } from "./consts";
+import { ERR_IMG, IMAGES_DIR } from "./consts";
 
 const imageModules = import.meta.glob(
-  "../routes/ProjectsPage/images/*/*.{png,jpg,jpeg,webp,avif,gif}",
+  "../images/**/*.{png,jpg,jpeg,webp,avif,gif}",
   { eager: true, import: "default" },
 ) as Record<string, string>;
 
@@ -9,9 +9,12 @@ const normalize = (s: string) => s.toLowerCase().replace(/[-_]/g, " ");
 
 const imagesById: Record<string, ProjectImage[]> = {};
 for (const [path, src] of Object.entries(imageModules).sort()) {
-  const parts = path.split("/");
-  const id = parts.at(-2)!;
-  const file = parts.at(-1)!;
+  const rel = path.slice(IMAGES_DIR.length); // "hobbies/hiking/summit.jpg"
+  const slash = rel.lastIndexOf("/");
+  if (slash === -1) continue; // loose files directly in images/ have no id
+
+  const id = rel.slice(0, slash); // "hobbies/hiking"
+  const file = rel.slice(slash + 1); // "summit.jpg"
   const name = file.replace(/\.[^.]+$/, "").replace(/[-_]/g, " ");
   (imagesById[id] ??= []).push({ src, name });
 }

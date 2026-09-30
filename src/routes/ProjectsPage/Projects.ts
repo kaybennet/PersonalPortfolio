@@ -1,17 +1,5 @@
 export const Projects: PersonalProject[] = [
   {
-    id: "this",
-    title: "Personal Portfolio Website",
-    github_link: "",
-    languages: ["TypeScript", "React"],
-    started: new Date(2026, 9),
-    summary: "Small Website displaying my Progress over the years",
-    description: "IDK YET",
-    learnings: ["skill1", "skill2"],
-    time_spent: 0.6,
-    difficulty: 0.3,
-  },
-  {
     id: "BA",
     title: "Improving Prior Guided Bayesian Optimization",
     github_link: "",
@@ -146,6 +134,18 @@ export const Projects: PersonalProject[] = [
     description: "IDK YET",
     learnings: ["skill1", "skill2"],
     time_spent: 0.3,
+    difficulty: 0.3,
+  },
+  {
+    id: "this",
+    title: "Personal Portfolio Website",
+    github_link: "",
+    languages: ["TypeScript", "React"],
+    started: new Date(2026, 9),
+    summary: "Small Website displaying my Progress over the years",
+    description: "IDK YET",
+    learnings: ["skill1", "skill2"],
+    time_spent: 0.6,
     difficulty: 0.3,
   },
   {

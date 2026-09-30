@@ -4,6 +4,7 @@ import Thesis from "./Thesis";
 import Experience from "./Experience";
 import Timeline from "./Timeline";
 import { GitHubActivity } from "./GitHubActivity";
+import BeyondCode from "./BeyondCode";
 
 function AboutPage() {
   return (
@@ -23,6 +24,7 @@ function AboutPage() {
           <GitHubActivity />
         </div>
         <Experience />
+        <BeyondCode />
       </main>
     </div>
   );

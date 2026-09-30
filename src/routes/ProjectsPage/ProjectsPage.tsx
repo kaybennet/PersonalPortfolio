@@ -35,11 +35,6 @@ const views: Record<ViewStyle, ViewConfig> = {
   },
 };
 
-// Newest first
-const sortedProjects = [...Projects].sort(
-  (a, b) => b.started.getTime() - a.started.getTime(),
-);
-
 function ProjectsPage() {
   const [view, setView] = useState<ViewStyle>("standard");
   const { listClass, Entry } = views[view];
@@ -85,7 +80,7 @@ function ProjectsPage() {
       </div>
 
       <ul className={listClass}>
-        {sortedProjects.map((p) => (
+        {Projects.map((p) => (
           <Entry key={p.id} project={p} />
         ))}
       </ul>
