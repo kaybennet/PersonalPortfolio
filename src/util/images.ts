@@ -42,7 +42,6 @@ export const getMainCover = (id: string): ProjectImage =>
 export const formatStarted = (d: Date) =>
   d.toLocaleDateString("en", { month: "short", year: "numeric" });
 
-const opts = { eager: true, import: "default" } as const;
 const originals = import.meta.glob<string>(
   "/src/images/**/*.{jpg,jpeg,png,webp,avif}",
   { eager: true, import: "default" },
