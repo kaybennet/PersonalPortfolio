@@ -3,6 +3,7 @@ import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import BlurImage from "./BlurImage";
 
 type GalleryImage = { src: string; alt?: string };
 
@@ -52,7 +53,7 @@ export default function ImageMasonry({ images, title }: Props) {
                 after:ring-2 after:ring-inset after:ring-white/25 dark:after:ring-white/10
                 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
             >
-              <img
+              <BlurImage
                 src={img.src}
                 alt={altFor(img, i)}
                 loading="lazy"

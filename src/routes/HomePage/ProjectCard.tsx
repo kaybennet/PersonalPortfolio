@@ -3,6 +3,7 @@ import CustomIcon, { LangIcon } from "../../CustomIcon";
 import { getMainCover } from "../../util/images";
 import ProjectModal from "../ProjectsPage/ProjectModal";
 import { LangBadge } from "../ProjectsPage/StandardEntry";
+import BlurImage from "../../shared/BlurImage";
 
 export function ProjectCard({ project: p }: { project: PersonalProject }) {
   const [open, setOpen] = useState(false);
@@ -21,7 +22,7 @@ export function ProjectCard({ project: p }: { project: PersonalProject }) {
         }
       >
         {cover ? (
-          <img
+          <BlurImage
             src={cover.src}
             alt=""
             loading="lazy"

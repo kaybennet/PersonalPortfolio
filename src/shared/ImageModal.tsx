@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import type { GalleryImage } from "./ImageStack";
+import BlurImage from "./BlurImage";
 
 type Props = {
   images: GalleryImage[];
@@ -48,7 +49,7 @@ export default function ImageModal({ images, open, title, onClose }: Props) {
         <ul className="columns-2 gap-3 p-4 sm:columns-3">
           {images.map((img) => (
             <li key={img.src} className="mb-3 break-inside-avoid">
-              <img
+              <BlurImage
                 src={img.src}
                 alt={img.name}
                 loading="lazy"

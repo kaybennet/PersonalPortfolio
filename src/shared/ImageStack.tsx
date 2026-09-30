@@ -1,5 +1,6 @@
 import type { CSSProperties, PointerEvent } from "react";
 import type { getImages } from "../util/images";
+import BlurImage from "./BlurImage";
 
 export type GalleryImage = ReturnType<typeof getImages>[number];
 export type StackAspect = "1:1" | "16:9" | "2:3";
@@ -186,7 +187,7 @@ export function ImageStrip({ images, title, onOpen, className = "" }: Props) {
               focus-visible:-translate-y-1 focus-visible:outline-2 focus-visible:outline-primary
               motion-reduce:transition-none"
           >
-            <img
+            <BlurImage
               src={img.src}
               alt=""
               draggable={false}

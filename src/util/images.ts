@@ -41,3 +41,23 @@ export const getMainCover = (id: string): ProjectImage =>
 
 export const formatStarted = (d: Date) =>
   d.toLocaleDateString("en", { month: "short", year: "numeric" });
+
+const opts = { eager: true, import: "default" } as const;
+const originals = import.meta.glob<string>(
+  "/src/images/**/*.{jpg,jpeg,png,webp,avif}",
+  { eager: true, import: "default" },
+);
+const blurred = import.meta.glob<string>(
+  "/src/images_blurred/**/*.{jpg,jpeg,png,webp,avif}",
+  { eager: true, import: "default" },
+);
+
+const blurredBySrc = new Map<string, string>();
+for (const [path, url] of Object.entries(originals)) {
+  const b = blurred[path.replace("/src/images/", "/src/images_blurred/")];
+  if (b) blurredBySrc.set(url, b);
+}
+
+/** URL of the blurred sibling of an image, if one exists. */
+export const blurredFor = (src?: string) =>
+  src ? blurredBySrc.get(src) : undefined;
