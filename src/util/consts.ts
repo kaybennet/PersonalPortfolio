@@ -7,4 +7,3 @@ export const LINK_BACKLOGGD = "https://bckl.gg/b4zs";
 
 import noCoverSrc from "../images/no_cover.png";
 export const ERR_IMG: ProjectImage = { src: noCoverSrc, name: "no cover" };
-export const IMAGES_DIR = "../images/";

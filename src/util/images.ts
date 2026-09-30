@@ -1,4 +1,4 @@
-import { ERR_IMG, IMAGES_DIR } from "./consts";
+import { ERR_IMG } from "./consts";
 
 const imageModules = import.meta.glob(
   "../images/**/*.{png,jpg,jpeg,webp,avif,gif}",
@@ -6,6 +6,7 @@ const imageModules = import.meta.glob(
 ) as Record<string, string>;
 
 const normalize = (s: string) => s.toLowerCase().replace(/[-_]/g, " ");
+const IMAGES_DIR = "../images/";
 
 const imagesById: Record<string, ProjectImage[]> = {};
 for (const [path, src] of Object.entries(imageModules).sort()) {
