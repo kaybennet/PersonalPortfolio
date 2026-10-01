@@ -35,55 +35,93 @@ const views: Record<ViewStyle, ViewConfig> = {
   },
 };
 
+const viewIds = Object.keys(views) as ViewStyle[];
+const BOUNCE = "ease-[cubic-bezier(0.34,1.56,0.64,1)]";
+const SMOOTH = "ease-[cubic-bezier(.3,.7,.2,1)]";
+
+// slide by own width + gap-1 (0.25rem), so it fits any button size
+const slide = (i: number) => `calc(${i} * (100% + 0.25rem)) 0`;
+
+// newest first; Projects is static, so sort once
+const ordered = [...Projects].sort(
+  (a, b) => b.started.getTime() - a.started.getTime(),
+);
+
 function ProjectsPage() {
   const [view, setView] = useState<ViewStyle>("standard");
+  const [hovered, setHovered] = useState<number | null>(null);
   const { listClass, Entry } = views[view];
+  const active = viewIds.indexOf(view);
 
   return (
     <main className="mx-auto max-w-7xl pb-24 pt-6 text-foreground">
-      <div className="mb-12 flex flex-wrap items-end justify-between gap-4">
-        <div className="flex flex-col">
-          <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-            Personal Projects
+      <div className="mb-8 flex items-center justify-between gap-6">
+        <div className="min-w-0">
+          <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+            Some of my projects
+            <span className="ml-2 text-base font-medium tabular-nums text-muted">
+              {ordered.length}
+            </span>
           </h1>
-          <span className="text-sm font-normal tracking-tight text-muted mt-2 -mb-3">
-            *Transparency note: None of these are vibe-coded. Newer projects
-            used AI coding assistants only sparingly and responsibly.
-          </span>
+          <p className="mt-1 text-sm text-pretty text-muted">
+            None of these are vibe-coded. Newer projects used AI coding
+            assistants only sparingly and responsibly.
+          </p>
         </div>
+
         <div
           role="radiogroup"
           aria-label="Layout"
-          className="flex gap-0.5 rounded-lg border border-border p-1"
+          onMouseLeave={() => setHovered(null)}
+          className="relative flex shrink-0 gap-1"
         >
-          {(Object.keys(views) as ViewStyle[]).map((id) => {
+          {/* hover ghost: glides after the cursor */}
+          <span
+            aria-hidden
+            className={`pointer-events-none absolute left-0 top-0 size-12 rounded-lg bg-foreground/4
+              transition-[translate,opacity] duration-300 ${SMOOTH} motion-reduce:transition-none`}
+            style={{
+              translate: slide(hovered ?? active),
+              opacity: hovered !== null && hovered !== active ? 1 : 0,
+            }}
+          />
+
+          {/* active pill: bounces into place */}
+          <span
+            aria-hidden
+            className={`pointer-events-none absolute left-0 top-0 size-12 rounded-lg bg-foreground/[0.07]
+              transition-[translate] duration-500 ${BOUNCE} motion-reduce:transition-none`}
+            style={{ translate: slide(active) }}
+          />
+
+          {viewIds.map((id, i) => {
             const { label, icon: Icon } = views[id];
+            const selected = view === id;
             return (
               <button
                 key={id}
+                type="button"
                 role="radio"
-                aria-checked={view === id}
+                aria-checked={selected}
                 aria-label={label}
                 title={label}
                 onClick={() => setView(id)}
-                className={`rounded-md p-1.5 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${
-                  view === id
-                    ? "bg-surface text-foreground shadow-sm"
-                    : "text-muted hover:text-foreground"
-                }`}
+                onMouseEnter={() => setHovered(i)}
+                className={`group/view relative z-10 grid size-12 cursor-pointer place-items-center rounded-lg
+                  ${selected ? "text-foreground" : "text-muted hover:text-foreground"}`}
               >
-                <Icon size={18} />
+                <Icon size={22} />
               </button>
             );
           })}
         </div>
       </div>
 
-      <ul className={listClass}>
-        {Projects.map((p) => (
+      <ol className={listClass}>
+        {ordered.map((p) => (
           <Entry key={p.id} project={p} />
         ))}
-      </ul>
+      </ol>
     </main>
   );
 }
