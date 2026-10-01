@@ -2,7 +2,7 @@ import { useState, type CSSProperties } from "react";
 import { formatStarted, getCover, getImages } from "../../util/images";
 import CustomIcon, { LangIcon } from "../../CustomIcon";
 import ProjectModal from "./ProjectModal";
-import ImageStack, { ImageStrip, buildGallery } from "../../shared/ImageStack";
+import ImageStack, { buildGallery } from "../../shared/ImageStack";
 
 export function StandardEntry({ project: p }: { project: PersonalProject }) {
   const gallery = buildGallery(getCover(p.id), getImages(p.id));
@@ -57,21 +57,9 @@ export function StandardEntry({ project: p }: { project: PersonalProject }) {
             <LangBadge key={lang} lang={lang} />
           ))}
         </ul>
-
-        <ImageStrip
-          images={gallery}
-          title={p.title}
-          onOpen={openModal}
-          className="mt-3 lg:hidden"
-        />
       </div>
 
-      <ImageStack
-        images={gallery}
-        title={p.title}
-        onOpen={openModal}
-        className="hidden lg:block"
-      />
+      <ImageStack images={gallery} title={p.title} onOpen={openModal} />
 
       <ProjectModal project={p} open={open} onClose={() => setOpen(false)} />
     </li>

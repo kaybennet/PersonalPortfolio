@@ -191,7 +191,7 @@ export default function ProjectModal({
               </span>
             </SectionTitle>
             <div className="mt-5">
-              <ImageMasonry images={gallery} title={p.title} />
+              <ImageMasonry images={gallery} />
             </div>
           </section>
         )}

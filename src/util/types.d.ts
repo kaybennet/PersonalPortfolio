@@ -18,7 +18,7 @@ type ProgrammingLanguage =
   | "AWS"
   | "LaTeX";
 
-type ProjectImage = { src: string; name: string };
+type ProjectImage = { alt: string; src: string; name: string };
 type ProjectCardSize = "w-xl" | "w-md" | "w-sm" | "h-xl" | "h-md" | "h-sm";
 
 type PersonalProject = {

@@ -10,14 +10,15 @@ const IMAGES_DIR = "../images/";
 
 const imagesById: Record<string, ProjectImage[]> = {};
 for (const [path, src] of Object.entries(imageModules).sort()) {
-  const rel = path.slice(IMAGES_DIR.length); // "hobbies/hiking/summit.jpg"
+  const rel = path.slice(IMAGES_DIR.length);
   const slash = rel.lastIndexOf("/");
-  if (slash === -1) continue; // loose files directly in images/ have no id
+  if (slash === -1) continue;
 
-  const id = rel.slice(0, slash); // "hobbies/hiking"
-  const file = rel.slice(slash + 1); // "summit.jpg"
+  const id = rel.slice(0, slash);
+  const file = rel.slice(slash + 1);
   const name = file.replace(/\.[^.]+$/, "").replace(/[-_]/g, " ");
-  (imagesById[id] ??= []).push({ src, name });
+  const alt = src.replace("images", "images_blurred");
+  (imagesById[id] ??= []).push({ alt, src, name });
 }
 
 const RESERVED = new Set(["cover", "header", "cover_main"].map(normalize));

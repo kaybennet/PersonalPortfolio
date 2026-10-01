@@ -5,11 +5,6 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import BlurImage from "./BlurImage";
 
-type GalleryImage = { src: string; alt?: string };
-
-type Props = { images: GalleryImage[]; title: string };
-
-// Frosted glass for controls on the (always dark) lightbox backdrop.
 const darkGlass =
   "bg-white/10 text-white backdrop-blur-xl backdrop-saturate-150 " +
   "ring-1 ring-inset ring-white/20 inset-shadow-[0_1px_0_rgb(255_255_255/0.25)] " +
@@ -22,14 +17,11 @@ const darkGlassButton =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white " +
   "motion-reduce:transition-none motion-reduce:hover:scale-100";
 
-export default function ImageMasonry({ images, title }: Props) {
+export default function ImageMasonry({ images }: { images: ProjectImage[] }) {
   const [selected, setSelected] = useState<number | null>(null);
   const isLg = useMediaQuery("(min-width: 1024px)");
   const isSm = useMediaQuery("(min-width: 640px)");
   const cols = Math.max(1, Math.min(images.length, isLg ? 3 : isSm ? 2 : 1));
-
-  const altFor = (img: GalleryImage, i: number) =>
-    img.alt ?? `${title} screenshot ${i + 1}`;
 
   return (
     <>
@@ -54,9 +46,7 @@ export default function ImageMasonry({ images, title }: Props) {
                 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
             >
               <BlurImage
-                src={img.src}
-                alt={altFor(img, i)}
-                loading="lazy"
+                img={img}
                 className="block w-full transition-[scale] duration-700 ease-smooth motion-reduce:transition-none"
               />
 
@@ -74,7 +64,6 @@ export default function ImageMasonry({ images, title }: Props) {
       <Lightbox
         images={images}
         index={selected}
-        altFor={altFor}
         onChange={setSelected}
         onClose={() => setSelected(null)}
       />
@@ -83,14 +72,13 @@ export default function ImageMasonry({ images, title }: Props) {
 }
 
 type LightboxProps = {
-  images: GalleryImage[];
+  images: ProjectImage[];
   index: number | null;
-  altFor: (img: GalleryImage, i: number) => string;
   onChange: (i: number) => void;
   onClose: () => void;
 };
 
-function Lightbox({ images, index, altFor, onChange, onClose }: LightboxProps) {
+export function Lightbox({ images, index, onChange, onClose }: LightboxProps) {
   const ref = useRef<HTMLDialogElement>(null);
   const open = index !== null;
   const multiple = images.length > 1;
@@ -132,7 +120,6 @@ function Lightbox({ images, index, altFor, onChange, onClose }: LightboxProps) {
         <img
           key={index}
           src={images[index].src}
-          alt={altFor(images[index], index)}
           className="max-h-full max-w-full rounded-xl object-contain shadow-2xl ring-1 ring-white/10
             transition-[opacity,scale] duration-300 ease-smooth starting:opacity-0 starting:scale-[0.98]
             motion-reduce:transition-none"

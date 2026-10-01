@@ -14,7 +14,7 @@ export const Projects: PersonalProject[] = [
   },
   {
     id: "swp",
-    title: "Tool to migrate safety configurations from Elasticsearch",
+    title: "Tool to migrate security configurations from Elasticsearch",
     github_link:
       "https://git.floragunn.com/search-guard/search-guard-suite-enterprise",
     languages: ["Java"],

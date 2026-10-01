@@ -1,8 +1,6 @@
 import type { CSSProperties, PointerEvent } from "react";
-import type { getImages } from "../util/images";
 import BlurImage from "./BlurImage";
 
-export type GalleryImage = ReturnType<typeof getImages>[number];
 export type StackAspect = "1:1" | "16:9" | "2:3";
 
 const ASPECT: Record<StackAspect, string> = {
@@ -13,15 +11,15 @@ const ASPECT: Record<StackAspect, string> = {
 
 /** Cover first, no duplicates, safe when there is no cover. */
 export function buildGallery(
-  cover: GalleryImage | null | undefined,
-  images: GalleryImage[],
-): GalleryImage[] {
+  cover: ProjectImage | null | undefined,
+  images: ProjectImage[],
+): ProjectImage[] {
   if (!cover) return images;
   return [cover, ...images.filter((img) => img.src !== cover.src)];
 }
 
 type Props = {
-  images: GalleryImage[];
+  images: ProjectImage[];
   title: string;
   onOpen: (index: number) => void;
   className?: string;
@@ -106,12 +104,9 @@ export default function ImageStack({
               group-focus-visible/stack:[rotate:var(--fr)] group-focus-visible/stack:[translate:var(--fx)_var(--fy)]
               transition-[rotate,translate,scale,box-shadow] duration-500 ease-smooth motion-reduce:transition-none"
           >
-            <img
-              src={img.src}
-              alt=""
-              draggable={false}
-              loading={i === 0 ? "eager" : "lazy"}
-              decoding="async"
+            <BlurImage
+              img={img}
+              wrapperClassName="size-full"
               className={`size-full bg-surface object-cover object-top transition-[filter] duration-500 ease-smooth
                 ${i > 0 ? "brightness-90 group-hover/stack:brightness-100 dark:brightness-70" : ""}`}
             />
@@ -159,45 +154,5 @@ export default function ImageStack({
         ))}
       </span>
     </button>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/* Strip (below lg)                                                    */
-/* ------------------------------------------------------------------ */
-
-export function ImageStrip({ images, title, onOpen, className = "" }: Props) {
-  if (images.length === 0) return null;
-
-  return (
-    <ul
-      aria-label={`${title} images`}
-      className={`relative z-10 -mx-2 flex snap-x snap-mandatory scroll-px-2 gap-3 overflow-x-auto
-        px-2 pt-2 pb-4 scrollbar-thin ${className}`}
-    >
-      {images.map((img, i) => (
-        <li key={img.src} className="shrink-0 snap-start">
-          <button
-            type="button"
-            onClick={() => onOpen(i)}
-            aria-label={`Open ${title}: ${img.name}`}
-            className="block cursor-pointer overflow-hidden rounded-xl shadow-glass
-              transition-[translate,box-shadow] duration-300 ease-smooth
-              hover:-translate-y-1 hover:shadow-glass-hover
-              focus-visible:-translate-y-1 focus-visible:outline-2 focus-visible:outline-primary
-              motion-reduce:transition-none"
-          >
-            <BlurImage
-              src={img.src}
-              alt=""
-              draggable={false}
-              loading="lazy"
-              decoding="async"
-              className="h-36 w-auto max-w-72 min-w-24 bg-surface object-cover object-top"
-            />
-          </button>
-        </li>
-      ))}
-    </ul>
   );
 }

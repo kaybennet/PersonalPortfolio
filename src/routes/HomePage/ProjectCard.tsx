@@ -23,9 +23,7 @@ export function ProjectCard({ project: p }: { project: PersonalProject }) {
       >
         {cover ? (
           <BlurImage
-            src={cover.src}
-            alt=""
-            loading="lazy"
+            img={cover}
             className="absolute inset-0 size-full object-cover object-top transition-[scale] duration-700 ease-smooth will-change-transform group-hover:scale-105 motion-reduce:transition-none"
           />
         ) : (

@@ -57,6 +57,7 @@ export function PortraitCard() {
         >
           <img
             src={profilePic}
+            loading="eager"
             alt="Kay Bennet Städing"
             className="size-full object-cover transition-[scale] duration-700 ease-smooth group-hover:scale-105 motion-reduce:transition-none"
           />

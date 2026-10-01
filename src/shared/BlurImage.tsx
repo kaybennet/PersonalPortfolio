@@ -1,37 +1,45 @@
 import { useState, type ImgHTMLAttributes } from "react";
-import { blurredFor } from "../util/images";
 
-type Props = ImgHTMLAttributes<HTMLImageElement> & {
-  placeholder?: string;
+type Props = Omit<ImgHTMLAttributes<HTMLImageElement>, "src" | "alt"> & {
   wrapperClassName?: string;
+  img: ProjectImage;
 };
 
 export default function BlurImage({
-  placeholder,
-  wrapperClassName = "",
+  img,
   className = "",
+  wrapperClassName = "",
   onLoad,
-  ...img
+  ...rest
 }: Props) {
-  const [loaded, setLoaded] = useState(false);
-  const bg = placeholder ?? blurredFor(img.src);
+  const [loadedSrc, setLoadedSrc] = useState<string | null>(null);
+  const loaded = loadedSrc === img.src;
 
   return (
-    <span
-      className={`block overflow-hidden bg-cover bg-center ${wrapperClassName}`}
-      style={bg ? { backgroundImage: `url("${bg}")` } : undefined}
-    >
+    <span className={`relative block overflow-hidden ${wrapperClassName}`}>
       <img
-        {...img}
+        src={img.alt}
+        alt=""
+        aria-hidden
+        className={`absolute inset-0 h-full w-full scale-110 object-cover blur-md
+          transition-opacity duration-500 motion-reduce:transition-none
+          ${loaded ? "opacity-0" : "opacity-100"}`}
+      />
+
+      <img
+        {...rest}
+        src={img.src}
+        alt=""
+        decoding="async"
         ref={(el) => {
-          if (el?.complete && el.naturalWidth > 0) setLoaded(true);
+          if (el?.complete && el.naturalWidth > 0) setLoadedSrc(img.src);
         }}
         onLoad={(e) => {
-          setLoaded(true);
+          setLoadedSrc(img.src);
           onLoad?.(e);
         }}
-        className={`transition-[opacity,filter] duration-500 ease-smooth motion-reduce:transition-none
-          ${loaded ? "opacity-100" : "opacity-0"} ${className}`}
+        className={`relative transition-[opacity,filter] duration-500 ease-smooth motion-reduce:transition-none
+          ${loaded ? "opacity-100 blur-0" : "opacity-0 blur-md"} ${className}`}
       />
     </span>
   );
