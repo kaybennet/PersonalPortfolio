@@ -6,4 +6,9 @@ export const LINK_LETTERBOXD = "https://boxd.it/4O1el";
 export const LINK_BACKLOGGD = "https://bckl.gg/b4zs";
 
 import noCoverSrc from "../images/no_cover.png";
-export const ERR_IMG: ProjectImage = { src: noCoverSrc, name: "no cover" };
+import noCoverAltSrc from "../images_blurred/no_cover.png";
+export const ERR_IMG: ProjectImage = {
+  alt: noCoverAltSrc,
+  src: noCoverSrc,
+  name: "no cover",
+};
