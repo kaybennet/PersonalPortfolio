@@ -1,35 +1,41 @@
-# React + TypeScript + Vite
+# Personal Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+My personal portfolio site, showing my projects, background and studies.
 
-Currently, two official plugins are available:
+**Live:** https://personalportfolio-kayabennas-projects.vercel.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech
 
-## React Compiler
+- React + TypeScript, built with Vite (React Compiler enabled)
+- Tailwind CSS v4 with light/dark theme tokens
+- MUI for a few components (e.g. tooltips)
+- Oxlint for linting
+- Deployed on Vercel
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Getting started
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev      # local dev server
+npm run build    # production build to dist/
+npm run preview  # serve the build locally
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Project images
+
+Images are picked up automatically from `src/assets/images/<project-id>/`:
+
+- `cover.*` – card thumbnail
+- `cover_main.*` – optional larger cover (falls back to `cover`)
+- `header.*` – project page header
+- anything else – shown in the project's gallery
+
+Blurred placeholders live in `src/assets/images_blurred/` with the same structure. Regenerate them with:
+
+```bash
+python blur.py
+```
+
+## License
+
+© Kay Bennet Städing. All rights reserved.
