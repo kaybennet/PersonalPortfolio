@@ -8,9 +8,10 @@ export const Projects: PersonalProject[] = [
     summary: "Codebase for my Bachelor's Thesis on Prior-Guided BO",
     description:
       "Research codebase for my bachelor's thesis at the Institute of Artificial Intelligence, Leibniz University Hannover. It extends the prior-guided Bayesian optimization methods \\textit{piBO} and \\textit{DynaBO} with \\textbf{observation-adaptive prior decay} and \\textbf{adaptive prior rejection} mechanisms, which adjust how much the optimizer trusts user-provided priors as evidence accumulates. Built on SMAC3 and evaluated on PD1 (via mfpbench) and YAHPOGym benchmarks, with large-scale experiments orchestrated through PyExperimenter and SLURM on an HPC cluster.",
-    learnings: ["Research", "Writing Scientific Papers"],
+    learnings: ["Research", "Writing Scientific Papers", "Remote Development"],
     time_spent: 0.8,
     difficulty: 0.9,
+    ai_use: 0.6,
   },
   {
     id: "swp",
@@ -21,10 +22,12 @@ export const Projects: PersonalProject[] = [
     started: new Date(2025, 9),
     summary:
       "Extensive University project to simplify switching from X-Pack to Search Guard",
-    description: "",
-    learnings: ["Research", "Writing Scientific Papers"],
+    description:
+      "Software project with a team of \\textbf{10 people}, built in cooperation with floragunn, the company behind Search Guard. The tool reads existing \\textit{X-Pack Security} .yml configurations and translates users, roles and permissions into their \\textit{Search Guard} equivalents, so teams can switch security plugins without rewriting their setup by hand. We organized the work with GitLab Kanban boards and regular SCRUM meetings, and contributed the result to an existing, large enterprise codebase.",
+    learnings: ["Teamwork", "Documentation", "Software Development at Scale"],
     time_spent: 0.5,
     difficulty: 0.7,
+    ai_use: 0.1,
   },
   {
     id: "StrongPro",
@@ -33,10 +36,16 @@ export const Projects: PersonalProject[] = [
     github_link: "",
     languages: ["TypeScript", "React", "Rust", "AWS"],
     started: new Date(2025, 4),
-    description: "IDK YET",
-    learnings: ["skill1", "skill2"],
+    description:
+      "Second, full-stack iteration of my workout tracker. A \\textbf{React/TypeScript} frontend visualizes training history and progress over time, while a \\textbf{Rust} backend handles data processing and storage. The whole application runs on several \\textit{AWS} services, which made it my first project covering everything from UI to cloud deployment. I still use the application regularly as it tracks various aspects of my workouts such as exercise progression, muscle group progression and distribution and regularity of sessions. Coding the project solidified my interest in Data Science and working with larger data sets.",
+    learnings: [
+      "Full-Stack Development",
+      "AWS (Auth, DB, API, etc.)",
+      "Data Visualization",
+    ],
     time_spent: 0.95,
     difficulty: 0.5,
+    ai_use: 0.4,
   },
   {
     id: "spaceships",
@@ -45,10 +54,12 @@ export const Projects: PersonalProject[] = [
     github_link: "",
     languages: ["Rust"],
     started: new Date(2025, 0),
-    description: "IDK YET",
-    learnings: ["skill1", "skill2"],
+    description:
+      "A small survivor-like game: you pilot a spaceship through endless waves of enemies and grow stronger with every run. Written in Rust with the \\textbf{Bevy} game engine, which structures everything around an \\textit{Entity Component System}. It was a fun way to get to know the framework and introduces me to larger scale Rust Development.",
+    learnings: ["ECS", "Game Development"],
     time_spent: 0.65,
     difficulty: 0.7,
+    ai_use: 0.1,
   },
   {
     id: "java_nn",
@@ -57,10 +68,12 @@ export const Projects: PersonalProject[] = [
     github_link: "",
     languages: ["Java"],
     started: new Date(2024, 5),
-    description: "IDK YET",
-    learnings: ["skill1", "skill2"],
+    description:
+      "A fully connected neural network written in plain Java without any ML libraries, trained to classify handwritten digits from the \\textit{MNIST} dataset. Forward pass, \\textbf{backpropagation} and gradient descent are all implemented by hand, which forced me to really understand the math behind training. I literally have multiple handwritten sheets doing the Linear Algebra and Calculus required to implement the logic. Funnily enough, I discovered many ML-mechanisms purely by accident during development. I had no knowledge of Cross-Validation, Precision, Accuracy or Noise Injection, yet I intuitively made use of all of them.",
+    learnings: ["Backpropagation", "Machine Learning", "Linear Algebra"],
     time_spent: 0.8,
     difficulty: 0.9,
+    ai_use: 0.1,
   },
   {
     id: "chess_old",
@@ -69,10 +82,12 @@ export const Projects: PersonalProject[] = [
     github_link: "",
     languages: ["Java"],
     started: new Date(2024, 4),
-    description: "IDK YET",
-    learnings: ["skill1", "skill2"],
+    description:
+      "One of my first larger programs: A playable chess game written to learn Java. Implementing the board, pieces and move validation was a crash course in \\textbf{object-oriented design}. I remember the logic being very straightforward. But figuring out how to reliably implement \\textit{en passant} or \\textit{castling} proved to be very difficult. Also figuring out the difference between checkmate and stalemate and disallowing moves that would put oneself in check was more of a challenge than I initially thought. I revisited the project a year later and did the implementation in \\textbf{Rust} using Bevy. I used Bitboards for maximum performance and started implementing a clever enemy AI. However, I abandoned the project as of now. Who knows, maybe I'll find the time to finish it sometime.",
+    learnings: ["OOP", "Game Logic"],
     time_spent: 0.6,
     difficulty: 0.65,
+    ai_use: 0.1,
   },
   {
     id: "hci_proj",
@@ -82,10 +97,12 @@ export const Projects: PersonalProject[] = [
     github_link: "https://github.com/kaybennet/AssignYourself",
     languages: ["JavaScript", "HTML", "CSS"],
     started: new Date(2025, 0),
-    description: "IDK YET",
-    learnings: ["skill1", "skill2"],
+    description:
+      "Small website built for a Human-Computer Interaction course, using only plain \\textbf{JavaScript, HTML and CSS} without any frameworks. The focus was less on technology and more on \\textit{usability}. It was done by hand and in a few hours so do not judge too harshly.",
+    learnings: ["Usability", "UI Design", "Vanilla Web Development"],
     time_spent: 0.1,
     difficulty: 0.2,
+    ai_use: 0,
   },
   {
     id: "java_bird",
@@ -94,10 +111,12 @@ export const Projects: PersonalProject[] = [
     github_link: "",
     languages: ["Java"],
     started: new Date(2024, 1),
-    description: "IDK YET",
-    learnings: ["skill1", "skill2"],
+    description:
+      "A Flappy Bird clone written in Java. Getting a \\textbf{game loop}, simple physics and collision detection to work was where I really started to enjoy the process of programming.",
+    learnings: ["Coding Basics", "Collision Detection"],
     time_spent: 0.1,
     difficulty: 0.1,
+    ai_use: 0.1,
   },
   {
     id: "cpp_algos",
@@ -106,10 +125,12 @@ export const Projects: PersonalProject[] = [
     github_link: "",
     languages: ["C++"],
     started: new Date(2025, 2),
-    description: "IDK YET",
-    learnings: ["skill1", "skill2"],
+    description:
+      "A small C++ program that animates sorting algorithms step by step using \\textbf{SDL3} for rendering. There isn't much too it to be honest. I always liked these silly sorting videos on YouTube and wanted to make my own while simultaneously learning a new coding language. Safe to say I won't be using much Cpp if I don't have to in the future.",
+    learnings: ["C++", "SDL3", "Sorting Algorithms"],
     time_spent: 0.1,
     difficulty: 0.5,
+    ai_use: 0.5,
   },
   {
     id: "uni_grades",
@@ -118,10 +139,12 @@ export const Projects: PersonalProject[] = [
     github_link: "",
     languages: ["TypeScript", "React", "SQL"],
     started: new Date(2024, 8),
-    description: "IDK YET",
-    learnings: ["skill1", "skill2"],
+    description:
+      "Pretty extensive project to build a cross-platform mobile app to keep track of my studies. It includes course overview, GPA display, grade distributions and many settings for customization. Built using expo and React Native it taught me a lot about usability and graphical statistics as well as persistent data storage in the form of SQLLite Databases.",
+    learnings: ["Mobile Dev", "React Native", "Database Design"],
     time_spent: 0.8,
     difficulty: 0.6,
+    ai_use: 0.3,
   },
   {
     id: "ds",
@@ -131,10 +154,12 @@ export const Projects: PersonalProject[] = [
     github_link: "",
     languages: ["Java", "LaTeX"],
     started: new Date(2026, 0),
-    description: "IDK YET",
-    learnings: ["skill1", "skill2"],
+    description:
+      "University project implementing the \\textbf{MapReduce} programming model from scratch in Java. A coordinator splits a job into tasks, distributes them to worker nodes and combines their results. The implementation and its design decisions were documented in a written report in LaTeX.",
+    learnings: ["Distributed Systems", "Concurrency"],
     time_spent: 0.3,
     difficulty: 0.3,
+    ai_use: 0.2,
   },
   {
     id: "this",
@@ -143,10 +168,12 @@ export const Projects: PersonalProject[] = [
     languages: ["TypeScript", "React"],
     started: new Date(2026, 9),
     summary: "Small Website displaying my Progress over the years",
-    description: "IDK YET",
-    learnings: ["skill1", "skill2"],
+    description:
+      "The website you are looking at right now. Built with \\textbf{React}, TypeScript and \\textbf{Tailwind CSS}, including light and dark mode, to give an overview of my projects and how my skills developed over the years. I tried to use AI assistance sparingly and make the site responsive and fun to navigate. ",
+    learnings: ["AI assistance", "Responsiveness"],
     time_spent: 0.6,
     difficulty: 0.3,
+    ai_use: 0.7,
   },
   {
     id: "strongv1",
@@ -156,9 +183,11 @@ export const Projects: PersonalProject[] = [
     github_link: "",
     languages: ["JavaScript", "HTML", "CSS"],
     started: new Date(2024, 6),
-    description: "IDK YET",
-    learnings: ["skill1", "skill2"],
+    description:
+      "The first version of my fitness tracker. A purely client-side web page that parses \\textit{CSV} exports of my workouts and turns them into tables and charts. I have never used JavaScript, HTML or CSS before this project so it was a big challenge for me, resulting in lots of learnings. Of course the project is now discontinued as I have revisited it using a more modern tech-stack: A version of the project I am still using to this day.",
+    learnings: ["CSV Parsing", "Data Visualization", "WebDev"],
     time_spent: 0.6,
     difficulty: 0.4,
+    ai_use: 0.1,
   },
 ];

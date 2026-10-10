@@ -6,6 +6,7 @@ import {
   Mail,
   Menu,
   Moon,
+  Sparkle,
   Sun,
   X,
 } from "lucide-react";
@@ -79,6 +80,7 @@ const ICONS = {
   pytorch: SiPytorch,
   pandas: SiPandas,
   node: SiNodedotjs,
+  sparkles: Sparkle,
 } satisfies Record<string, ComponentType<IconProps>> &
   Record<Lowercase<ProgrammingLanguage>, ComponentType<IconProps>>;
 

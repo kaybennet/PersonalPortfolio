@@ -1,6 +1,6 @@
 import { Link } from "react-router";
-import thesisPdf from "../../docs/bachelors_thesis_kay_bennet_staeding.pdf";
-import cv from "../../docs/Curriculum Vitae.pdf";
+import thesisPdf from "../../assets/docs/bachelors_thesis_kay_bennet_staeding.pdf";
+import cv from "../../assets/docs/Curriculum Vitae.pdf";
 import { PortraitCard } from "./PortraitCard";
 import { fmtLatex } from "../../util/helpers";
 

@@ -2,7 +2,7 @@ import { useState } from "react";
 import thesisPic from "../../assets/bachelorsthesis.png";
 import thesisPage2 from "../../assets/bachelorsthesis2.png";
 import thesisPage3 from "../../assets/bachelorsthesis3.png";
-import thesisPdf from "../../docs/bachelors_thesis_kay_bennet_staeding.pdf";
+import thesisPdf from "../../assets/docs/bachelors_thesis_kay_bennet_staeding.pdf";
 
 const glass =
   "bg-surface/60 backdrop-blur-xl backdrop-saturate-150 ring-1 ring-inset ring-foreground/10 " +

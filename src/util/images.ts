@@ -1,24 +1,37 @@
 import { ERR_IMG } from "./consts";
 
-const imageModules = import.meta.glob(
-  "../images/**/*.{png,jpg,jpeg,webp,avif,gif}",
+const IMAGES_DIR = "/src/assets/images/";
+const BLURRED_DIR = "/src/assets/images_blurred/";
+
+const originals = import.meta.glob<string>(
+  "/src/assets/images/**/*.{png,jpg,jpeg,webp,avif,gif}",
   { eager: true, import: "default" },
-) as Record<string, string>;
+);
+const blurred = import.meta.glob<string>(
+  "/src/assets/images_blurred/**/*.{png,jpg,jpeg,webp,avif,gif}",
+  { eager: true, import: "default" },
+);
 
 const normalize = (s: string) => s.toLowerCase().replace(/[-_]/g, " ");
-const IMAGES_DIR = "../images/";
 
 const imagesById: Record<string, ProjectImage[]> = {};
-for (const [path, src] of Object.entries(imageModules).sort()) {
+const blurredBySrc = new Map<string, string>();
+
+for (const [path, src] of Object.entries(originals).sort()) {
   const rel = path.slice(IMAGES_DIR.length);
   const slash = rel.lastIndexOf("/");
   if (slash === -1) continue;
 
   const id = rel.slice(0, slash);
-  const file = rel.slice(slash + 1);
-  const name = file.replace(/\.[^.]+$/, "").replace(/[-_]/g, " ");
-  const alt = src.replace("images", "images_blurred");
-  (imagesById[id] ??= []).push({ alt, src, name });
+  const name = rel
+    .slice(slash + 1)
+    .replace(/\.[^.]+$/, "")
+    .replace(/[-_]/g, " ");
+
+  const blur = blurred[BLURRED_DIR + rel];
+  if (blur) blurredBySrc.set(src, blur);
+
+  (imagesById[id] ??= []).push({ src, name, alt: name });
 }
 
 const RESERVED = new Set(["cover", "header", "cover_main"].map(normalize));
@@ -43,21 +56,5 @@ export const getMainCover = (id: string): ProjectImage =>
 export const formatStarted = (d: Date) =>
   d.toLocaleDateString("en", { month: "short", year: "numeric" });
 
-const originals = import.meta.glob<string>(
-  "/src/images/**/*.{jpg,jpeg,png,webp,avif}",
-  { eager: true, import: "default" },
-);
-const blurred = import.meta.glob<string>(
-  "/src/images_blurred/**/*.{jpg,jpeg,png,webp,avif}",
-  { eager: true, import: "default" },
-);
-
-const blurredBySrc = new Map<string, string>();
-for (const [path, url] of Object.entries(originals)) {
-  const b = blurred[path.replace("/src/images/", "/src/images_blurred/")];
-  if (b) blurredBySrc.set(url, b);
-}
-
-/** URL of the blurred sibling of an image, if one exists. */
 export const blurredFor = (src?: string) =>
   src ? blurredBySrc.get(src) : undefined;

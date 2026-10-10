@@ -6,6 +6,7 @@ import ImageMasonry from "../../shared/ImageMasonry";
 import CustomIcon from "../../CustomIcon";
 import { fmtLatex } from "../../util/helpers";
 import { ERR_IMG } from "../../util/consts";
+import AssessmentBadge from "./SelfAssessmentBadge";
 
 export default function ProjectModal({
   project: p,
@@ -133,9 +134,10 @@ export default function ProjectModal({
             {p.description && (
               <section>
                 <SectionTitle>About</SectionTitle>
-                <p className="mt-4 whitespace-pre-line leading-relaxed text-pretty text-foreground/85">
+                <p className="mt-4 whitespace-pre-line leading-relaxed text-pretty text-foreground/85 pb-4">
                   {fmtLatex(p.description)}
                 </p>
+                <AssessmentBadge project={p} />
               </section>
             )}
 
