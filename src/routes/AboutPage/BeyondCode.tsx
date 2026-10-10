@@ -3,6 +3,7 @@ import ImageStack, { type StackAspect } from "../../shared/ImageStack";
 import ImageModal from "../../shared/ImageModal";
 import { getImages } from "../../util/images";
 import { LINK_BACKLOGGD, LINK_LETTERBOXD } from "../../util/consts";
+import { preloadImage } from "../../shared/BlurImage";
 
 type Hobby = {
   name: string;
@@ -77,7 +78,12 @@ export default function BeyondCode() {
       <div className="mt-8 grid items-center gap-14 lg:grid-cols-[2fr_1fr_1fr]">
         {hobbies.map((h) => (
           <div key={h.name} className="flex items-center -gap-1">
-            <div className={`${h.width} shrink-0`}>
+            <div
+              className={`${h.width} shrink-0`}
+              onPointerEnter={() =>
+                h.images.slice(0, 6).forEach((i) => preloadImage(i.src))
+              }
+            >
               <ImageStack
                 images={h.images}
                 title={h.name}
