@@ -164,7 +164,7 @@ export const Projects: PersonalProject[] = [
   {
     id: "this",
     title: "Personal Portfolio Website",
-    github_link: "",
+    github_link: "https://github.com/kaybennet/PersonalPortfolio",
     languages: ["TypeScript", "React"],
     started: new Date(2026, 9),
     summary: "Small Website displaying my Progress over the years",
