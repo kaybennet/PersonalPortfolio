@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router";
 import "./index.css";
 import AboutPage from "./routes/AboutPage/AboutPage";
-
+import { Analytics } from "@vercel/analytics/react";
 import Layout from "./shared/Layout";
 import HomePage from "./routes/HomePage/HomePage";
 import ProjectsPage from "./routes/ProjectsPage/ProjectsPage";
@@ -20,5 +20,6 @@ createRoot(document.getElementById("root")!).render(
         </Route>
       </Routes>
     </BrowserRouter>
+    <Analytics />
   </StrictMode>,
 );
