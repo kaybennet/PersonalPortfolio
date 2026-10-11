@@ -3,7 +3,6 @@ import { getCover } from "../../util/images";
 import BlurImage from "../../shared/BlurImage";
 import ProjectModal from "./ProjectModal";
 
-/** One curve and duration for everything, so all parts move together. */
 const ease =
   "ease-[cubic-bezier(0.22,1,0.36,1)] duration-700 motion-reduce:transition-none";
 
@@ -56,12 +55,12 @@ export function GridEntry({ project: p }: { project: PersonalProject }) {
             transition-[translate] ${ease} group-hover:-translate-y-1 glass`}
         >
           <div className="flex items-baseline justify-between gap-4">
-            <h2 className="truncate text-sm font-semibold tracking-tight text-foreground">
+            <h2 className="truncate text-md font-semibold tracking-tight text-foreground text-wrap">
               {p.title}
             </h2>
             <time
               dateTime={p.started.toISOString()}
-              className="shrink-0 text-xs font-medium tabular-nums text-foreground/60"
+              className="shrink-0 text-sm font-medium tabular-nums text-foreground/60"
             >
               {p.started.getFullYear()}
             </time>
@@ -74,7 +73,7 @@ export function GridEntry({ project: p }: { project: PersonalProject }) {
             >
               <p className="overflow-hidden">
                 <span
-                  className={`block pt-1 text-xs leading-relaxed text-foreground/70 line-clamp-2
+                  className={`block pt-1 text-sm leading-relaxed text-foreground/70 line-clamp-2
                     opacity-0 translate-y-1 transition-[opacity,translate] ${ease}
                     group-hover:opacity-100 group-hover:translate-y-0 group-hover:delay-100
                     group-focus-visible:opacity-100 group-focus-visible:translate-y-0`}

@@ -1,4 +1,4 @@
-import { useMemo, useState, type CSSProperties } from "react";
+import { useMemo, useState, type CSSProperties, type ReactNode } from "react";
 import { formatStarted, getCover, getImages } from "../../util/images";
 import { LangIcon } from "../../CustomIcon";
 import ProjectModal from "./ProjectModal";
@@ -22,6 +22,10 @@ export function ProjectTimeline({ projects }: { projects: PersonalProject[] }) {
 }
 
 export function StandardEntry({ project: p }: { project: PersonalProject }) {
+  const collapsible = p.collapseStdEntry ?? false;
+  // Collapsible entries expand while hovered or focused (keyboard).
+  const [active, setActive] = useState(false);
+  const isCollapsed = collapsible && !active;
   const gallery = buildGallery(getCover(p.id), getImages(p.id));
   const hasImages = gallery.length > 0;
   const [open, setOpen] = useState(false);
@@ -34,10 +38,22 @@ export function StandardEntry({ project: p }: { project: PersonalProject }) {
 
   return (
     <li
-      className={`group relative isolate grid gap-x-8 gap-y-1.5 py-5
+      onMouseEnter={collapsible ? () => setActive(true) : undefined}
+      onMouseLeave={collapsible ? () => setActive(false) : undefined}
+      onFocus={collapsible ? () => setActive(true) : undefined}
+      onBlur={
+        collapsible
+          ? (e) => {
+              if (!e.currentTarget.contains(e.relatedTarget)) setActive(false);
+            }
+          : undefined
+      }
+      className={`group relative isolate grid gap-x-8
         border-t border-border first:border-t-0 sm:border-t-0
-        sm:grid-cols-[6rem_1fr] sm:items-baseline sm:py-6
-        ${hasImages ? "lg:grid-cols-[6rem_1fr_11rem]" : ""}
+        sm:grid-cols-[6rem_1fr] sm:items-baseline
+        transition-[padding] duration-300 ease-out motion-reduce:transition-none
+        ${isCollapsed ? "pb-7" : "pb-7"}
+        ${hasImages ? "lg:grid-cols-[6rem_1fr_16rem]" : ""}
         before:absolute before:-inset-x-3 before:inset-y-1 before:-z-10 before:rounded-2xl
         before:transition-colors before:duration-300 before:ease-out
         hover:before:bg-surface/60 has-focus-visible:before:bg-surface/60
@@ -65,8 +81,16 @@ export function StandardEntry({ project: p }: { project: PersonalProject }) {
         {formatStarted(p.started)}
       </time>
 
-      <div className="min-w-0">
-        <h2 className="text-2xl font-semibold tracking-tight text-balance text-foreground sm:text-[1.75rem] sm:leading-tight">
+      <div className="min-w-0 max-sm:mt-1.5">
+        <h2
+          className={`tracking-tight text-balance
+            transition-[color,font-size,line-height] duration-300 ease-out motion-reduce:transition-none
+            ${
+              isCollapsed
+                ? "text-lg font-semibold text-muted/60 sm:text-xl sm:leading-snug"
+                : "text-2xl font-semibold text-foreground sm:text-[1.75rem] sm:leading-tight"
+            }`}
+        >
           <button
             type="button"
             onClick={openModal}
@@ -96,32 +120,75 @@ export function StandardEntry({ project: p }: { project: PersonalProject }) {
           </button>
         </h2>
 
-        {p.summary && (
-          <p className="mt-2.5 line-clamp-3 max-w-prose leading-relaxed text-pretty text-muted">
-            {p.summary}
-          </p>
-        )}
+        {(p.summary || p.languages.length > 0) && (
+          <Collapsible collapsed={isCollapsed}>
+            {p.summary && (
+              <p className="mt-2.5 line-clamp-3 max-w-prose leading-relaxed text-pretty text-muted">
+                {p.summary}
+              </p>
+            )}
 
-        {p.languages.length > 0 && (
-          <ul className="mt-4 flex flex-wrap gap-1.5" aria-label="Languages">
-            {p.languages.map((lang) => (
-              <LangBadge key={lang} lang={lang} />
-            ))}
-          </ul>
+            {p.languages.length > 0 && (
+              <ul
+                className="mt-4 flex flex-wrap gap-1.5"
+                aria-label="Languages"
+              >
+                {p.languages.map((lang) => (
+                  <LangBadge key={lang} lang={lang} />
+                ))}
+              </ul>
+            )}
+          </Collapsible>
         )}
       </div>
 
       {hasImages && (
-        <ImageStack
-          images={gallery}
-          title={p.title}
-          onOpen={openModal}
-          className="mt-3 max-w-44 self-start sm:col-start-2 lg:col-start-auto lg:-my-2 lg:mt-0 lg:max-w-none"
-        />
+        // self-start: a baseline-aligned, height-animated box makes the row jump around.
+        <Collapsible
+          collapsed={isCollapsed}
+          className="self-start sm:max-lg:col-start-2"
+        >
+          {/* Spacing lives inside the animated box, so it collapses to 0 with it. */}
+          <div className="pt-3 lg:pt-0">
+            <ImageStack
+              aspect="16:9"
+              images={gallery}
+              title={p.title}
+              onOpen={openModal}
+            />
+          </div>
+        </Collapsible>
       )}
 
       <ProjectModal project={p} open={open} onClose={() => setOpen(false)} />
     </li>
+  );
+}
+
+/**
+ * Smoothly animates its children's height and opacity via the grid-rows 0fr → 1fr trick.
+ * Content stays mounted so it can transition; `inert` keeps it out of the tab order while hidden.
+ */
+function Collapsible({
+  collapsed,
+  className = "",
+  children,
+}: {
+  collapsed: boolean;
+  className?: string;
+  children: ReactNode;
+}) {
+  return (
+    <div
+      inert={collapsed}
+      aria-hidden={collapsed}
+      className={`grid transition-[grid-template-rows,opacity,translate] duration-300 ease-out
+        motion-reduce:transition-none
+        ${collapsed ? "grid-rows-[0fr] -translate-y-1 opacity-0" : "grid-rows-[1fr] translate-y-0 opacity-100"}
+        ${className}`}
+    >
+      <div className="-m-3 min-h-0 overflow-hidden p-3">{children}</div>
+    </div>
   );
 }
 

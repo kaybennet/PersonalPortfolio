@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { Projects } from "../ProjectsPage/Projects";
+import { Projects } from "../../shared/Projects";
 import { ProjectCard } from "./ProjectCard";
 
 const FEATURED_IDS = ["BA", "StrongPro", "java_nn"];

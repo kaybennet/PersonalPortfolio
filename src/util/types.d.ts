@@ -33,6 +33,7 @@ type PersonalProject = {
   time_spent: float;
   difficulty: float;
   ai_use: float;
+  collapseStdEntry?: boolean = false;
 };
 
 type TimelineEvent = {

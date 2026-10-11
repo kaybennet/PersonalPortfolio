@@ -1,6 +1,6 @@
 import { useState, type ComponentType } from "react";
 import { LayoutGrid, List, Rows3, type LucideIcon } from "lucide-react";
-import { Projects } from "./Projects";
+import { Projects } from "../../shared/Projects";
 import { GridEntry } from "./GridEntry";
 import { StandardEntry } from "./StandardEntry";
 import { CompactEntry } from "./CompactEntry";
@@ -58,7 +58,7 @@ function ProjectsPage() {
       <div className="mb-8 flex items-center justify-between gap-6">
         <div className="min-w-0">
           <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-            Some of my projects
+            Some of the things I've built
             <span className="ml-2 text-base font-medium tabular-nums text-muted">
               {ordered.length}
             </span>
