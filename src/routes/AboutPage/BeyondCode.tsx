@@ -67,19 +67,19 @@ export default function BeyondCode() {
   const active = hobbies.find((h) => h.name === openName);
 
   return (
-    <section className="py-4">
-      <h2 className="font-display text-3xl font-bold tracking-tight">
+    <section className="py-4 max-md:py-2">
+      <h2 className="font-display text-3xl font-bold tracking-tight max-md:text-center">
         Beyond Code
       </h2>
-      <p className="mt-2 text-lg text-foreground/80">
+      <p className="mt-2 text-lg text-foreground/80 max-md:text-center">
         What I'm up to when I'm not at the keyboard.
       </p>
 
-      <div className="mt-8 grid items-center gap-14 lg:grid-cols-[2fr_1fr_1fr]">
+      <div className="mt-8 max-md:mt-5 grid items-center gap-14 max-md:gap-8 lg:grid-cols-[2fr_1fr_1fr]">
         {hobbies.map((h) => (
-          <div key={h.name} className="flex items-center -gap-1">
+          <div key={h.name} className="flex items-center -gap-1 max-md:flex-col max-md:items-center max-md:gap-4 max-md:text-center">
             <div
-              className={`${h.width} shrink-0`}
+              className={`${h.width} shrink-0 max-md:max-w-full`}
               onPointerEnter={() =>
                 h.images.slice(0, 6).forEach((i) => preloadImage(i.src))
               }

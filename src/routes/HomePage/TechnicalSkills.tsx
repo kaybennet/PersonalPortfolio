@@ -131,22 +131,25 @@ const icon =
 
 export default function TechnicalSkills() {
   return (
-    <section>
+    <section className="max-md:text-center">
       <h2 className="font-display text-4xl font-bold tracking-tight">
         Technical Skills
       </h2>
-      <p className="mt-3 text-muted">
+      <p className="mt-2 text-muted md:hidden">
+        Tap a skill for details.
+      </p>
+      <p className="mt-3 text-muted max-md:hidden">
         Apart from teaching some languages (C, Java, Python) at university, I
         enjoy coding and learning new technologies in my free time, including
         but not limited to:
       </p>
-      <ul className="mt-6 -mb-3 text-justify [text-align-last:justify] [word-spacing:0.6rem]">
+      <ul className="mt-6 max-md:mt-4 -mb-3 text-justify [text-align-last:justify] [word-spacing:0.6rem]">
         {skills.map(({ name, key, info }) => {
           const tipId = `skill-${key}`;
           return (
             <Fragment key={name}>
               <li
-                className="group/skill relative mb-3 inline-block [word-spacing:normal]"
+                className="group/skill relative mb-3 inline-block [word-spacing:normal] max-md:static"
                 style={{ "--c": `var(--lang-${key})` } as CSSProperties}
               >
                 <span

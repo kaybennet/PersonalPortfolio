@@ -24,6 +24,7 @@ export default function SkillHover({ id, name, iconKey, info }: Props) {
       className={
         "pointer-events-none invisible absolute top-full left-1/2 z-50 mt-3 w-72 " +
         "-translate-x-1/2 -translate-y-1.5 scale-95 origin-top opacity-0 " +
+        "max-md:top-auto max-md:right-4 max-md:left-4 max-md:w-auto max-md:translate-x-0 " +
         "rounded-xl p-4 text-left text-sm font-normal [text-align-last:auto] " +
         "glass " +
         "transition-[opacity,translate,scale,visibility] duration-200 ease-smooth " +

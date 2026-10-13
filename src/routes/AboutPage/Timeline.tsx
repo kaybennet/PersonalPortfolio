@@ -70,7 +70,7 @@ export default function Timeline({
 
   return (
     <section className="">
-      <h2 className="font-display text-3xl font-bold tracking-tight ml-4">
+      <h2 className="font-display text-3xl font-bold tracking-tight ml-4 max-md:ml-0 max-md:text-center">
         How I Got Here
       </h2>
       <div
@@ -80,12 +80,12 @@ export default function Timeline({
       >
         <span
           aria-hidden
-          className="absolute top-15.75 h-0.5 rounded-full bg-border"
+          className="absolute top-15.75 h-0.5 rounded-full bg-border max-sm:top-5.75"
           style={{ left: `${edge}%`, right: `${edge}%` }}
         />
         <span
           aria-hidden
-          className="absolute top-15.75 h-0.5 rounded-full bg-linear-to-r from-primary/20 to-primary shadow-[0_0_12px] shadow-primary/60 transition-[width] duration-800 ease-out motion-reduce:transition-none"
+          className="absolute top-15.75 max-sm:top-5.75 h-0.5 rounded-full bg-linear-to-r from-primary/20 to-primary shadow-[0_0_12px] shadow-primary/60 transition-[width] duration-800 ease-out motion-reduce:transition-none"
           style={{
             left: `${edge}%`,
             width: `calc(${progress} * (100% - ${2 * edge}%))`,
@@ -163,7 +163,7 @@ export default function Timeline({
         <div
           id="timeline-tooltip"
           role="tooltip"
-          className={`pointer-events-none absolute top-20 z-20 w-80 max-w-[calc(100vw-2rem)] rounded-2xl p-5 glass transition-[left,transform,opacity,translate] duration-300 ease-out motion-reduce:transition-none ${
+          className={`pointer-events-none absolute top-20 max-sm:top-14 z-20 w-80 max-w-[calc(100vw-2rem)] rounded-2xl p-5 glass transition-[left,transform,opacity,translate] duration-300 ease-out motion-reduce:transition-none ${
             open ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
           }`}
           style={{

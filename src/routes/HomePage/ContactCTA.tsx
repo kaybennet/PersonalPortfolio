@@ -8,7 +8,7 @@ const btn =
 
 export function ContactCTA() {
   return (
-    <section className="relative pt-8 text-center">
+    <section className="relative pt-8 max-md:pt-2 text-center">
       <div
         aria-hidden
         className="pointer-events-none absolute top-1/2 left-1/2 -z-10 h-40 w-96 max-w-full -translate-1/2 rounded-full bg-primary/20 blur-3xl"
@@ -21,11 +21,11 @@ export function ContactCTA() {
       <h2 className="mt-2 font-display text-4xl font-bold tracking-tight">
         Let's connect.
       </h2>
-      <p className="mt-3 text-foreground/80">
+      <p className="mt-3 text-foreground/80 max-md:mt-2">
         Always happy to dive into new issues.
       </p>
 
-      <div className="mt-6 flex flex-wrap justify-center gap-3">
+      <div className="mt-6 max-md:mt-4 flex flex-wrap justify-center gap-3">
         <a
           href={"mailto:" + LINK_EMAIL}
           className={`${btn} bg-primary/85 text-primary-foreground shadow-[inset_0_1px_0_rgb(255_255_255/0.3),0_8px_24px_-8px_var(--primary)] hover:bg-primary`}

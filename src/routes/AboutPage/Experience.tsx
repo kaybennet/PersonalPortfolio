@@ -31,11 +31,11 @@ const courses = [
 
 export default function Experience() {
   return (
-    <section className="py-4">
-      <h2 className="font-display text-3xl font-bold tracking-tight">
+    <section className="py-4 max-md:py-2">
+      <h2 className="font-display text-3xl font-bold tracking-tight max-md:text-center">
         Experience
       </h2>
-      <p className="mt-2 text-lg text-foreground/80">
+      <p className="mt-2 text-lg text-foreground/80 max-md:text-center">
         Since 2024 I've tutored for different computer science courses at the
         university.
       </p>

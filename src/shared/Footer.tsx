@@ -18,7 +18,7 @@ function scrollToTop() {
 
 export default function Footer() {
   return (
-    <footer className="mt-16 border-t border-border">
+    <footer className="mt-16 max-md:mt-8 border-t border-border">
       <div className="mx-auto grid max-w-screen-3xl items-center gap-4 px-4 py-3 text-sm text-muted sm:grid-cols-3">
         <p className="text-center sm:text-left">
           © {new Date().getFullYear()} Kay Bennet Staeding

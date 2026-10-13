@@ -25,12 +25,12 @@ export default function Thesis() {
   const [open, setOpen] = useState(false);
 
   return (
-    <section className="mt-16">
-      <h2 className="font-display text-3xl font-bold tracking-tight">
+    <section className="mt-16 max-md:mt-8">
+      <h2 className="font-display text-3xl font-bold tracking-tight max-md:text-center">
         Bachelor's thesis
       </h2>
       <div
-        className={`mt-6 flex flex-row justify-between items-center gap-8 rounded-3xl p-8 ${glass}`}
+        className={`mt-6 flex flex-row justify-between items-center gap-8 rounded-3xl p-8 max-md:flex-col max-md:items-center max-md:gap-6 max-md:p-5 ${glass}`}
       >
         <div className="max-w-prose">
           <h3 className="font-display text-xl font-semibold">
@@ -62,7 +62,7 @@ export default function Thesis() {
           onMouseLeave={() => setOpen(false)}
           onFocus={() => setOpen(true)}
           onBlur={() => setOpen(false)}
-          className={`relative z-20 block h-63 w-45 shrink-0 rounded-md elevate transition-[scale] duration-500 ease-out motion-reduce:transition-none ${
+          className={`relative z-20 block h-63 w-45 shrink-0 max-md:self-center rounded-md elevate transition-[scale] duration-500 ease-out motion-reduce:transition-none ${
             open ? "scale-110" : ""
           }`}
         >

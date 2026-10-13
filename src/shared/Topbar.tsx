@@ -46,8 +46,10 @@ export default function Topbar({
   links = defaultLinks,
   socials = defaultSocials,
 }) {
-  const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
+  // menu is tied to the route it was opened on, so navigating closes it
+  const [openAt, setOpenAt] = useState<string | null>(null);
+  const open = openAt === pathname;
 
   // --- frosted only once the page scrolls under it -----------------------
   const [scrolled, setScrolled] = useState(false);
@@ -137,10 +139,10 @@ export default function Topbar({
           : "after:opacity-60 bg-transparent")
       }
     >
-      <nav className="mx-auto flex h-18 max-w-7xl items-center gap-8">
+      <nav className="mx-auto flex h-18 max-w-7xl items-center gap-8 max-md:gap-2 max-md:px-4">
         <Link
           to="/"
-          className={`font-display text-[2rem] font-bold tracking-tight`}
+          className={`font-display text-[2rem] font-bold tracking-tight max-md:text-2xl max-sm:min-w-0 max-sm:truncate`}
         >
           {title}
         </Link>
@@ -213,7 +215,7 @@ export default function Topbar({
 
         <button
           type="button"
-          onClick={() => setOpen((o) => !o)}
+          onClick={() => setOpenAt(open ? null : pathname)}
           aria-label="Menu"
           aria-expanded={open}
           aria-controls="mobile-menu"
@@ -222,6 +224,47 @@ export default function Topbar({
           <CustomIcon name={open ? "close" : "menu"} size={22} className="" />
         </button>
       </nav>
+
+      {/* Mobile menu */}
+      <div
+        id="mobile-menu"
+        inert={!open}
+        className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out motion-reduce:transition-none md:hidden ${
+          open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+        }`}
+      >
+        <div className="min-h-0 overflow-hidden">
+          <div
+            className={`px-4 pb-4 ${
+              scrolled ? "" : "bg-background/90 backdrop-blur-xl"
+            }`}
+          >
+            <ul className="flex flex-col gap-1">
+              {links.map((link) => (
+                <li key={link.to}>
+                  <NavLink
+                    to={link.to}
+                    end
+                    onClick={() => setOpenAt(null)}
+                    className={({ isActive }) =>
+                      `block rounded-xl px-4 py-3 text-lg font-medium transition-colors focus-visible:outline-2 focus-visible:outline-primary ${
+                        isActive
+                          ? "bg-foreground/[0.07] text-foreground"
+                          : "text-muted active:bg-foreground/5"
+                      }`
+                    }
+                  >
+                    {link.label}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-3 flex items-center gap-1 border-t border-border pt-3">
+              {socialLinks()}
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
   );
 }

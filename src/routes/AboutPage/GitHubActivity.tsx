@@ -137,8 +137,8 @@ export function GitHubActivity() {
 
   return (
     <section>
-      <div className="flex flex-wrap items-end justify-between gap-4">
-        <h2 className="font-display text-3xl font-bold tracking-tight">
+      <div className="flex flex-wrap items-end justify-between gap-4 max-md:justify-center">
+        <h2 className="font-display text-3xl font-bold tracking-tight max-md:text-center">
           GitHub activity
         </h2>
         <YearPicker years={years} value={year} onChange={setYear} />
