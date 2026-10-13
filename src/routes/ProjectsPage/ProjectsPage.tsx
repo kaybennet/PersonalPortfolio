@@ -72,7 +72,7 @@ function ProjectsPage() {
     <main className="mx-auto max-w-7xl pb-24 max-md:pb-10 pt-6 max-md:pt-2 text-foreground">
       <div className="mb-8 max-md:mb-5 flex items-center justify-between gap-6 max-sm:flex-col max-sm:items-center max-sm:gap-4 max-sm:text-center">
         <div className="min-w-0">
-          <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+          <h1 className="font-display text-3xl font-bold tracking-tight max-md:text-2xl">
             Some of the things I've built
             <span className="ml-2 text-base font-medium tabular-nums text-muted">
               {ordered.length}

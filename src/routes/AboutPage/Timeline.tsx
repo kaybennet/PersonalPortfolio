@@ -70,7 +70,7 @@ export default function Timeline({
 
   return (
     <section className="">
-      <h2 className="font-display text-3xl font-bold tracking-tight ml-4 max-md:ml-0 max-md:text-center">
+      <h2 className="font-display text-3xl font-bold tracking-tight ml-4 max-md:ml-0 max-md:text-2xl max-md:text-center">
         How I Got Here
       </h2>
       <div
@@ -177,7 +177,7 @@ export default function Timeline({
           >
             {formatDate(current.date)}
           </time>
-          <h3 className="mt-2 font-display text-lg font-semibold leading-snug text-foreground">
+          <h3 className="mt-2 font-display text-xl font-semibold leading-snug max-md:text-lg text-foreground">
             {current.title}
           </h3>
           {current.place && (

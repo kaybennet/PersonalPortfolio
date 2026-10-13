@@ -71,10 +71,10 @@ export default function BeyondCode() {
 
   return (
     <section ref={sectionRef} className="py-4 max-md:py-2">
-      <h2 className="font-display text-3xl font-bold tracking-tight max-md:text-center">
+      <h2 className="font-display text-3xl font-bold tracking-tight max-md:text-2xl max-md:text-center">
         Beyond Code
       </h2>
-      <p className="mt-2 text-lg text-foreground/80 max-md:text-center">
+      <p className="mt-3 text-lg text-muted max-md:text-center">
         What I'm up to when I'm not at the keyboard.
       </p>
 
@@ -95,7 +95,7 @@ export default function BeyondCode() {
               />
             </div>
             <div className="flex min-w-0 flex-col">
-              <h3 className="font-display text-lg font-semibold">{h.name}</h3>
+              <h3 className="font-display text-xl font-semibold max-md:text-lg">{h.name}</h3>
               <p className="mt-1 text-sm text-foreground/70">{h.text}</p>
             </div>
           </div>

@@ -110,15 +110,15 @@
 }
 
 :root {
-  --background: #f8f6fc;
+  --background: #f5f5f6;
   --foreground: #17142e;
-  --surface: #eeebf7;
-  --muted: #666380;
-  --border: #e1ddef;
+  --surface: #eaeaec;
+  --muted: #6a6a74;
+  --border: #dedee2;
   --primary: #4f46e5;
-  --glow-1: rgb(129 140 248 / 0.28);
-  --glow-2: rgb(244 114 182 / 0.18);
-  --glow-3: rgb(56 189 248 / 0.2);
+  --glow-1: rgb(129 140 248 / 0.15);
+  --glow-2: rgb(244 114 182 / 0.10);
+  --glow-3: rgb(56 189 248 / 0.11);
   --primary-hover: #4338ca;
   --primary-foreground: #ffffff;
 
@@ -154,11 +154,11 @@
 }
 
 .dark {
-  --background: #111827;
+  --background: #141517;
   --foreground: #f3f4f6;
-  --surface: #1f2937;
-  --muted: #9ca3af;
-  --border: #374151;
+  --surface: #1f2022;
+  --muted: #9ea1a8;
+  --border: #34363a;
   --primary: #3b82f6;
   --glow-1: transparent;
   --glow-2: transparent;
@@ -195,6 +195,65 @@
   --lang-pandas: #a99cf0;
   --lang-tailwind: #38bdf8;
   --lang-node: #6cc24a;
+}
+
+/* ---- colour themes: set via <html data-theme="...">, each has light + dark ---- */
+[data-theme="forest"] {
+  --background: #f3f5f4;
+  --foreground: #10241b;
+  --surface: #e7eae8;
+  --muted: #646d68;
+  --border: #dadedc;
+  --primary: #059669;
+  --primary-hover: #047857;
+  --glow-1: rgb(52 211 153 / 0.14);
+  --glow-2: rgb(163 230 53 / 0.09);
+  --glow-3: rgb(45 212 191 / 0.11);
+  --glass-shadow-color: rgb(20 90 60 / 0.2);
+  --elevate-color: rgb(20 90 60 / 0.28);
+}
+[data-theme="forest"].dark {
+  --background: #131615;
+  --foreground: #ecf5f0;
+  --surface: #1d2220;
+  --muted: #9aa3a0;
+  --border: #2e3532;
+  --primary: #34d399;
+  --primary-hover: #6ee7b7;
+  --glow-1: transparent;
+  --glow-2: transparent;
+  --glow-3: transparent;
+  --glass-shadow-color: rgb(0 0 0 / 0.45);
+  --elevate-color: rgb(0 0 0 / 0.7);
+}
+
+[data-theme="sunset"] {
+  --background: #f6f5f5;
+  --foreground: #2a1517;
+  --surface: #ebe9e9;
+  --muted: #706a6a;
+  --border: #dfdcdc;
+  --primary: #e11d48;
+  --primary-hover: #be123c;
+  --glow-1: rgb(251 113 133 / 0.13);
+  --glow-2: rgb(251 146 60 / 0.11);
+  --glow-3: rgb(250 204 21 / 0.10);
+  --glass-shadow-color: rgb(140 50 50 / 0.2);
+  --elevate-color: rgb(140 50 50 / 0.28);
+}
+[data-theme="sunset"].dark {
+  --background: #161414;
+  --foreground: #f8eeee;
+  --surface: #211e1e;
+  --muted: #a39d9d;
+  --border: #363131;
+  --primary: #fb7185;
+  --primary-hover: #fda4af;
+  --glow-1: transparent;
+  --glow-2: transparent;
+  --glow-3: transparent;
+  --glass-shadow-color: rgb(0 0 0 / 0.45);
+  --elevate-color: rgb(0 0 0 / 0.7);
 }
 
 @theme inline {

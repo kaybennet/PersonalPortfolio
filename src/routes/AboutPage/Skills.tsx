@@ -64,7 +64,7 @@ export default function Skills() {
   return (
     <section className="grid gap-10 py-16 max-md:gap-6 max-md:py-8 md:grid-cols-3">
       <div className="md:col-span-2">
-        <h2 className="font-display text-3xl font-bold tracking-tight max-md:text-center">
+        <h2 className="font-display text-3xl font-bold tracking-tight max-md:text-2xl max-md:text-center">
           What I work with
         </h2>
 

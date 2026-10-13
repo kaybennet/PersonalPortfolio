@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router";
+import { Check, Palette } from "lucide-react";
 import CustomIcon, { type IconName } from "../CustomIcon";
 import { warmRoute } from "../util/images";
 import { LINK_LINKEDIN, LINK_GITHUB, LINK_EMAIL } from "../util/consts";
@@ -38,6 +39,89 @@ const desktopLinkClass = ({ isActive }: { isActive: boolean }) =>
 function toggleTheme() {
   const dark = document.documentElement.classList.toggle("dark");
   localStorage.theme = dark ? "dark" : "light";
+}
+
+const themes = [
+  { id: "indigo", label: "Indigo", swatch: "#4f46e5" },
+  { id: "forest", label: "Forest", swatch: "#059669" },
+  { id: "sunset", label: "Sunset", swatch: "#e11d48" },
+] as const;
+type ColorTheme = (typeof themes)[number]["id"];
+
+function ThemePicker() {
+  const [open, setOpen] = useState(false);
+  const [theme, setTheme] = useState<ColorTheme>(
+    () => (document.documentElement.dataset.theme as ColorTheme) || "indigo",
+  );
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (e: PointerEvent) => {
+      if (!ref.current?.contains(e.target as Node)) setOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    document.addEventListener("pointerdown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("pointerdown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  const pick = (id: ColorTheme) => {
+    setTheme(id);
+    if (id === "indigo") delete document.documentElement.dataset.theme;
+    else document.documentElement.dataset.theme = id;
+    try {
+      localStorage.colorTheme = id === "indigo" ? "" : id;
+    } catch {
+      /* storage unavailable */
+    }
+    setOpen(false);
+  };
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen(!open)}
+        aria-label="Colour theme"
+        aria-expanded={open}
+        aria-haspopup="true"
+        className={iconButton}
+      >
+        <Palette size={22} />
+      </button>
+      {open && (
+        <ul
+          className="glass absolute right-0 top-full z-30 mt-2 w-40 rounded-2xl p-1.5
+            [--glass-tint:color-mix(in_oklab,var(--background)_82%,transparent)]"
+        >
+          {themes.map((t) => (
+            <li key={t.id}>
+              <button
+                type="button"
+                onClick={() => pick(t.id)}
+                aria-pressed={theme === t.id}
+                className="flex w-full cursor-pointer items-center gap-3 rounded-xl px-3 py-2 text-left text-sm font-medium
+                  text-foreground transition-colors hover:bg-foreground/6
+                  focus-visible:outline-2 focus-visible:outline-primary"
+              >
+                <span
+                  aria-hidden
+                  className="size-4 rounded-full ring-2 ring-foreground/15"
+                  style={{ background: t.swatch }}
+                />
+                <span className="flex-1">{t.label}</span>
+                {theme === t.id && <Check size={16} className="text-primary" />}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
 }
 
 type Pill = { left: number; width: number } | null;
@@ -200,26 +284,29 @@ export default function Topbar({
           />
         </div>
 
-        {/* Theme toggle: icons rotate/scale into each other */}
-        <button
-          type="button"
-          onClick={toggleTheme}
-          aria-label="Toggle theme"
-          className={`${iconButton} ml-auto md:-ml-6`}
-        >
-          <span className="grid *:col-start-1 *:row-start-1">
-            <CustomIcon
-              name="moon"
-              size={22}
-              className={`transition-[rotate,scale,opacity] duration-500 ${BOUNCE} motion-reduce:transition-none dark:rotate-90 dark:scale-0 dark:opacity-0`}
-            />
-            <CustomIcon
-              name="sun"
-              size={22}
-              className={`-rotate-90 scale-0 opacity-0 transition-[rotate,scale,opacity] duration-500 ${BOUNCE} motion-reduce:transition-none dark:rotate-0 dark:scale-100 dark:opacity-100`}
-            />
-          </span>
-        </button>
+        <div className="ml-auto flex items-center md:-ml-6">
+          <ThemePicker />
+          {/* Theme toggle: icons rotate/scale into each other */}
+          <button
+            type="button"
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+            className={iconButton}
+          >
+            <span className="grid *:col-start-1 *:row-start-1">
+              <CustomIcon
+                name="moon"
+                size={22}
+                className={`transition-[rotate,scale,opacity] duration-500 ${BOUNCE} motion-reduce:transition-none dark:rotate-90 dark:scale-0 dark:opacity-0`}
+              />
+              <CustomIcon
+                name="sun"
+                size={22}
+                className={`-rotate-90 scale-0 opacity-0 transition-[rotate,scale,opacity] duration-500 ${BOUNCE} motion-reduce:transition-none dark:rotate-0 dark:scale-100 dark:opacity-100`}
+              />
+            </span>
+          </button>
+        </div>
 
         <button
           type="button"

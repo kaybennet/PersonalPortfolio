@@ -13,8 +13,8 @@ const sheet =
   "absolute inset-0 origin-bottom-left transition-[translate,rotate,filter] duration-500 ease-out motion-reduce:transition-none";
 
 const stats = [
-  { value: "1.0", label: "Bachelor's thesis" },
-  { value: "1.5", label: "B.Sc. GPA" },
+  { value: "1.0", label: "Thesis grade" },
+  { value: "1.5", label: "B.Sc. grade" },
   { value: "3×", label: "Landesstipendium" },
 ];
 
@@ -23,7 +23,7 @@ export default function Thesis() {
 
   return (
     <section className="mt-16 max-md:mt-8">
-      <h2 className="font-display text-3xl font-bold tracking-tight max-md:text-center">
+      <h2 className="font-display text-3xl font-bold tracking-tight max-md:text-2xl max-md:text-center">
         Bachelor's thesis
       </h2>
       <div
@@ -86,13 +86,21 @@ export default function Thesis() {
           <img src={thesisPic} alt="" className={`relative ${page}`} />
         </a>
 
-        <dl className="flex gap-6 md:flex-col md:justify-center">
+        <dl
+          className="flex shrink-0 max-md:w-full max-md:justify-around md:flex-col md:gap-5 md:border-l md:border-primary/30 md:pl-6
+            max-md:divide-x max-md:divide-foreground/10"
+        >
           {stats.map((s) => (
-            <div key={s.label}>
-              <dt className="text-sm text-muted">{s.label}</dt>
-              <dd className="font-display text-4xl font-bold text-primary">
+            <div
+              key={s.label}
+              className="flex items-baseline gap-3 max-md:flex-1 max-md:flex-col max-md:items-center max-md:gap-1"
+            >
+              <dd className="w-14 font-display text-4xl font-bold leading-none tracking-tight text-primary max-md:w-auto max-md:text-3xl">
                 {s.value}
               </dd>
+              <dt className="text-sm leading-tight text-muted max-md:text-center max-md:text-xs">
+                {s.label}
+              </dt>
             </div>
           ))}
         </dl>

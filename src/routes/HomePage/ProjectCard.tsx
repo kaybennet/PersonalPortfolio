@@ -65,7 +65,7 @@ export function ProjectCard({ project: p }: { project: PersonalProject }) {
               <p className="font-mono text-sm text-muted">
                 {p.started.getFullYear()}
               </p>
-              <h3 className="font-display text-xl font-bold max-md:text-lg transition-colors duration-500 ease-smooth group-hover:text-primary">
+              <h3 className="font-display text-xl font-semibold max-md:text-lg transition-colors duration-500 ease-smooth group-hover:text-primary">
                 {p.title}
               </h3>
             </div>

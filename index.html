@@ -12,6 +12,8 @@
           (!("theme" in localStorage) &&
             matchMedia("(prefers-color-scheme: dark)").matches),
       );
+      if (localStorage.colorTheme)
+        document.documentElement.dataset.theme = localStorage.colorTheme;
     </script>
   </head>
   <body>

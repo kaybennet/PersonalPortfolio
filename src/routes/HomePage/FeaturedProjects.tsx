@@ -11,13 +11,13 @@ export function FeaturedProjects() {
     <section className="mx-auto max-w-7xl">
       <div className="mb-8 max-md:mb-4 flex items-end justify-between max-md:flex-col max-md:items-center max-md:gap-3 max-md:text-center">
         <div className="flex flex-col max-md:items-center">
-          <h2 className="font-display text-4xl font-bold max-md:text-2xl">
+          <h2 className="font-display text-3xl font-bold tracking-tight max-md:text-2xl">
             Some Featured Projects
           </h2>
-          <p className="mt-2 text-muted md:hidden">
+          <p className="mt-3 text-lg text-muted md:hidden">
             Projects I'm most proud of.
           </p>
-          <p className="mt-3 text-muted max-md:hidden">
+          <p className="mt-3 text-lg text-muted max-md:hidden">
             My projects are mostly done out of enjoyment and for private use
             cases. Some projects I am very proud of include:
           </p>

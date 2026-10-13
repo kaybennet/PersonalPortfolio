@@ -18,7 +18,7 @@ export function ContactCTA() {
       <p className="font-mono text-xs tracking-wider text-muted uppercase max-md:text-[11px]">
         Open to working-student roles & internships
       </p>
-      <h2 className="mt-2 font-display text-4xl font-bold tracking-tight max-md:text-2xl">
+      <h2 className="mt-2 font-display text-3xl font-bold tracking-tight max-md:text-2xl">
         Let's connect.
       </h2>
       <p className="mt-3 text-foreground/80 max-md:mt-1 max-md:text-sm">

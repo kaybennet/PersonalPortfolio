@@ -133,10 +133,10 @@ const icon =
 export default function TechnicalSkills() {
   return (
     <section className="max-md:text-center">
-      <h2 className="font-display text-4xl font-bold tracking-tight max-md:text-2xl">
+      <h2 className="font-display text-3xl font-bold tracking-tight max-md:text-2xl">
         Technical Skills
       </h2>
-      <p className="mt-3 text-muted max-md:hidden">
+      <p className="mt-3 text-lg text-muted max-md:hidden">
         Apart from teaching some languages (C, Java, Python) at university, I
         enjoy coding and learning new technologies in my free time, including
         but not limited to:
