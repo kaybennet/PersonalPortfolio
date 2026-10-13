@@ -8,7 +8,7 @@ import BeyondCode from "./BeyondCode";
 
 function AboutPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen text-foreground">
       <main className="mx-auto max-w-7xl">
         <div className="grid grid-cols-3 items-center gap-8 mt-10 max-md:mt-4 max-md:gap-4 max-md:grid-cols-1">
           <div className="min-w-0">

@@ -4,10 +4,7 @@ import thesisPage2 from "../../assets/bachelorsthesis2.png";
 import thesisPage3 from "../../assets/bachelorsthesis3.png";
 import thesisPdf from "../../assets/docs/bachelors_thesis_kay_bennet_staeding.pdf";
 
-const glass =
-  "bg-surface/60 backdrop-blur-xl backdrop-saturate-150 ring-1 ring-inset ring-foreground/10 " +
-  "shadow-[inset_0_1px_0_0_rgb(255_255_255/0.3),0_12px_32px_-16px_rgb(0_0_0/0.25)] " +
-  "dark:shadow-[inset_0_1px_0_0_rgb(255_255_255/0.06),0_12px_32px_-16px_rgb(0_0_0/0.7)]";
+const glass = "glass relative";
 
 const page =
   "size-full rounded-md object-cover ring-1 ring-foreground/10 shadow-[0_12px_32px_-12px_rgb(0_0_0/0.5)]";

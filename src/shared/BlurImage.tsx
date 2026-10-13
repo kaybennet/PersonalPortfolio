@@ -57,9 +57,10 @@ export default function BlurImage({
     <span
       className={`relative block overflow-hidden bg-surface ${wrapperClassName}`}
     >
-      {img.alt && (
+      {img.blur && (
+        // inlined data URL: available on first paint, no network request
         <img
-          src={img.alt} // tiny LQIP (e.g. 20px wide / data URL), NOT img.alt
+          src={img.blur}
           alt=""
           aria-hidden
           className="absolute inset-0 size-full scale-110 object-cover blur-md"

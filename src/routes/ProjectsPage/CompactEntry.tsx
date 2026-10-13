@@ -1,6 +1,6 @@
 import { useState, type CSSProperties } from "react";
 import { LangIcon } from "../../CustomIcon";
-import { formatStarted } from "../../util/images";
+import { formatStarted, prefetchProject } from "../../util/images";
 import ProjectModal from "./ProjectModal";
 
 export function CompactEntry({ project: p }: { project: PersonalProject }) {
@@ -8,6 +8,9 @@ export function CompactEntry({ project: p }: { project: PersonalProject }) {
 
   return (
     <li
+      onPointerEnter={() => prefetchProject(p.id)}
+      onPointerDown={() => prefetchProject(p.id)}
+      onFocus={() => prefetchProject(p.id)}
       className="relative -mx-2 flex items-center gap-4 border-t border-border px-2 py-3 transition-colors
         hover:bg-surface has-focus-visible:ring-2 has-focus-visible:ring-primary"
     >

@@ -23,10 +23,8 @@ const proficiency: { lang: ProgrammingLanguage; level: number }[] = [
 ];
 
 const chip =
-  "rounded-xl bg-surface/60 px-4 py-1.5 text-sm font-medium " +
-  "backdrop-blur-xl backdrop-saturate-150 " +
-  "shadow-[inset_0_1px_0_0_rgb(255_255_255/0.4),0_2px_8px_-2px_rgb(0_0_0/0.12)] " +
-  "dark:shadow-[inset_0_1px_0_0_rgb(255_255_255/0.08),0_2px_8px_-2px_rgb(0_0_0/0.45)] " +
+  "glass relative rounded-xl px-4 py-1.5 text-sm font-medium " +
+  "[--glass-drop:0_2px_8px_-2px_var(--glass-shadow-color)] " +
   "transition-[color,background-color,translate] duration-200 ease-smooth " +
   "hover:-translate-y-0.5 hover:bg-primary/10 hover:text-primary motion-reduce:transition-none cursor-default";
 

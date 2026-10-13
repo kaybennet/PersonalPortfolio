@@ -3,7 +3,8 @@ import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import BlurImage from "./BlurImage";
+import BlurImage, { preloadImage } from "./BlurImage";
+import { canPrefetch } from "../util/images";
 
 const darkGlass =
   "bg-white/10 text-white backdrop-blur-xl backdrop-saturate-150 " +
@@ -36,6 +37,9 @@ export default function ImageMasonry({ images }: { images: ProjectImage[] }) {
             <button
               type="button"
               onClick={() => setSelected(i)}
+              onPointerEnter={() =>
+                canPrefetch() && void preloadImage(img.full ?? img.src)
+              }
               aria-label={`Open image ${i + 1} full size`}
               className="group/img relative isolate block w-full transform-gpu cursor-pointer overflow-hidden rounded-lg bg-surface
                 elevate transition-[translate,box-shadow] duration-500 ease-smooth
@@ -90,6 +94,16 @@ export function Lightbox({ images, index, onChange, onClose }: LightboxProps) {
     if (!open && d.open) d.close();
   }, [open]);
 
+  // warm the large variants of this image and its neighbours
+  useEffect(() => {
+    if (index === null || !canPrefetch()) return;
+    const n = images.length;
+    for (const d of [0, 1, -1]) {
+      const img = images[(index + d + n) % n];
+      if (img) void preloadImage(img.full ?? img.src);
+    }
+  }, [index, images]);
+
   const go = (dir: number) => {
     if (index === null) return;
     onChange((index + dir + images.length) % images.length);
@@ -119,7 +133,7 @@ export function Lightbox({ images, index, onChange, onClose }: LightboxProps) {
       {index !== null && (
         <img
           key={index}
-          src={images[index].src}
+          src={images[index].full ?? images[index].src}
           className="max-h-full max-w-full rounded-xl object-contain shadow-2xl ring-1 ring-white/10
             transition-[opacity,scale] duration-300 ease-smooth starting:opacity-0 starting:scale-[0.98]
             motion-reduce:transition-none"

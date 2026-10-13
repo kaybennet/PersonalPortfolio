@@ -8,33 +8,37 @@
 
 .elevate {
   box-shadow:
-    0 15px 20px -3px rgb(0 0 0 / 0.7),
+    0 15px 20px -3px var(--elevate-color),
     0 6px 8px -5px rgb(0 0 0 / 0.1);
 }
 :root {
-  --glass-tint: color-mix(in oklab, var(--background) 35%, transparent);
-  --glass-light: rgb(255 255 255 / 0.28);
-  --glass-edge: rgb(255 255 255 / 0.55);
-  --glass-border-top: rgb(255 255 255 / 0.6);
-  --glass-border-mid: rgb(255 255 255 / 0.15);
-  --glass-border-end: rgb(255 255 255 / 0.05);
-  --glass-brightness: 1.1;
-  --glass-tint-hover: color-mix(in oklab, var(--background) 45%, transparent);
+  --glass-tint: rgb(255 255 255 / 0.32);
+  --glass-light: rgb(255 255 255 / 0.55);
+  --glass-edge: rgb(255 255 255 / 0.9);
+  --glass-border-top: rgb(255 255 255 / 0.95);
+  --glass-border-mid: rgb(255 255 255 / 0.4);
+  --glass-border-end: rgb(255 255 255 / 0.15);
+  --glass-brightness: 1.04;
+  --glass-tint-hover: rgb(255 255 255 / 0.5);
+  --glass-shadow-color: rgb(60 50 140 / 0.2);
+  --elevate-color: rgb(60 50 140 / 0.28);
 }
 
 .dark {
-  --glass-tint: color-mix(in oklab, var(--background) 55%, transparent);
+  --glass-shadow-color: rgb(0 0 0 / 0.45);
+  --elevate-color: rgb(0 0 0 / 0.7);
+  --glass-tint: color-mix(in oklab, var(--background) 40%, transparent);
   --glass-light: rgb(255 255 255 / 0.1);
   --glass-edge: rgb(255 255 255 / 0.12);
   --glass-border-top: rgb(255 255 255 / 0.25);
   --glass-border-mid: rgb(255 255 255 / 0.08);
   --glass-border-end: transparent;
   --glass-brightness: 0.9;
-  --glass-tint-hover: color-mix(in oklab, var(--background) 65%, transparent);
+  --glass-tint-hover: color-mix(in oklab, var(--background) 52%, transparent);
 }
 
 @utility glass {
-  --glass-drop: 0 10px 30px -10px rgb(0 0 0 / 0.45);
+  --glass-drop: 0 10px 30px -10px var(--glass-shadow-color);
 
   background-color: var(--glass-tint);
   background-image: radial-gradient(
@@ -42,9 +46,9 @@
     var(--glass-light),
     transparent 55%
   );
-  -webkit-backdrop-filter: blur(40px) saturate(2)
+  -webkit-backdrop-filter: blur(24px) saturate(1.9)
     brightness(var(--glass-brightness));
-  backdrop-filter: blur(15px) saturate(2) brightness(var(--glass-brightness));
+  backdrop-filter: blur(24px) saturate(1.9) brightness(var(--glass-brightness));
   box-shadow:
     inset 0 1px 0 var(--glass-edge),
     var(--glass-drop);
@@ -82,7 +86,7 @@
     :where(.group):hover & {
       translate: 0 -0.5rem;
       background-color: var(--glass-tint-hover);
-      --glass-drop: 0 18px 40px -12px rgb(0 0 0 / 0.55);
+      --glass-drop: 0 18px 40px -12px var(--glass-shadow-color);
     }
   }
 
@@ -90,7 +94,7 @@
   :where(.group):focus-within & {
     translate: 0 -0.5rem;
     background-color: var(--glass-tint-hover);
-    --glass-drop: 0 18px 40px -12px rgb(0 0 0 / 0.55);
+    --glass-drop: 0 18px 40px -12px var(--glass-shadow-color);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -106,13 +110,16 @@
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #111827;
-  --surface: #f3f4f6;
-  --muted: #6b7280;
-  --border: #e5e7eb;
-  --primary: #2563eb;
-  --primary-hover: #1d4ed8;
+  --background: #f8f6fc;
+  --foreground: #17142e;
+  --surface: #eeebf7;
+  --muted: #666380;
+  --border: #e1ddef;
+  --primary: #4f46e5;
+  --glow-1: rgb(129 140 248 / 0.28);
+  --glow-2: rgb(244 114 182 / 0.18);
+  --glow-3: rgb(56 189 248 / 0.2);
+  --primary-hover: #4338ca;
   --primary-foreground: #ffffff;
 
   --glass-shadow:
@@ -153,6 +160,9 @@
   --muted: #9ca3af;
   --border: #374151;
   --primary: #3b82f6;
+  --glow-1: transparent;
+  --glow-2: transparent;
+  --glow-3: transparent;
   --primary-hover: #60a5fa;
   --primary-foreground: #ffffff;
 
@@ -222,6 +232,16 @@
 
 html {
   scrollbar-gutter: stable;
+}
+
+/* ambient colour behind everything, so the glass has something to refract */
+body {
+  background:
+    radial-gradient(60rem 40rem at 8% -8%, var(--glow-1), transparent 65%),
+    radial-gradient(52rem 38rem at 100% 12%, var(--glow-2), transparent 65%),
+    radial-gradient(60rem 42rem at 40% 108%, var(--glow-3), transparent 65%),
+    var(--background);
+  background-attachment: fixed;
 }
 
 html:has(dialog[open]) {

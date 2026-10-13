@@ -8,20 +8,20 @@ const btn =
 
 export function ContactCTA() {
   return (
-    <section className="relative pt-8 max-md:pt-2 text-center">
+    <section className="relative pt-8 max-md:pt-0 text-center">
       <div
         aria-hidden
         className="pointer-events-none absolute top-1/2 left-1/2 -z-10 h-40 w-96 max-w-full -translate-1/2 rounded-full bg-primary/20 blur-3xl"
       />
 
       {/* MOCK: adjust to what you're actually open to */}
-      <p className="font-mono text-xs tracking-wider text-muted uppercase">
+      <p className="font-mono text-xs tracking-wider text-muted uppercase max-md:text-[11px]">
         Open to working-student roles & internships
       </p>
-      <h2 className="mt-2 font-display text-4xl font-bold tracking-tight">
+      <h2 className="mt-2 font-display text-4xl font-bold tracking-tight max-md:text-2xl">
         Let's connect.
       </h2>
-      <p className="mt-3 text-foreground/80 max-md:mt-2">
+      <p className="mt-3 text-foreground/80 max-md:mt-1 max-md:text-sm">
         Always happy to dive into new issues.
       </p>
 
@@ -37,7 +37,7 @@ export function ContactCTA() {
           href={LINK_LINKEDIN}
           target="_blank"
           rel="noreferrer"
-          className={`${btn} bg-surface/50 shadow-glass hover:shadow-glass-hover`}
+          className={`${btn} glass relative hover:[--glass-drop:0_14px_30px_-10px_var(--glass-shadow-color)]`}
         >
           <CustomIcon name="linkedin" size={18} className="" />
           LinkedIn

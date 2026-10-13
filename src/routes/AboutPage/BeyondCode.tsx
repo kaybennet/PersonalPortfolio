@@ -1,7 +1,8 @@
-import { useState, type ReactNode } from "react";
+import { useRef, useState, type ReactNode } from "react";
 import ImageStack, { type StackAspect } from "../../shared/ImageStack";
 import ImageModal from "../../shared/ImageModal";
-import { getImages } from "../../util/images";
+import { getImages, warmHobbyImages } from "../../util/images";
+import { useNearViewport } from "../../util/helpers";
 import { LINK_BACKLOGGD, LINK_LETTERBOXD } from "../../util/consts";
 import { preloadImage } from "../../shared/BlurImage";
 
@@ -65,9 +66,11 @@ const hobbies: Hobby[] = [
 export default function BeyondCode() {
   const [openName, setOpenName] = useState<string | null>(null);
   const active = hobbies.find((h) => h.name === openName);
+  const sectionRef = useRef<HTMLElement>(null);
+  useNearViewport(sectionRef, warmHobbyImages);
 
   return (
-    <section className="py-4 max-md:py-2">
+    <section ref={sectionRef} className="py-4 max-md:py-2">
       <h2 className="font-display text-3xl font-bold tracking-tight max-md:text-center">
         Beyond Code
       </h2>

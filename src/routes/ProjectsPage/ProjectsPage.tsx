@@ -1,6 +1,7 @@
-import { useState, type ComponentType } from "react";
+import { useEffect, useState, type ComponentType } from "react";
 import { LayoutGrid, List, Rows3, type LucideIcon } from "lucide-react";
 import { Projects } from "../../shared/Projects";
+import { warmProjectCovers } from "../../util/images";
 import { GridEntry } from "./GridEntry";
 import { StandardEntry } from "./StandardEntry";
 import { CompactEntry } from "./CompactEntry";
@@ -52,6 +53,17 @@ function ProjectsPage() {
   const [hovered, setHovered] = useState<number | null>(null);
   const { listClass, Entry } = views[view];
   const active = viewIds.indexOf(view);
+
+  // after first paint, quietly warm the covers of every project
+  useEffect(() => {
+    const idle =
+      window.requestIdleCallback ?? ((cb: () => void) => setTimeout(cb, 300));
+    const id = idle(warmProjectCovers);
+    return () => {
+      if (window.cancelIdleCallback) window.cancelIdleCallback(id as number);
+      else clearTimeout(id as number);
+    };
+  }, []);
 
   return (
     <main className="mx-auto max-w-7xl pb-24 max-md:pb-10 pt-6 max-md:pt-2 text-foreground">

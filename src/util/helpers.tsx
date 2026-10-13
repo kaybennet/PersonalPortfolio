@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useEffect, type ReactNode, type RefObject } from "react";
 
 const COMMANDS: Record<
   string,
@@ -24,6 +24,28 @@ const COMMANDS: Record<
     </code>
   ),
 };
+
+/** Calls `onNear` once, when the element comes within `rootMargin` of the viewport. */
+export function useNearViewport(
+  ref: RefObject<Element | null>,
+  onNear: () => void,
+  rootMargin = "800px",
+) {
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || !("IntersectionObserver" in window)) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        io.disconnect();
+        onNear();
+      },
+      { rootMargin },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [ref, onNear, rootMargin]);
+}
 
 /** Bare URLs in plain text; trailing punctuation is left out of the link. */
 const URL_RE = /\b((?:https?:\/\/|www\.)[^\s<>"]*[^\s<>".,;:!?)\]'])/g;

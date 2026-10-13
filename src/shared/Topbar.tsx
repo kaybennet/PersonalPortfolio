@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router";
 import CustomIcon, { type IconName } from "../CustomIcon";
+import { warmRoute } from "../util/images";
 import { LINK_LINKEDIN, LINK_GITHUB, LINK_EMAIL } from "../util/consts";
 
 type NavItem = { label: string; to: string };
@@ -101,7 +102,14 @@ export default function Topbar({
   // --- links -------------------------------------------------------------
   const desktopLinks = links.map((link) => (
     <li key={link.to} onMouseEnter={onHover}>
-      <NavLink to={link.to} end className={desktopLinkClass}>
+      <NavLink
+        to={link.to}
+        end
+        className={desktopLinkClass}
+        onPointerEnter={() => warmRoute(link.to)}
+        onFocus={() => warmRoute(link.to)}
+        onPointerDown={() => warmRoute(link.to)}
+      >
         {link.label}
       </NavLink>
     </li>
@@ -132,7 +140,7 @@ export default function Topbar({
         "after:bg-linear-to-r after:from-transparent after:via-foreground/15 after:to-transparent " +
         "after:transition-opacity after:duration-500 " +
         (scrolled
-          ? "after:opacity-100 bg-background/45 backdrop-blur-2xl backdrop-saturate-[1.8] " +
+          ? "after:opacity-100 bg-(--glass-tint) backdrop-blur-[24px] backdrop-saturate-[1.9] " +
             // hairline highlight on the top edge + soft drop shadow = glass slab
             "shadow-[inset_0_1px_0_0_rgb(255_255_255/0.4),0_10px_30px_-14px_rgb(0_0_0/0.2)] " +
             "dark:shadow-[inset_0_1px_0_0_rgb(255_255_255/0.07),0_10px_30px_-14px_rgb(0_0_0/0.7)]"
@@ -169,7 +177,7 @@ export default function Topbar({
             aria-hidden
             className={
               "pointer-events-none absolute inset-y-1 left-0 rounded-xl " +
-              "bg-background/70 backdrop-blur-md backdrop-saturate-150 dark:bg-foreground/9 " +
+              "bg-(--glass-tint-hover) backdrop-blur-[24px] backdrop-saturate-[1.9] dark:bg-foreground/9 " +
               "shadow-[inset_0_1px_0_0_rgb(255_255_255/0.7),0_2px_8px_-2px_rgb(0_0_0/0.12)] " +
               "dark:shadow-[inset_0_1px_0_0_rgb(255_255_255/0.1),0_2px_8px_-2px_rgb(0_0_0/0.5)] " +
               pillTransition
@@ -246,6 +254,7 @@ export default function Topbar({
                     to={link.to}
                     end
                     onClick={() => setOpenAt(null)}
+                    onPointerDown={() => warmRoute(link.to)}
                     className={({ isActive }) =>
                       `block rounded-xl px-4 py-3 text-lg font-medium transition-colors focus-visible:outline-2 focus-visible:outline-primary ${
                         isActive

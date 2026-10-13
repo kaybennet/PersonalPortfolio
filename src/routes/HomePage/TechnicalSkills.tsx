@@ -105,6 +105,7 @@ const skills: { name: string; key: IconName; info?: SkillInfo }[] = [
 const chip =
   "group relative isolate inline-flex items-center gap-2.5 outline-none " +
   "rounded-xl py-2 pl-4 pr-5 text-base font-semibold text-foreground " +
+  "max-md:gap-1.5 max-md:rounded-lg max-md:py-1 max-md:pr-3 max-md:pl-2.5 max-md:text-sm max-md:ring-2 " +
   "bg-[color-mix(in_oklab,var(--c)_10%,var(--surface))] " +
   "ring-3 ring-inset ring-[color-mix(in_oklab,var(--c)_28%,transparent)] " +
   "shadow-glass inset-shadow-[0_1px_0_rgb(255_255_255/0.45)] dark:inset-shadow-[0_1px_0_rgb(255_255_255/0.08)] " +
@@ -132,7 +133,7 @@ const icon =
 export default function TechnicalSkills() {
   return (
     <section className="max-md:text-center">
-      <h2 className="font-display text-4xl font-bold tracking-tight">
+      <h2 className="font-display text-4xl font-bold tracking-tight max-md:text-2xl">
         Technical Skills
       </h2>
       <p className="mt-2 text-muted md:hidden">
@@ -143,13 +144,13 @@ export default function TechnicalSkills() {
         enjoy coding and learning new technologies in my free time, including
         but not limited to:
       </p>
-      <ul className="mt-6 max-md:mt-4 -mb-3 text-justify [text-align-last:justify] [word-spacing:0.6rem]">
+      <ul className="mt-6 -mb-3 text-justify [text-align-last:justify] [word-spacing:0.6rem] max-md:mt-4 max-md:mb-0 max-md:flex max-md:flex-wrap max-md:justify-center max-md:gap-2 max-md:[word-spacing:0]">
         {skills.map(({ name, key, info }) => {
           const tipId = `skill-${key}`;
           return (
             <Fragment key={name}>
               <li
-                className="group/skill relative mb-3 inline-block [word-spacing:normal] max-md:static"
+                className="group/skill relative mb-3 inline-block [word-spacing:normal] max-md:static max-md:mb-0"
                 style={{ "--c": `var(--lang-${key})` } as CSSProperties}
               >
                 <span

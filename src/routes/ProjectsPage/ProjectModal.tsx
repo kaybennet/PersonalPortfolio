@@ -1,6 +1,12 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import { ArrowUpRight, Lock, X } from "lucide-react";
-import { formatStarted, getHeaderPic, getImages } from "../../util/images";
+import {
+  canPrefetch,
+  formatStarted,
+  getHeaderPic,
+  getImages,
+} from "../../util/images";
+import { preloadImage } from "../../shared/BlurImage";
 import { LangBadge } from "./StandardEntry";
 import ImageMasonry from "../../shared/ImageMasonry";
 import CustomIcon from "../../CustomIcon";
@@ -24,6 +30,12 @@ export default function ProjectModal({
 
   const gallery = getImages(p.id);
   const hasBoth = Boolean(p.description) && p.learnings.length > 0;
+
+  // once opened, make sure the first gallery images are on their way
+  useEffect(() => {
+    if (!open || !canPrefetch()) return;
+    gallery.slice(0, 6).forEach((i) => void preloadImage(i.src));
+  }, [open, gallery]);
 
   useEffect(() => {
     const d = ref.current;

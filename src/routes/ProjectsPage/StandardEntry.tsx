@@ -1,5 +1,10 @@
 import { useMemo, useState, type CSSProperties, type ReactNode } from "react";
-import { formatStarted, getCover, getImages } from "../../util/images";
+import {
+  formatStarted,
+  getCover,
+  getImages,
+  prefetchProject,
+} from "../../util/images";
 import { LangIcon } from "../../CustomIcon";
 import ProjectModal from "./ProjectModal";
 import ImageStack, { buildGallery } from "../../shared/ImageStack";
@@ -38,9 +43,14 @@ export function StandardEntry({ project: p }: { project: PersonalProject }) {
 
   return (
     <li
+      onPointerEnter={() => prefetchProject(p.id)}
+      onPointerDown={() => prefetchProject(p.id)}
       onMouseEnter={collapsible ? () => setActive(true) : undefined}
       onMouseLeave={collapsible ? () => setActive(false) : undefined}
-      onFocus={collapsible ? () => setActive(true) : undefined}
+      onFocus={() => {
+        prefetchProject(p.id);
+        if (collapsible) setActive(true);
+      }}
       onBlur={
         collapsible
           ? (e) => {

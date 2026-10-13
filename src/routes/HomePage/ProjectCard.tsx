@@ -1,6 +1,6 @@
 import { useState } from "react";
 import CustomIcon, { LangIcon } from "../../CustomIcon";
-import { getMainCover } from "../../util/images";
+import { getMainCover, prefetchProject } from "../../util/images";
 import ProjectModal from "../ProjectsPage/ProjectModal";
 import { LangBadge } from "../ProjectsPage/StandardEntry";
 import BlurImage from "../../shared/BlurImage";
@@ -12,8 +12,11 @@ export function ProjectCard({ project: p }: { project: PersonalProject }) {
   return (
     <>
       <article
+        onPointerEnter={() => prefetchProject(p.id)}
+        onPointerDown={() => prefetchProject(p.id)}
+        onFocus={() => prefetchProject(p.id)}
         className={
-          "group relative isolate h-76 transform-gpu overflow-hidden rounded-2xl bg-surface elevate " +
+          "group relative isolate h-76 max-md:h-64 transform-gpu overflow-hidden rounded-2xl bg-surface elevate " +
           "transition-[translate,box-shadow] duration-500 ease-smooth " +
           "hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-primary/20 focus-within:-translate-y-1.5 " +
           "motion-reduce:transition-none motion-reduce:hover:translate-y-0 " +
@@ -24,6 +27,7 @@ export function ProjectCard({ project: p }: { project: PersonalProject }) {
         {cover ? (
           <BlurImage
             img={cover}
+            priority
             className="absolute inset-0 size-full object-cover object-top transition-[scale] duration-700 ease-smooth will-change-transform group-hover:scale-105 motion-reduce:transition-none"
           />
         ) : (
@@ -55,13 +59,13 @@ export function ProjectCard({ project: p }: { project: PersonalProject }) {
           className="absolute inset-0 z-10 cursor-pointer rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset"
         />
 
-        <div className="glass glass-hover pointer-events-none absolute inset-x-3 bottom-3 z-20 transform-gpu rounded-xl p-5">
+        <div className="glass glass-hover pointer-events-none absolute inset-x-3 bottom-3 z-20 transform-gpu rounded-xl p-5 max-md:p-3.5">
           <div className="flex items-start justify-between gap-3">
             <div>
               <p className="font-mono text-sm text-muted">
                 {p.started.getFullYear()}
               </p>
-              <h3 className="font-display text-xl font-bold transition-colors duration-500 ease-smooth group-hover:text-primary">
+              <h3 className="font-display text-xl font-bold max-md:text-lg transition-colors duration-500 ease-smooth group-hover:text-primary">
                 {p.title}
               </h3>
             </div>
@@ -86,11 +90,11 @@ export function ProjectCard({ project: p }: { project: PersonalProject }) {
               {/* …then content fades and slides in */}
               <div className="translate-y-3 opacity-0 transition-[opacity,translate] duration-400 ease-smooth group-focus-within:translate-y-0 group-focus-within:opacity-100 group-focus-within:delay-100 group-hover:translate-y-0 group-hover:opacity-100 group-hover:delay-100 pointer-coarse:translate-y-0 pointer-coarse:opacity-100 motion-reduce:transition-none">
                 {p.summary && (
-                  <p className="pt-4 leading-relaxed text-foreground/85">
+                  <p className="pt-3 text-sm leading-relaxed text-foreground/85 max-md:line-clamp-3 md:pt-4 md:text-base">
                     {p.summary}
                   </p>
                 )}
-                <ul className="flex flex-wrap gap-2 pt-4 pb-1">
+                <ul className="flex flex-wrap gap-2 pt-4 pb-1 max-md:gap-1.5 max-md:pt-2.5 max-md:pb-0">
                   {p.languages.map((lang) => (
                     <LangBadge key={lang} lang={lang} />
                   ))}

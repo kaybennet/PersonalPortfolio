@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getCover } from "../../util/images";
+import { getCover, prefetchProject } from "../../util/images";
 import BlurImage from "../../shared/BlurImage";
 import ProjectModal from "./ProjectModal";
 
@@ -11,7 +11,12 @@ export function GridEntry({ project: p }: { project: PersonalProject }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <li className="group relative">
+    <li
+      className="group relative"
+      onPointerEnter={() => prefetchProject(p.id)}
+      onPointerDown={() => prefetchProject(p.id)}
+      onFocus={() => prefetchProject(p.id)}
+    >
       <button
         type="button"
         onClick={() => setOpen(true)}
