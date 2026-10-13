@@ -49,7 +49,7 @@ export default function ProjectModal({
       ref={ref}
       onClose={onClose}
       onClick={(e) => e.target === e.currentTarget && onClose()}
-      className="m-auto w-[min(76rem,calc(100%-2rem))] overflow-hidden rounded-3xl max-md:h-dvh max-md:max-h-none max-md:w-full max-md:max-w-none max-md:rounded-none bg-background p-0 text-foreground elevate ring-1 ring-border
+      className="m-auto w-[min(76rem,calc(100%-2rem))] overflow-hidden rounded-3xl max-md:overflow-x-hidden max-md:h-dvh max-md:max-h-none max-md:w-full max-md:max-w-none max-md:rounded-none bg-background p-0 text-foreground elevate ring-1 ring-border
         opacity-0 scale-95 translate-y-4 transition-[opacity,scale,translate,display,overlay] transition-discrete duration-300 ease-smooth
         open:opacity-100 open:scale-100 open:translate-y-0
         starting:open:opacity-0 starting:open:scale-95 starting:open:translate-y-4
@@ -68,7 +68,7 @@ export default function ProjectModal({
         <X size={18} />
       </button>
 
-      <div className="max-h-[90dvh] overflow-y-auto overscroll-contain pb-10 scrollbar-thin max-md:h-dvh max-md:max-h-none max-md:pb-[max(2rem,env(safe-area-inset-bottom))]">
+      <div className="max-h-[90dvh] overflow-y-auto overscroll-contain pb-10 scrollbar-thin max-md:h-dvh max-md:overflow-x-hidden max-md:max-h-none max-md:pb-[max(4rem,env(safe-area-inset-bottom))]">
         {hasHeader && (
           <div className="relative h-56 max-sm:h-44 sm:h-80">
             <img
@@ -84,14 +84,14 @@ export default function ProjectModal({
         )}
 
         <header
-          className={`relative px-6 max-sm:px-4 sm:px-10 ${
-            hasHeader ? "-mt-20" : "pt-10 sm:pt-12"
+          className={`relative px-8 sm:px-10 ${
+            hasHeader ? "-mt-20" : "pt-14 sm:pt-12"
           }`}
         >
           <p className="font-mono text-sm text-muted">
             {formatStarted(p.started)}
           </p>
-          <h2 className="mt-1 pr-12 font-display text-3xl font-bold tracking-tight text-balance max-sm:text-2xl sm:text-5xl">
+          <h2 className="mt-1 pr-12 font-display text-3xl font-bold tracking-tight text-balance max-md:break-words max-sm:text-2xl sm:text-5xl">
             {p.title}
           </h2>
 
@@ -139,7 +139,7 @@ export default function ProjectModal({
 
         {(p.description || p.learnings.length > 0) && (
           <div
-            className={`mt-10 max-sm:mt-6 grid items-start gap-8 max-sm:gap-6 px-6 max-sm:px-4 sm:px-10 lg:gap-12 ${
+            className={`mt-10 max-sm:mt-6 grid min-w-0 max-lg:grid-cols-[minmax(0,1fr)] items-start gap-8 max-sm:gap-6 px-8 sm:px-10 lg:gap-12 ${
               hasBoth ? "lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]" : ""
             }`}
           >
@@ -155,7 +155,7 @@ export default function ProjectModal({
 
             {p.learnings.length > 0 && (
               <section
-                className="group/learn glass relative isolate rounded-2xl p-6 max-sm:p-4 lg:sticky lg:top-6
+                className="group/learn glass relative isolate rounded-2xl p-7 lg:sticky lg:top-6
                   [--glass-tint:color-mix(in_oklab,var(--surface)_70%,transparent)]
                   transition-[translate,box-shadow] duration-500 ease-smooth
                   hover:-translate-y-1 hover:[--glass-drop:0_18px_40px_-12px_rgb(0_0_0/0.45)]
@@ -197,7 +197,7 @@ export default function ProjectModal({
         )}
 
         {gallery.length > 0 && (
-          <section className="mt-12 max-sm:mt-8 px-6 max-sm:px-4 sm:px-10">
+          <section className="mt-12 max-sm:mt-8 px-8 sm:px-10">
             <SectionTitle>
               Gallery
               <span className="font-mono normal-case tracking-normal text-muted/70">
