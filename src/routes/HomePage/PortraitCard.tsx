@@ -1,14 +1,7 @@
 import { useState, type CSSProperties } from "react";
-import profilePic from "../../assets/kaybennet_pfp.jpg";
-import blurredProfilePic from "../../assets/kaybennet_pfp_blur.jpg";
-
-const BIRTHDAY = new Date(2003, 11, 29); // month is 0-based → 29 December
-
-const GRADES = [
-  { label: "Abitur", grade: 1.4 },
-  { label: "B.Sc.", grade: 1.5 },
-  { label: "B. Thesis", grade: 1.0 },
-];
+import profilePic from "../../assets/site/pfp.jpg";
+import blurredProfilePic from "../../assets/site/pfp_blur.jpg";
+import { GRADES, PORTRAIT } from "../../content";
 
 // German scale: 1.0 (best) → 4.0 (pass). Returns 0–100 for the bar.
 const gradeToPercent = (g: number) => ((4 - g) / 3) * 100;
@@ -24,6 +17,7 @@ function getAge(birthday: Date) {
 export function PortraitCard() {
   const [flipped, setFlipped] = useState(false);
 
+  const BIRTHDAY = PORTRAIT.birthday;
   const age = getAge(BIRTHDAY);
   const bornLabel = BIRTHDAY.toLocaleDateString("en-GB", {
     day: "numeric",
@@ -95,10 +89,10 @@ export function PortraitCard() {
               />
               <div className="min-w-0">
                 <h3 className="font-display text-lg leading-tight font-semibold">
-                  Kay Bennet Staeding
+                  {PORTRAIT.name}
                 </h3>
                 <p className="font-mono text-xs text-muted">
-                  M.Sc. Student · Hannover
+                  {PORTRAIT.subtitle}
                 </p>
               </div>
             </div>

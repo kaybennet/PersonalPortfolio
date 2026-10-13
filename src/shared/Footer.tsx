@@ -1,15 +1,5 @@
-import CustomIcon, { type IconName } from "../CustomIcon";
-import { LINK_EMAIL, LINK_GITHUB, LINK_LINKEDIN } from "../util/consts";
-
-const socials: { icon: IconName; href: string; label: string }[] = [
-  { icon: "github", href: LINK_GITHUB, label: "GitHub" },
-  {
-    icon: "linkedin",
-    href: LINK_LINKEDIN,
-    label: "LinkedIn",
-  },
-  { icon: "email", href: "mailto:" + LINK_EMAIL, label: "Email" },
-];
+import CustomIcon from "../CustomIcon";
+import { SOCIALS } from "../content";
 
 function scrollToTop() {
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -25,7 +15,7 @@ export default function Footer() {
         </p>
 
         <nav aria-label="Social links" className="flex justify-center gap-1">
-          {socials.map((s) => (
+          {SOCIALS.map((s) => (
             <a
               key={s.icon}
               href={s.href}

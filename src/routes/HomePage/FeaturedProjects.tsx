@@ -1,11 +1,9 @@
 import { Link } from "react-router";
-import { Projects } from "../../shared/Projects";
+import { HOME, Projects } from "../../content";
 import { ProjectCard } from "./ProjectCard";
 
-const FEATURED_IDS = ["BA", "StrongPro", "java_nn"];
-
 export function FeaturedProjects() {
-  const featured = Projects.filter((p) => FEATURED_IDS.includes(p.id));
+  const featured = Projects.filter((p) => HOME.featured.includes(p.id));
 
   return (
     <section className="mx-auto max-w-7xl">
@@ -15,11 +13,10 @@ export function FeaturedProjects() {
             Some Featured Projects
           </h2>
           <p className="mt-3 text-lg text-muted md:hidden">
-            Projects I'm most proud of.
+            {HOME.featuredIntroShort}
           </p>
           <p className="mt-3 text-lg text-muted max-md:hidden">
-            My projects are mostly done out of enjoyment and for private use
-            cases. Some projects I am very proud of include:
+            {HOME.featuredIntro}
           </p>
         </div>
         <Link

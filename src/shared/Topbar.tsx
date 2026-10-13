@@ -1,24 +1,9 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router";
 import { Check, Palette } from "lucide-react";
-import CustomIcon, { type IconName } from "../CustomIcon";
+import CustomIcon from "../CustomIcon";
 import { warmRoute } from "../util/images";
-import { LINK_LINKEDIN, LINK_GITHUB, LINK_EMAIL } from "../util/consts";
-
-type NavItem = { label: string; to: string };
-type SocialItem = { label: string; href: string; icon: IconName };
-
-const defaultLinks: NavItem[] = [
-  { label: "Home", to: "/" },
-  { label: "About", to: "/about" },
-  { label: "Projects", to: "/projects" },
-];
-
-const defaultSocials: SocialItem[] = [
-  { label: "GitHub", href: LINK_GITHUB, icon: "github" },
-  { label: "LinkedIn", href: LINK_LINKEDIN, icon: "linkedin" },
-  { label: "Email", href: "mailto:" + LINK_EMAIL, icon: "email" },
-];
+import { NAV, SOCIALS } from "../content";
 
 const BOUNCE = "ease-[cubic-bezier(0.34,1.56,0.64,1)]";
 const SMOOTH = "ease-[cubic-bezier(.3,.7,.2,1)]";
@@ -128,8 +113,8 @@ type Pill = { left: number; width: number } | null;
 
 export default function Topbar({
   title = "My App",
-  links = defaultLinks,
-  socials = defaultSocials,
+  links = NAV,
+  socials = SOCIALS,
 }) {
   const { pathname } = useLocation();
   // menu is tied to the route it was opened on, so navigating closes it

@@ -54,3 +54,25 @@ type TimelineEvent = {
   description: string;
   label?: string;
 };
+
+declare module "*.toml" {
+  const data: Record<string, unknown>;
+  export default data;
+}
+
+type Skill = {
+  name: string;
+  key: import("../CustomIcon").IconName;
+  info?: { description: string; tags: string[] };
+};
+type SkillGroup = { group: string; items: string[] };
+type Proficiency = { lang: ProgrammingLanguage; level: number };
+type Course = { name: string; detail: string; color: string };
+type Grade = { label: string; grade: number };
+type Hobby = {
+  name: string;
+  text: string;
+  images: string;
+  aspect: "1:1" | "16:9" | "2:3";
+  width: string;
+};

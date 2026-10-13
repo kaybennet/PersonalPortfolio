@@ -1,106 +1,7 @@
 import { Fragment, type CSSProperties } from "react";
-import CustomIcon, { type IconName } from "../../CustomIcon";
-import SkillHover, { type SkillInfo } from "./SkillHover";
-
-const skills: { name: string; key: IconName; info?: SkillInfo }[] = [
-  {
-    name: "Python",
-    key: "python",
-    info: {
-      description:
-        "My first choice mostly. I use it regularly for various projects and smaller scripts",
-      tags: [
-        "Data Science",
-        "Algorithmic Applications",
-        "Scripting",
-        "Notebooks",
-      ],
-    },
-  },
-  {
-    name: "PyTorch",
-    key: "pytorch",
-    info: {
-      description: "Building and training models for machine learning projects",
-      tags: ["Deep Learning", "Model Training", "Research"],
-    },
-  },
-  {
-    name: "Pandas",
-    key: "pandas",
-    info: {
-      description:
-        "Loading, cleaning and analysing tabular data. I use it in conjunction with the prior two technologies of course.",
-      tags: ["Data Wrangling", "Analysis", "Experiment Results"],
-    },
-  },
-  {
-    name: "TypeScript",
-    key: "typescript",
-    info: {
-      description:
-        "My default for anything web-related, including this site. Because plain JavaScript simply sucks. I love its functional programming integration.",
-      tags: ["Frontend", "Type Safety", "Tooling"],
-    },
-  },
-  {
-    name: "React",
-    key: "react",
-    info: {
-      description: 'My Typescript "Framework" of choice.',
-      tags: ["Components", "Hooks", "Tailwind CSS"],
-    },
-  },
-  {
-    name: "C",
-    key: "c",
-    info: {
-      description: "Backends, APIs and build tooling for web projects",
-      tags: ["REST APIs", "Backend", "CLI Tools"],
-    },
-  },
-  {
-    name: "AWS",
-    key: "aws",
-    info: {
-      description:
-        "I taught it a ton at university. I love its simplicity and building small scale programs with it.",
-      tags: ["Teaching", "hardware"],
-    },
-  },
-  {
-    name: "Rust",
-    key: "rust",
-    info: {
-      description:
-        "Learning it in my free time for fast, reliable programs. Also it's the most fun I've had with a programming language ever. I love its type system, all of its iterators and of course the compile time error checking.",
-      tags: [
-        "Systems Programming",
-        "Performance",
-        "Side Projects",
-        "Leetcode",
-        "Competitive Coding",
-      ],
-    },
-  },
-  {
-    name: "Java",
-    key: "java",
-    info: {
-      description: "Taught it at university and used in coursework projects.",
-      tags: ["Teaching", "OOP", "University"],
-    },
-  },
-  {
-    name: "LaTeX",
-    key: "latex",
-    info: {
-      description:
-        "I use it for writing academic documents, reports and even personal notes.",
-      tags: ["Academic Writing"],
-    },
-  },
-];
+import CustomIcon from "../../CustomIcon";
+import SkillHover from "./SkillHover";
+import { HOME, HOME_SKILLS } from "../../content";
 
 const chip =
   "group relative isolate inline-flex items-center gap-2.5 outline-none " +
@@ -137,12 +38,10 @@ export default function TechnicalSkills() {
         Technical Skills
       </h2>
       <p className="mt-3 text-lg text-muted max-md:hidden">
-        Apart from teaching some languages (C, Java, Python) at university, I
-        enjoy coding and learning new technologies in my free time, including
-        but not limited to:
+        {HOME.skillsIntro}
       </p>
       <ul className="mt-6 -mb-3 text-justify [text-align-last:justify] [word-spacing:0.6rem] max-md:mt-4 max-md:mb-0 max-md:flex max-md:flex-wrap max-md:justify-center max-md:gap-2 max-md:[word-spacing:0]">
-        {skills.map(({ name, key, info }) => {
+        {HOME_SKILLS.map(({ name, key, info }) => {
           const tipId = `skill-${key}`;
           return (
             <Fragment key={name}>

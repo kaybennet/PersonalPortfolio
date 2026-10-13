@@ -1,6 +1,6 @@
 import { useEffect, useState, type ComponentType } from "react";
 import { LayoutGrid, List, Rows3, type LucideIcon } from "lucide-react";
-import { Projects } from "../../shared/Projects";
+import { PROJECTS_PAGE, Projects } from "../../content";
 import { warmProjectCovers } from "../../util/images";
 import { GridEntry } from "./GridEntry";
 import { StandardEntry } from "./StandardEntry";
@@ -73,14 +73,13 @@ function ProjectsPage() {
       <div className="mb-8 max-md:mb-5 flex items-center justify-between gap-6 max-sm:flex-col max-sm:items-center max-sm:gap-4 max-sm:text-center">
         <div className="min-w-0">
           <h1 className="font-display text-3xl font-bold tracking-tight max-md:text-2xl">
-            Some of the things I've built
+            {PROJECTS_PAGE.title}
             <span className="ml-2 text-base font-medium tabular-nums text-muted">
               {ordered.length}
             </span>
           </h1>
           <p className="mt-1 text-sm text-pretty text-muted">
-            None of these are vibe-coded. Newer projects used AI coding
-            assistants only sparingly and responsibly.
+            {PROJECTS_PAGE.intro}
           </p>
         </div>
 

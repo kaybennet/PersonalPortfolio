@@ -1,0 +1,77 @@
+# About page content. Text fields support \textbf{}, \textit{} and \href{url}{text}.
+
+[now]
+text = '''Starting the M.Sc. Computer Science in Hannover, digging deeper into AutoML and machine learning. I'm open to student assistant positions and internships in ML research or engineering.'''
+
+[skills]
+footer = 'Furthermore, I enjoy competitive programming in the form of \textbf{LeetCode} or \textbf{Advent of Code}. To that end, I have dabbled in several other programming languages, including \textbf{C++}, \textbf{Go} and \textbf{C#}.'
+
+[thesis]
+title = 'Improving Prior-Guided Bayesian Optimization through Revisited Decay and Rejection Mechanisms'
+place = 'Institute for Artificial Intelligence, 2026'
+paragraphs = [
+  'Bayesian optimization finds good settings for expensive systems, like the hyperparameters of a neural network, in as few tries as possible. Prior-guided variants let a user say where they think good settings are. If that guess is wrong, it can slow everything down.',
+  '''I reworked how quickly the optimizer lets go of the user's guess and when it rejects it outright, so it keeps the speed-up from good guesses and recovers faster from bad ones.''',
+]
+
+[[thesis.stats]]
+value = '1.0'
+label = 'Thesis grade'
+
+[[thesis.stats]]
+value = '1.5'
+label = 'B.Sc. grade'
+
+[[thesis.stats]]
+value = '3×'
+label = 'Landesstipendium'
+
+[experience]
+intro = '''Since 2024 I've tutored for different computer science courses at the university.'''
+
+# color = a language key from index.css (--lang-<key>) or 'primary'
+[[courses]]
+name = 'Programming II'
+detail = 'Teaching OOP via Java'
+color = 'java'
+
+[[courses]]
+name = 'Fundamentals of Computer Science'
+detail = 'Teaching C and Python'
+color = 'python'
+
+[[courses]]
+name = 'Human-Computer Interaction'
+detail = 'JavaScript, design and evaluation'
+color = 'javascript'
+
+[[courses]]
+name = 'Fundamentals of Digital Systems'
+detail = 'Binary logic and hardware components'
+color = 'primary'
+
+[beyond]
+intro = '''What I'm up to when I'm not at the keyboard.'''
+
+# images = image group id under assets/images (see util/images.ts)
+# aspect = 16:9 | 2:3 ..., width = Tailwind width class
+[[hobbies]]
+name = 'Hiking'
+text = '''I appreciate a good holiday in a city or at the beach. But nothing's better than a trip to the mountains. It's also probably the best form of intense physical activity maybe ever.'''
+images = 'hobbies/hiking'
+aspect = '16:9'
+width = 'w-90'
+
+[[hobbies]]
+name = 'Cinema'
+text = 'Watching a movie does not feel like procrastination, but productive spiritual instead. See my \href{@letterboxd}{Letterboxd} for more.'
+images = 'hobbies/movies'
+aspect = '2:3'
+width = 'w-40'
+
+[[hobbies]]
+name = 'Story Games'
+text = 'The greatest stories I ever experienced were through the medium of gaming. See my \href{@backloggd}{Backloggd} for more.'
+images = 'hobbies/games'
+aspect = '2:3'
+width = 'w-40'

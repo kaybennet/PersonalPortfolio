@@ -1,4 +1,5 @@
 import { useEffect, type ReactNode, type RefObject } from "react";
+import { LINKS } from "../content";
 
 const COMMANDS: Record<
   string,
@@ -148,7 +149,10 @@ export function fmtLatex(s: string): ReactNode[] {
           flush();
           i += m[0].length;
           const url = readRaw();
-          const href = safeHref(url);
+          // `@key` refers to an entry of the site links table (content/site.toml)
+          const href = url.startsWith("@")
+            ? (LINKS[url.slice(1)] ?? null)
+            : safeHref(url);
           let label: ReactNode[] = [url];
           if (m[1] === "href" && s[i] === "{") {
             i++;

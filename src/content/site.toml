@@ -1,0 +1,75 @@
+# Site-wide content. Text fields support \textbf{}, \textit{} and \href{url}{text}.
+# In \href use @key to reference an entry from [links], e.g. \href{@letterboxd}{Letterboxd}.
+
+[links]
+github = 'https://github.com/kaybennet'
+linkedin = 'https://www.linkedin.com/in/kay-bennet-st%C3%A4ding-04ba08418/?locale=en'
+email = 'kaybennet.staeding@gmail.com'
+letterboxd = 'https://boxd.it/4O1el'
+backloggd = 'https://bckl.gg/b4zs'
+
+[[nav]]
+label = 'Home'
+to = '/'
+
+[[nav]]
+label = 'About'
+to = '/about'
+
+[[nav]]
+label = 'Projects'
+to = '/projects'
+
+# icon = icon name from CustomIcon; link = key from [links] (email becomes mailto:)
+[[socials]]
+label = 'GitHub'
+icon = 'github'
+link = 'github'
+
+[[socials]]
+label = 'LinkedIn'
+icon = 'linkedin'
+link = 'linkedin'
+
+[[socials]]
+label = 'Email'
+icon = 'email'
+link = 'email'
+
+[hero]
+role = 'B.Sc. Computer Science · Leibniz Universität Hannover'
+paragraph = 'I enjoy the field of technology and whatever I can get my hands on. Primarily I work in \textbf{Machine Learning} and anything needing creativity from \textbf{WebDev} to \textbf{GameDev}.'
+thesis = '''For my \href{@thesis}{Bachelor's thesis} I did research on how prior knowledge can guide Bayesian optimization.'''
+
+[portrait]
+name = 'Kay Bennet Staeding'
+subtitle = 'M.Sc. Student · Hannover'
+birthday = 2003-12-29
+
+[[grades]]
+label = 'Abitur'
+grade = 1.4
+
+[[grades]]
+label = 'B.Sc.'
+grade = 1.5
+
+[[grades]]
+label = 'B. Thesis'
+grade = 1.0
+
+[home]
+# ids of projects (projects.toml) shown on the home page
+featured = ['BA', 'StrongPro', 'java_nn']
+skills_intro = 'Apart from teaching some languages (C, Java, Python) at university, I enjoy coding and learning new technologies in my free time, including but not limited to:'
+featured_intro = 'My projects are mostly done out of enjoyment and for private use cases. Some projects I am very proud of include:'
+featured_intro_short = '''Projects I'm most proud of.'''
+
+[cta]
+eyebrow = 'Open to working-student roles & internships'
+title = '''Let's connect.'''
+text = 'Always happy to dive into new issues.'
+
+[projects_page]
+title = '''Some of the things I've built'''
+intro = 'None of these are vibe-coded. Newer projects used AI coding assistants only sparingly and responsibly.'

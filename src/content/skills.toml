@@ -1,0 +1,97 @@
+# Home page "Technical Skills" chips. key = icon name (see CustomIcon).
+
+[[home]]
+name = 'Python'
+key = 'python'
+description = 'My first choice mostly. I use it regularly for various projects and smaller scripts'
+tags = ['Data Science', 'Algorithmic Applications', 'Scripting', 'Notebooks']
+
+[[home]]
+name = 'PyTorch'
+key = 'pytorch'
+description = 'Building and training models for machine learning projects'
+tags = ['Deep Learning', 'Model Training', 'Research']
+
+[[home]]
+name = 'Pandas'
+key = 'pandas'
+description = 'Loading, cleaning and analysing tabular data. I use it in conjunction with the prior two technologies of course.'
+tags = ['Data Wrangling', 'Analysis', 'Experiment Results']
+
+[[home]]
+name = 'TypeScript'
+key = 'typescript'
+description = 'My default for anything web-related, including this site. Because plain JavaScript simply sucks. I love its functional programming integration.'
+tags = ['Frontend', 'Type Safety', 'Tooling']
+
+[[home]]
+name = 'React'
+key = 'react'
+description = 'My Typescript "Framework" of choice.'
+tags = ['Components', 'Hooks', 'Tailwind CSS']
+
+[[home]]
+name = 'C'
+key = 'c'
+description = 'Backends, APIs and build tooling for web projects'
+tags = ['REST APIs', 'Backend', 'CLI Tools']
+
+[[home]]
+name = 'AWS'
+key = 'aws'
+description = 'I taught it a ton at university. I love its simplicity and building small scale programs with it.'
+tags = ['Teaching', 'hardware']
+
+[[home]]
+name = 'Rust'
+key = 'rust'
+description = '''Learning it in my free time for fast, reliable programs. Also it's the most fun I've had with a programming language ever. I love its type system, all of its iterators and of course the compile time error checking.'''
+tags = ['Systems Programming', 'Performance', 'Side Projects', 'Leetcode', 'Competitive Coding']
+
+[[home]]
+name = 'Java'
+key = 'java'
+description = 'Taught it at university and used in coursework projects.'
+tags = ['Teaching', 'OOP', 'University']
+
+[[home]]
+name = 'LaTeX'
+key = 'latex'
+description = 'I use it for writing academic documents, reports and even personal notes.'
+tags = ['Academic Writing']
+
+# About page "What I work with" groups
+
+[[groups]]
+group = 'Machine learning'
+items = ['PyTorch', 'Pandas', 'Jupyter', 'Matplotlib']
+
+[[groups]]
+group = 'Web'
+items = ['React', 'Tailwind', 'AWS', 'Vite', 'NodeJS']
+
+[[groups]]
+group = 'Spoken Languages'
+items = ['English (C1)', 'German (Native)', 'Spanish (A2)']
+
+# Self-assessed proficiency, 0-100
+
+[[proficiency]]
+lang = 'Python'
+level = 80
+
+[[proficiency]]
+lang = 'TypeScript'
+level = 80
+
+[[proficiency]]
+lang = 'Java'
+level = 65
+
+[[proficiency]]
+lang = 'Rust'
+level = 60
+
+[[proficiency]]
+lang = 'C'
+level = 35

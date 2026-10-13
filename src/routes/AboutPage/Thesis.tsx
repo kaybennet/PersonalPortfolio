@@ -1,8 +1,9 @@
 import { useState } from "react";
-import thesisPic from "../../assets/bachelorsthesis.png";
-import thesisPage2 from "../../assets/bachelorsthesis2.png";
-import thesisPage3 from "../../assets/bachelorsthesis3.png";
-import thesisPdf from "../../assets/docs/bachelors_thesis_kay_bennet_staeding.pdf";
+import thesisPic from "../../assets/site/thesis_1.png";
+import thesisPage2 from "../../assets/site/thesis_2.png";
+import thesisPage3 from "../../assets/site/thesis_3.png";
+import { THESIS, THESIS_PDF as thesisPdf } from "../../content";
+import { fmtLatex } from "../../util/helpers";
 
 const glass = "glass relative";
 
@@ -11,12 +12,6 @@ const page =
 
 const sheet =
   "absolute inset-0 origin-bottom-left transition-[translate,rotate,filter] duration-500 ease-out motion-reduce:transition-none";
-
-const stats = [
-  { value: "1.0", label: "Thesis grade" },
-  { value: "1.5", label: "B.Sc. grade" },
-  { value: "3×", label: "Landesstipendium" },
-];
 
 export default function Thesis() {
   const [open, setOpen] = useState(false);
@@ -30,24 +25,16 @@ export default function Thesis() {
         className={`mt-6 flex flex-row justify-between items-center gap-8 rounded-3xl p-8 max-md:flex-col max-md:items-center max-md:gap-6 max-md:p-5 ${glass}`}
       >
         <div className="max-w-prose">
-          <h3 className="font-display text-xl font-semibold">
-            Improving Prior-Guided Bayesian Optimization through Revisited Decay
-            and Rejection Mechanisms
-          </h3>
-          <p className="mt-1 text-muted">
-            Institute for Artificial Intelligence, 2026
-          </p>
-          <p className="mt-4 text-foreground/80">
-            Bayesian optimization finds good settings for expensive systems,
-            like the hyperparameters of a neural network, in as few tries as
-            possible. Prior-guided variants let a user say where they think good
-            settings are. If that guess is wrong, it can slow everything down.
-          </p>
-          <p className="mt-3 text-foreground/80">
-            I reworked how quickly the optimizer lets go of the user's guess and
-            when it rejects it outright, so it keeps the speed-up from good
-            guesses and recovers faster from bad ones.
-          </p>
+          <h3 className="font-display text-xl font-semibold">{THESIS.title}</h3>
+          <p className="mt-1 text-muted">{THESIS.place}</p>
+          {THESIS.paragraphs.map((t, i) => (
+            <p
+              key={i}
+              className={`text-foreground/80 ${i === 0 ? "mt-4" : "mt-3"}`}
+            >
+              {fmtLatex(t)}
+            </p>
+          ))}
         </div>
 
         <a
@@ -90,7 +77,7 @@ export default function Thesis() {
           className="flex shrink-0 max-md:w-full max-md:justify-around md:flex-col md:gap-5 md:border-l md:border-primary/30 md:pl-6
             max-md:divide-x max-md:divide-foreground/10"
         >
-          {stats.map((s) => (
+          {THESIS.stats.map((s) => (
             <div
               key={s.label}
               className="flex items-baseline gap-3 max-md:flex-1 max-md:flex-col max-md:items-center max-md:gap-1"

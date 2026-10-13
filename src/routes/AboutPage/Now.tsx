@@ -1,3 +1,6 @@
+import { fmtLatex } from "../../util/helpers";
+import { NOW_TEXT } from "../../content";
+
 export default function Now() {
   return (
     <section className="">
@@ -5,9 +8,7 @@ export default function Now() {
         Right now
       </h2>
       <p className="mt-3 max-w-prose text-lg text-muted max-md:mx-auto max-md:text-center">
-        Starting the M.Sc. Computer Science in Hannover, digging deeper into
-        AutoML and machine learning. I'm open to student assistant positions and
-        internships in ML research or engineering.
+        {fmtLatex(NOW_TEXT)}
       </p>
     </section>
   );

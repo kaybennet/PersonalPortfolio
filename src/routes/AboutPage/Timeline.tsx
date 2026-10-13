@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { EVENTS } from "./TimelineEvents";
+import { EVENTS } from "../../content";
 
 const formatDate = (d: Date) =>
   d.toLocaleDateString("en-US", { month: "short", year: "numeric" });

@@ -1,5 +1,5 @@
 import CustomIcon from "../../CustomIcon"; // adjust path
-import { LINK_EMAIL, LINK_LINKEDIN } from "../../util/consts";
+import { CTA, LINK_EMAIL, LINK_LINKEDIN } from "../../content";
 
 const btn =
   "flex items-center gap-2 rounded-xl px-5 py-2.5 font-semibold backdrop-blur-xl backdrop-saturate-150 " +
@@ -14,15 +14,14 @@ export function ContactCTA() {
         className="pointer-events-none absolute top-1/2 left-1/2 -z-10 h-40 w-96 max-w-full -translate-1/2 rounded-full bg-primary/20 blur-3xl"
       />
 
-      {/* MOCK: adjust to what you're actually open to */}
       <p className="font-mono text-xs tracking-wider text-muted uppercase max-md:text-[11px]">
-        Open to working-student roles & internships
+        {CTA.eyebrow}
       </p>
       <h2 className="mt-2 font-display text-3xl font-bold tracking-tight max-md:text-2xl">
-        Let's connect.
+        {CTA.title}
       </h2>
       <p className="mt-3 text-foreground/80 max-md:mt-1 max-md:text-sm">
-        Always happy to dive into new issues.
+        {CTA.text}
       </p>
 
       <div className="mt-6 max-md:mt-4 flex flex-wrap justify-center gap-3">

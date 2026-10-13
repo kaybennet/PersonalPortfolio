@@ -1,26 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { LangIcon } from "../../CustomIcon";
 import { fmtLatex } from "../../util/helpers";
-
-const skills = [
-  {
-    group: "Machine learning",
-    items: ["PyTorch", "Pandas", "Jupyter", "Matplotlib"],
-  },
-  { group: "Web", items: ["React", "Tailwind", "AWS", "Vite", "NodeJS"] },
-  {
-    group: "Spoken Languages",
-    items: ["English (C1)", "German (Native)", "Spanish (A2)"],
-  },
-];
-
-const proficiency: { lang: ProgrammingLanguage; level: number }[] = [
-  { lang: "Python", level: 80 },
-  { lang: "TypeScript", level: 80 },
-  { lang: "Java", level: 65 },
-  { lang: "Rust", level: 60 },
-  { lang: "C", level: 35 },
-];
+import { PROFICIENCY, SKILLS_FOOTER, SKILL_GROUPS } from "../../content";
 
 const chip =
   "glass relative rounded-xl px-4 py-1.5 text-sm font-medium " +
@@ -69,7 +50,7 @@ export default function Skills() {
         </h2>
 
         <div className="mt-6 grid gap-8 sm:grid-cols-3">
-          {skills.map((s) => (
+          {SKILL_GROUPS.map((s) => (
             <div key={s.group}>
               <h3 className="font-semibold text-muted">{s.group}</h3>
               <ul className="mt-3 flex flex-wrap gap-2.5">
@@ -83,11 +64,7 @@ export default function Skills() {
           ))}
         </div>
 
-        <p className="mt-8 text-foreground/80">
-          {fmtLatex(
-            "Furthermore, I enjoy competitive programming in the form of \\textbf{LeetCode} or \\textbf{Advent of Code}. To that end, I have dabbled in several other programming languages, including \\textbf{C++}, \\textbf{Go} and \\textbf{C#}.",
-          )}
-        </p>
+        <p className="mt-8 text-foreground/80">{fmtLatex(SKILLS_FOOTER)}</p>
       </div>
 
       <div>
@@ -95,7 +72,7 @@ export default function Skills() {
           Self-assessed coding language proficiency
         </h3>
         <ul ref={barsRef} className="mt-3 space-y-4">
-          {proficiency.map(({ lang, level }, i) => {
+          {PROFICIENCY.map(({ lang, level }, i) => {
             const value = clamp(level);
             const color = langColor(lang);
             return (
