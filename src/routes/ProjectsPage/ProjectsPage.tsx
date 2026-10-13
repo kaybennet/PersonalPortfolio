@@ -19,7 +19,8 @@ const views: Record<ViewStyle, ViewConfig> = {
   grid: {
     label: "Grid view",
     icon: LayoutGrid,
-    listClass: "grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3",
+    listClass:
+      "grid grid-cols-2 gap-6 max-sm:gap-3 sm:grid-cols-2 lg:grid-cols-3",
     Entry: GridEntry,
   },
   standard: {
@@ -49,7 +50,9 @@ const ordered = [...Projects].sort(
 );
 
 function ProjectsPage() {
-  const [view, setView] = useState<ViewStyle>("standard");
+  const [view, setView] = useState<ViewStyle>(() =>
+    window.matchMedia("(max-width: 767px)").matches ? "grid" : "standard",
+  );
   const [hovered, setHovered] = useState<number | null>(null);
   const { listClass, Entry } = views[view];
   const active = viewIds.indexOf(view);

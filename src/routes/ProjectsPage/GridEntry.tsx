@@ -56,16 +56,16 @@ export function GridEntry({ project: p }: { project: PersonalProject }) {
         />
 
         <div
-          className={`absolute inset-x-2 bottom-2 rounded-lg px-3 py-2 transform-gpu will-change-transform
+          className={`absolute inset-x-2 bottom-2 rounded-lg px-3 py-2 max-sm:inset-x-1.5 max-sm:bottom-1.5 max-sm:px-2 max-sm:py-1.5 transform-gpu will-change-transform
             transition-[translate] ${ease} group-hover:-translate-y-1 glass`}
         >
-          <div className="flex items-baseline justify-between gap-4">
-            <h2 className="truncate text-md font-semibold tracking-tight text-foreground text-wrap">
+          <div className="flex items-baseline justify-between gap-4 max-sm:gap-2">
+            <h2 className="truncate text-md max-sm:text-sm font-semibold tracking-tight text-foreground text-wrap">
               {p.title}
             </h2>
             <time
               dateTime={p.started.toISOString()}
-              className="shrink-0 text-sm font-medium tabular-nums text-foreground/60"
+              className="shrink-0 text-sm max-sm:text-xs font-medium tabular-nums text-foreground/60"
             >
               {p.started.getFullYear()}
             </time>

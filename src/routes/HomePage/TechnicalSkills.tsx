@@ -136,9 +136,6 @@ export default function TechnicalSkills() {
       <h2 className="font-display text-4xl font-bold tracking-tight max-md:text-2xl">
         Technical Skills
       </h2>
-      <p className="mt-2 text-muted md:hidden">
-        Tap a skill for details.
-      </p>
       <p className="mt-3 text-muted max-md:hidden">
         Apart from teaching some languages (C, Java, Python) at university, I
         enjoy coding and learning new technologies in my free time, including

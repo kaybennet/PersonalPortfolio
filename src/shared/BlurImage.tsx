@@ -56,6 +56,12 @@ export default function BlurImage({
   return (
     <span
       className={`relative block overflow-hidden bg-surface ${wrapperClassName}`}
+      // reserve the final box before the file arrives (ignored when the parent fixes both sizes)
+      style={
+        img.width && img.height
+          ? { aspectRatio: `${img.width} / ${img.height}` }
+          : undefined
+      }
     >
       {img.blur && (
         // inlined data URL: available on first paint, no network request
@@ -73,6 +79,8 @@ export default function BlurImage({
         fetchPriority={priority ? "high" : "auto"}
         decoding="async"
         {...rest}
+        width={img.width}
+        height={img.height}
         src={img.src}
         alt={img.alt}
         onLoad={(e) => {

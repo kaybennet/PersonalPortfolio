@@ -49,7 +49,7 @@ export default function ProjectModal({
       ref={ref}
       onClose={onClose}
       onClick={(e) => e.target === e.currentTarget && onClose()}
-      className="m-auto w-[min(76rem,calc(100%-2rem))] overflow-hidden rounded-3xl bg-background p-0 text-foreground elevate ring-1 ring-border
+      className="m-auto w-[min(76rem,calc(100%-2rem))] overflow-hidden rounded-3xl max-md:h-dvh max-md:max-h-none max-md:w-full max-md:max-w-none max-md:rounded-none bg-background p-0 text-foreground elevate ring-1 ring-border
         opacity-0 scale-95 translate-y-4 transition-[opacity,scale,translate,display,overlay] transition-discrete duration-300 ease-smooth
         open:opacity-100 open:scale-100 open:translate-y-0
         starting:open:opacity-0 starting:open:scale-95 starting:open:translate-y-4
@@ -68,9 +68,9 @@ export default function ProjectModal({
         <X size={18} />
       </button>
 
-      <div className="max-h-[90dvh] overflow-y-auto overscroll-contain pb-10 scrollbar-thin">
+      <div className="max-h-[90dvh] overflow-y-auto overscroll-contain pb-10 scrollbar-thin max-md:h-dvh max-md:max-h-none max-md:pb-[max(2rem,env(safe-area-inset-bottom))]">
         {hasHeader && (
-          <div className="relative h-56 sm:h-80">
+          <div className="relative h-56 max-sm:h-44 sm:h-80">
             <img
               src={header.src}
               alt=""
@@ -84,37 +84,37 @@ export default function ProjectModal({
         )}
 
         <header
-          className={`relative px-6 sm:px-10 ${
+          className={`relative px-6 max-sm:px-4 sm:px-10 ${
             hasHeader ? "-mt-20" : "pt-10 sm:pt-12"
           }`}
         >
           <p className="font-mono text-sm text-muted">
             {formatStarted(p.started)}
           </p>
-          <h2 className="mt-1 pr-12 font-display text-3xl font-bold tracking-tight text-balance sm:text-5xl">
+          <h2 className="mt-1 pr-12 font-display text-3xl font-bold tracking-tight text-balance max-sm:text-2xl sm:text-5xl">
             {p.title}
           </h2>
 
           {p.summary && (
-            <p className="mt-4 max-w-3xl text-lg leading-relaxed text-pretty text-foreground/80">
+            <p className="mt-4 max-w-3xl text-lg max-sm:text-base leading-relaxed text-pretty text-foreground/80">
               {fmtLatex(p.summary)}
             </p>
           )}
 
-          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-4">
+          <div className="mt-6 max-sm:mt-4 flex flex-wrap items-center gap-x-6 gap-y-4">
             <ul className="flex flex-wrap gap-2">
               {p.languages.map((lang) => (
                 <LangBadge key={lang} lang={lang} />
               ))}
             </ul>
 
-            <div className="ml-auto">
+            <div className="ml-auto max-sm:w-full">
               {p.github_link ? (
                 <a
                   href={p.github_link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group/gh inline-flex items-center gap-2 rounded-xl bg-foreground px-4 py-2 text-sm font-semibold text-background
+                  className="group/gh inline-flex items-center gap-2 max-sm:w-full max-sm:justify-center rounded-xl bg-foreground px-4 py-2 text-sm font-semibold text-background
                     shadow-glass transition-[translate,box-shadow] duration-200 ease-smooth
                     hover:-translate-y-0.5 hover:shadow-glass-hover
                     focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary
@@ -139,7 +139,7 @@ export default function ProjectModal({
 
         {(p.description || p.learnings.length > 0) && (
           <div
-            className={`mt-10 grid items-start gap-8 px-6 sm:px-10 lg:gap-12 ${
+            className={`mt-10 max-sm:mt-6 grid items-start gap-8 max-sm:gap-6 px-6 max-sm:px-4 sm:px-10 lg:gap-12 ${
               hasBoth ? "lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]" : ""
             }`}
           >
@@ -155,7 +155,7 @@ export default function ProjectModal({
 
             {p.learnings.length > 0 && (
               <section
-                className="group/learn glass relative isolate rounded-2xl p-6 lg:sticky lg:top-6
+                className="group/learn glass relative isolate rounded-2xl p-6 max-sm:p-4 lg:sticky lg:top-6
                   [--glass-tint:color-mix(in_oklab,var(--surface)_70%,transparent)]
                   transition-[translate,box-shadow] duration-500 ease-smooth
                   hover:-translate-y-1 hover:[--glass-drop:0_18px_40px_-12px_rgb(0_0_0/0.45)]
@@ -197,7 +197,7 @@ export default function ProjectModal({
         )}
 
         {gallery.length > 0 && (
-          <section className="mt-12 px-6 sm:px-10">
+          <section className="mt-12 max-sm:mt-8 px-6 max-sm:px-4 sm:px-10">
             <SectionTitle>
               Gallery
               <span className="font-mono normal-case tracking-normal text-muted/70">

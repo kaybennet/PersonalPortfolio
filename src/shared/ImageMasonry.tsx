@@ -22,14 +22,14 @@ export default function ImageMasonry({ images }: { images: ProjectImage[] }) {
   const [selected, setSelected] = useState<number | null>(null);
   const isLg = useMediaQuery("(min-width: 1024px)");
   const isSm = useMediaQuery("(min-width: 640px)");
-  const cols = Math.max(1, Math.min(images.length, isLg ? 3 : isSm ? 2 : 1));
+  const cols = Math.max(1, Math.min(images.length, isLg ? 3 : 2));
 
   return (
     <>
       <ImageList
         variant="masonry"
         cols={cols}
-        gap={18}
+        gap={isSm ? 18 : 10}
         sx={{ m: 0, overflow: "visible" }}
       >
         {images.map((img, i) => (
@@ -134,6 +134,8 @@ export function Lightbox({ images, index, onChange, onClose }: LightboxProps) {
         <img
           key={index}
           src={images[index].full ?? images[index].src}
+          width={images[index].width}
+          height={images[index].height}
           className="max-h-full max-w-full rounded-xl object-contain shadow-2xl ring-1 ring-white/10
             transition-[opacity,scale] duration-300 ease-smooth starting:opacity-0 starting:scale-[0.98]
             motion-reduce:transition-none"

@@ -26,6 +26,9 @@ type ProjectImage = {
   blur?: string;
   /** large variant for the lightbox */
   full?: string;
+  /** intrinsic size of the displayed variant, to reserve space before load */
+  width?: number;
+  height?: number;
 };
 type ProjectCardSize = "w-xl" | "w-md" | "w-sm" | "h-xl" | "h-md" | "h-sm";
 
