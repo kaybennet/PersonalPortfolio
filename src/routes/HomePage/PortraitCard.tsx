@@ -58,7 +58,7 @@ export function PortraitCard() {
           />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/25 to-transparent transition-transform duration-1000 ease-smooth group-hover:translate-x-full motion-reduce:hidden"
+            className="sheen via-white/25 duration-1000 group-hover:translate-x-full"
           />
           <span className="absolute inset-x-0 bottom-4 mx-auto w-fit translate-y-2 rounded-full bg-background/50 px-3 py-1 font-mono text-xs text-foreground opacity-0 shadow-glass backdrop-blur-xl transition-[opacity,translate] duration-500 ease-smooth group-hover:translate-y-0 group-hover:opacity-100 pointer-coarse:translate-y-0 pointer-coarse:opacity-100">
             Click to flip ↻
@@ -76,7 +76,7 @@ export function PortraitCard() {
             src={blurredProfilePic}
             alt=""
             aria-hidden
-            className="absolute inset-0 size-full object-cover"
+            className="fill-cover"
           />
 
           <div className="relative flex size-full flex-col gap-4 p-5">
@@ -105,7 +105,7 @@ export function PortraitCard() {
               )}
             >
               <div className="flex-1 px-3">
-                <dt className="font-mono text-[10px] tracking-wider text-muted uppercase">
+                <dt className="label-mono">
                   Age
                 </dt>
                 <dd className="font-display text-lg leading-tight font-bold">
@@ -113,7 +113,7 @@ export function PortraitCard() {
                 </dd>
               </div>
               <div className="flex-1 px-3">
-                <dt className="font-mono text-[10px] tracking-wider text-muted uppercase">
+                <dt className="label-mono">
                   Born
                 </dt>
                 <dd className="font-display text-lg leading-tight font-bold">
@@ -125,7 +125,7 @@ export function PortraitCard() {
             {/* Grades */}
             <section aria-label="Grades">
               <div {...reveal(2, "mb-2 flex items-baseline justify-between")}>
-                <h4 className="font-mono text-[10px] tracking-wider text-muted uppercase">
+                <h4 className="label-mono">
                   Grades
                 </h4>
                 <span className="font-mono text-[10px] text-muted">
@@ -143,7 +143,7 @@ export function PortraitCard() {
                         `rounded-xl px-2.5 pt-2 pb-2.5 shadow-glass ${"bg-background/85"}`,
                       )}
                     >
-                      <dt className="font-mono text-[10px] tracking-wider text-muted uppercase">
+                      <dt className="label-mono">
                         {label}
                       </dt>
                       <dd
@@ -180,7 +180,7 @@ export function PortraitCard() {
         onClick={() => setFlipped((f) => !f)}
         aria-pressed={flipped}
         aria-label={flipped ? "Show photo" : "Show details about Kay"}
-        className="absolute inset-0 z-10 cursor-pointer rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+        className="card-overlay-link focus-visible:ring-offset-4 focus-visible:ring-offset-background"
       />
     </div>
   );

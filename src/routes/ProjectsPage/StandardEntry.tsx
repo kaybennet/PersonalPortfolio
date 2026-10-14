@@ -26,10 +26,19 @@ export function ProjectTimeline({ projects }: { projects: PersonalProject[] }) {
   );
 }
 
-export function StandardEntry({ project: p }: { project: PersonalProject }) {
+const INTRO_MAX_STEPS = 10;
+
+export function StandardEntry({
+  project: p,
+  index = 0,
+}: {
+  project: PersonalProject;
+  index?: number;
+}) {
   const collapsible = p.collapseStdEntry ?? false;
   // Collapsible entries expand while hovered or focused (keyboard).
   const [active, setActive] = useState(false);
+  const step = Math.min(index, INTRO_MAX_STEPS);
   const isCollapsed = collapsible && !active;
   const gallery = buildGallery(getCover(p.id), getImages(p.id));
   const hasImages = gallery.length > 0;
@@ -43,6 +52,7 @@ export function StandardEntry({ project: p }: { project: PersonalProject }) {
 
   return (
     <li
+      style={{ "--i": step } as CSSProperties}
       onPointerEnter={() => prefetchProject(p.id)}
       onPointerDown={() => prefetchProject(p.id)}
       onMouseEnter={collapsible ? () => setActive(true) : undefined}
@@ -71,7 +81,7 @@ export function StandardEntry({ project: p }: { project: PersonalProject }) {
     >
       <span
         aria-hidden="true"
-        className="absolute inset-y-0 left-28 hidden w-px -translate-x-1/2 bg-border sm:block
+        className="timeline-line absolute inset-y-0 left-28 hidden w-px -translate-x-1/2 bg-border sm:block
           group-first:bg-transparent group-first:bg-linear-to-b group-first:from-transparent group-first:to-border
           group-last:bg-transparent group-last:bg-linear-to-b group-last:from-border group-last:to-transparent
           group-only:hidden"
@@ -79,7 +89,7 @@ export function StandardEntry({ project: p }: { project: PersonalProject }) {
 
       <time
         dateTime={p.started.toISOString()}
-        className="relative text-sm tabular-nums text-muted transition-colors duration-300
+        className="timeline-dot relative font-display text-base font-semibold tracking-tight tabular-nums text-muted transition-colors duration-300
           group-hover:text-foreground sm:text-right motion-reduce:transition-none
           sm:after:absolute sm:after:top-1/2 sm:after:-right-4 sm:after:size-2.5
           sm:after:translate-x-1/2 sm:after:-translate-y-1/2 sm:after:rounded-full
@@ -92,43 +102,63 @@ export function StandardEntry({ project: p }: { project: PersonalProject }) {
       </time>
 
       <div className="min-w-0 max-sm:mt-1.5">
-        <h2
-          className={`tracking-tight text-balance
+        <div className="flex items-baseline gap-2">
+          <h2
+            className={`tracking-tight text-balance
             transition-[color,font-size,line-height] duration-300 ease-out motion-reduce:transition-none
             ${
               isCollapsed
                 ? "text-lg font-semibold text-muted/60 sm:text-xl sm:leading-snug"
                 : "text-2xl font-semibold text-foreground sm:text-[1.75rem] sm:leading-tight"
             }`}
-        >
-          <button
-            type="button"
-            onClick={openModal}
-            className="cursor-pointer text-left transition-colors duration-300 group-hover:text-primary
+          >
+            <button
+              type="button"
+              onClick={openModal}
+              className="cursor-pointer text-left transition-colors duration-300 group-hover:text-primary
               focus-visible:outline-none motion-reduce:transition-none
               after:absolute after:-inset-x-3 after:inset-y-1 after:rounded-2xl
               focus-visible:after:ring-2 focus-visible:after:ring-primary"
-          >
-            {leadingWords}
-            <span className="whitespace-nowrap">
-              {lastWord}
-              <svg
-                viewBox="0 0 16 16"
-                aria-hidden="true"
-                className="ml-2 inline-block size-[0.6em] -translate-x-1 align-[0.05em] opacity-0
+            >
+              {leadingWords}
+              <span className="whitespace-nowrap">
+                {lastWord}
+                <svg
+                  viewBox="0 0 16 16"
+                  aria-hidden="true"
+                  className={`inline-block -translate-x-1 align-[0.05em] opacity-0 ${isCollapsed ? "ml-0 size-0" : "ml-2 size-[0.6em]"}
                   transition-[opacity,translate] duration-300 ease-out
-                  group-hover:translate-x-0 group-hover:opacity-100 motion-reduce:transition-none"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M3 8h10M9 4l4 4-4 4" />
-              </svg>
-            </span>
-          </button>
-        </h2>
+                  group-hover:translate-x-0 group-hover:opacity-100 motion-reduce:transition-none`}
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M3 8h10M9 4l4 4-4 4" />
+                </svg>
+              </span>
+            </button>
+          </h2>
+
+          {collapsible && p.languages.length > 0 && (
+            // Greyed-out language hint, shown only while the entry is folded up.
+            <ul
+              aria-hidden="true"
+              className={`flex shrink-0 items-center gap-2.5 self-center overflow-hidden py-0.5 text-muted/50 max-sm:hidden
+              transition-[opacity,max-width] duration-300 ease-out motion-reduce:transition-none
+              ${isCollapsed ? "max-w-md opacity-100" : "max-w-0 opacity-0"}`}
+            >
+              <li className="-mr-1.5 text-lg leading-none">(</li>
+              {p.languages.map((lang) => (
+                <li key={lang}>
+                  <LangIcon lang={lang} size={16} className="shrink-0" />
+                </li>
+              ))}
+              <li className="-ml-1.5 text-lg leading-none">)</li>
+            </ul>
+          )}
+        </div>
 
         {(p.summary || p.languages.length > 0) && (
           <Collapsible collapsed={isCollapsed}>
@@ -213,10 +243,9 @@ export function LangBadge({ lang }: { lang: ProgrammingLanguage }) {
           "--lang": `var(--lang-${langSlug(lang)}, var(--muted))`,
         } as CSSProperties
       }
-      className="inline-flex items-center gap-1.5 rounded-full bg-(--lang)/10 px-2.5 py-1 text-xs font-medium
-        text-(--lang) ring-1 ring-inset ring-(--lang)/20"
+      className="lang-chip rounded-md px-2.5 ring-(--lang)/20"
     >
-      <LangIcon lang={lang} size={12} aria-hidden="true" />
+      <LangIcon lang={lang} size={15} className="shrink-0 overflow-visible" />
       {lang}
     </li>
   );

@@ -18,26 +18,17 @@ const chip =
   "focus-visible:ring-[color-mix(in_oklab,var(--c)_60%,transparent)] " +
   "motion-reduce:transition-none motion-reduce:hover:translate-y-0";
 
-// Clips only the sheen, so the icon can overflow the chip on hover.
-const sheenClip =
-  "pointer-events-none absolute inset-0 -z-10 overflow-hidden rounded-[inherit]";
-
-const sheen =
-  "absolute inset-0 -translate-x-full " +
-  "bg-linear-to-r from-transparent via-white/35 to-transparent dark:via-white/12 " +
-  "transition-transform duration-700 ease-smooth group-hover:translate-x-full motion-reduce:hidden";
-
 const icon =
-  "shrink-0 text-(--c) transition-transform duration-300 ease-smooth " +
+  "shrink-0 overflow-visible text-(--c) transition-transform duration-300 ease-smooth " +
   "group-hover:scale-115 group-hover:-rotate-6 motion-reduce:transition-none";
 
 export default function TechnicalSkills() {
   return (
     <section className="max-md:text-center">
-      <h2 className="font-display text-3xl font-bold tracking-tight max-md:text-2xl">
+      <h2 className="section-title">
         Technical Skills
       </h2>
-      <p className="mt-3 text-lg text-muted max-md:hidden">
+      <p className="section-subtitle max-md:hidden">
         {HOME.skillsIntro}
       </p>
       <ul className="mt-6 -mb-3 text-justify [text-align-last:justify] [word-spacing:0.6rem] max-md:mt-4 max-md:mb-0 max-md:flex max-md:flex-wrap max-md:justify-center max-md:gap-2 max-md:[word-spacing:0]">
@@ -54,8 +45,8 @@ export default function TechnicalSkills() {
                   tabIndex={info ? 0 : undefined}
                   aria-describedby={info ? tipId : undefined}
                 >
-                  <span aria-hidden className={sheenClip}>
-                    <span className={sheen} />
+                  <span aria-hidden className="sheen-clip">
+                    <span className="sheen via-white/35 duration-700 group-hover:translate-x-full dark:via-white/12" />
                   </span>
                   <CustomIcon
                     name={key}

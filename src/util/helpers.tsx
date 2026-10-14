@@ -68,8 +68,8 @@ function Link({ href, children }: { href: string; children: ReactNode }) {
       // Don't trigger parent click handlers (e.g. a card that opens a modal).
       onClick={(e) => e.stopPropagation()}
       // relative z-10: sit above stretched-link overlays so the link stays clickable.
-      className="relative z-10 text-primary underline decoration-primary/40 underline-offset-2
-        transition-colors hover:decoration-primary"
+      className="relative z-10 font-semibold text-foreground italic
+        transition-colors hover:text-primary"
     >
       {children}
     </a>

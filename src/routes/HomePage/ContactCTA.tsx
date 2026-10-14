@@ -9,15 +9,10 @@ const btn =
 export function ContactCTA() {
   return (
     <section className="relative pt-8 max-md:pt-0 text-center">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute top-1/2 left-1/2 -z-10 h-40 w-96 max-w-full -translate-1/2 rounded-full bg-primary/20 blur-3xl"
-      />
-
       <p className="font-mono text-xs tracking-wider text-muted uppercase max-md:text-[11px]">
         {CTA.eyebrow}
       </p>
-      <h2 className="mt-2 font-display text-3xl font-bold tracking-tight max-md:text-2xl">
+      <h2 className="mt-2 section-title">
         {CTA.title}
       </h2>
       <p className="mt-3 text-foreground/80 max-md:mt-1 max-md:text-sm">
@@ -27,7 +22,7 @@ export function ContactCTA() {
       <div className="mt-6 max-md:mt-4 flex flex-wrap justify-center gap-3">
         <a
           href={"mailto:" + LINK_EMAIL}
-          className={`${btn} bg-primary/85 text-primary-foreground shadow-[inset_0_1px_0_rgb(255_255_255/0.3),0_8px_24px_-8px_var(--primary)] hover:bg-primary`}
+          className={`${btn} bg-primary/85 text-primary-foreground shadow-[inset_0_1px_0_rgb(255_255_255/0.3)] hover:bg-primary`}
         >
           <CustomIcon name="email" size={18} className="" />
           Get in touch

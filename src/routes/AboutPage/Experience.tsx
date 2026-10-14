@@ -10,10 +10,10 @@ const card =
 export default function Experience() {
   return (
     <section className="py-4 max-md:py-2">
-      <h2 className="font-display text-3xl font-bold tracking-tight max-md:text-2xl max-md:text-center">
+      <h2 className="section-title-center">
         Experience
       </h2>
-      <p className="mt-3 text-lg text-muted max-md:text-center">
+      <p className="section-subtitle max-md:text-center">
         {EXPERIENCE_INTRO}
       </p>
 

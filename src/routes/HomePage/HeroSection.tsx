@@ -15,7 +15,7 @@ export function HeroSection() {
             <img
               src={profilePic}
               alt="Kay Bennet Städing"
-              className="absolute inset-0 size-full object-cover object-top"
+              className="fill-cover object-top"
             />
           </div>
           <div className="flex flex-col max-md:col-start-2 max-md:row-start-1 max-md:flex-row max-md:flex-wrap max-md:gap-x-1.5 md:contents">
@@ -38,14 +38,14 @@ export function HeroSection() {
         <div className="flex gap-4 max-md:col-start-2 max-md:row-start-2 max-md:flex-col max-md:gap-2">
           <Link
             to="/projects"
-            className="rounded-lg bg-primary px-6 py-3 font-semibold max-md:px-4 max-md:py-2 max-md:text-center max-md:text-sm text-primary-foreground hover:bg-primary-hover"
+            className="btn-primary"
           >
             View projects
           </Link>
           <a
             href={CV_PDF}
             download
-            className="rounded-lg border border-border px-6 py-3 font-semibold max-md:px-4 max-md:py-2 max-md:text-center max-md:text-sm hover:bg-surface"
+            className="btn-outline"
           >
             Download CV
           </a>

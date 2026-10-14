@@ -46,6 +46,19 @@ type IconProps = {
   style?: CSSProperties;
 };
 
+// The Go mark is a wide wordmark that only fills a thin band of its 24x24 box,
+// so crop the box around it and widen the icon to make it as prominent as the others.
+function GoIcon({ size = 18, style, ...rest }: IconProps) {
+  return (
+    <SiGo
+      {...rest}
+      size={size}
+      viewBox="0 2.75 24 14.5"
+      style={{ width: size * 1.65, ...style }}
+    />
+  );
+}
+
 const ICONS = {
   // UI (lucide)
   sun: Sun,
@@ -65,7 +78,7 @@ const ICONS = {
   c: SiC,
   "c++": SiCplusplus,
   "c#": TbBrandCSharp,
-  go: SiGo,
+  go: GoIcon,
   kotlin: SiKotlin,
   swift: SiSwift,
   sql: Database,

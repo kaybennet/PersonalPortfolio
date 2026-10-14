@@ -4,7 +4,7 @@ import { NOW_TEXT } from "../../content";
 export default function Now() {
   return (
     <section className="">
-      <h2 className="font-display text-3xl font-bold tracking-tight max-md:text-2xl max-md:text-center">
+      <h2 className="section-title-center">
         Right now
       </h2>
       <p className="mt-3 max-w-prose text-lg text-muted max-md:mx-auto max-md:text-center">

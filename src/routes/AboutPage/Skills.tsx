@@ -45,7 +45,7 @@ export default function Skills() {
   return (
     <section className="grid gap-10 py-16 max-md:gap-6 max-md:py-8 md:grid-cols-3">
       <div className="md:col-span-2">
-        <h2 className="font-display text-3xl font-bold tracking-tight max-md:text-2xl max-md:text-center">
+        <h2 className="section-title-center">
           What I work with
         </h2>
 
@@ -82,7 +82,7 @@ export default function Skills() {
                     <LangIcon
                       lang={lang}
                       size={18}
-                      className="shrink-0"
+                      className="shrink-0 overflow-visible"
                       style={{ color }}
                     />
                     {lang}

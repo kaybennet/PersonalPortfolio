@@ -28,7 +28,7 @@ export function ProjectCard({ project: p }: { project: PersonalProject }) {
           <BlurImage
             img={cover}
             priority
-            className="absolute inset-0 size-full object-cover object-top transition-[scale] duration-700 ease-smooth will-change-transform group-hover:scale-105 motion-reduce:transition-none"
+            className="fill-cover object-top transition-[scale] duration-700 ease-smooth will-change-transform group-hover:scale-105 motion-reduce:transition-none"
           />
         ) : (
           <div className="absolute inset-0 grid place-items-center bg-linear-to-br from-primary/30 via-surface to-surface text-muted">
@@ -49,14 +49,14 @@ export function ProjectCard({ project: p }: { project: PersonalProject }) {
         {/* Sheen sweep */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-10 -translate-x-full bg-linear-to-r from-transparent via-white/15 to-transparent transition-transform duration-1000 ease-smooth group-hover:translate-x-full motion-reduce:hidden"
+          className="sheen z-10 via-white/15 duration-1000 group-hover:translate-x-full"
         />
 
         <button
           type="button"
           onClick={() => setOpen(true)}
           aria-label={`Open details for ${p.title}`}
-          className="absolute inset-0 z-10 cursor-pointer rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset"
+          className="card-overlay-link focus-visible:ring-inset"
         />
 
         <div className="glass glass-hover pointer-events-none absolute inset-x-3 bottom-3 z-20 transform-gpu rounded-xl p-5 max-md:p-3.5">

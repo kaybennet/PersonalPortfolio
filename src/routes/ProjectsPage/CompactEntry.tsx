@@ -49,9 +49,9 @@ function LangBadge({ lang }: { lang: ProgrammingLanguage }) {
           "--lang": `var(--lang-${langSlug(lang)}, var(--muted))`,
         } as CSSProperties
       }
-      className="inline-flex items-center gap-1.5 rounded-md bg-(--lang)/10 px-2 py-1 text-xs font-medium text-(--lang) ring-1 ring-inset ring-(--lang)/25"
+      className="lang-chip rounded-md px-2 ring-(--lang)/25"
     >
-      <LangIcon lang={lang} size={13} className="" />
+      <LangIcon lang={lang} size={15} className="shrink-0 overflow-visible" />
       {lang}
     </li>
   );

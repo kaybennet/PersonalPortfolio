@@ -10,8 +10,8 @@ footer = 'Furthermore, I enjoy competitive programming in the form of \textbf{Le
 title = 'Improving Prior-Guided Bayesian Optimization through Revisited Decay and Rejection Mechanisms'
 place = 'Institute for Artificial Intelligence, 2026'
 paragraphs = [
-  'Bayesian optimization finds good settings for expensive systems, like the hyperparameters of a neural network, in as few tries as possible. Prior-guided variants let a user say where they think good settings are. If that guess is wrong, it can slow everything down.',
-  '''I reworked how quickly the optimizer lets go of the user's guess and when it rejects it outright, so it keeps the speed-up from good guesses and recovers faster from bad ones.''',
+  'Bayesian optimization finds good settings for expensive systems, like neural network hyperparameters, in as few tries as possible. Prior-guided variants such as \textbf{πBO} and \textbf{DynaBO} let a user say where good settings probably are, which speeds up the search. A wrong guess can slow it down.',
+  '''Both use fixed parameters to decide how fast trust fades and when a guess is accepted. I investigated whether this can be adapted \textbf{online}, based on what the optimizer observes during the run.''',
 ]
 
 [[thesis.stats]]

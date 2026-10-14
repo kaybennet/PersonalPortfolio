@@ -4,11 +4,26 @@ import { GitHubCalendar } from "react-github-calendar";
 const FIRST_YEAR = 2023; // year you joined GitHub
 const BLOCK_MARGIN = 4;
 const WEEKS = 53; // columns in a year view
-const BOUNCE = "ease-[cubic-bezier(0.34,1.56,0.64,1)]";
 
+const mix = (pct: number, base: string) =>
+  `color-mix(in oklab, var(--primary) ${pct}%, ${base})`;
+
+// Levels are derived from the active accent colour, so they follow the theme.
 const theme = {
-  light: ["#e5e7eb", "#bfdbfe", "#93c5fd", "#3b82f6", "#1d4ed8"],
-  dark: ["#1f2937", "#1e3a8a", "#1d4ed8", "#3b82f6", "#60a5fa"],
+  light: [
+    "color-mix(in oklab, var(--foreground) 9%, var(--background))",
+    mix(30, "var(--background)"),
+    mix(55, "var(--background)"),
+    mix(80, "var(--background)"),
+    "color-mix(in oklab, var(--primary) 75%, black)",
+  ],
+  dark: [
+    "color-mix(in oklab, var(--foreground) 10%, var(--background))",
+    mix(30, "var(--background)"),
+    mix(55, "var(--background)"),
+    mix(80, "var(--background)"),
+    "color-mix(in oklab, var(--primary) 80%, white)",
+  ],
 };
 
 type Year = number | "last";
@@ -86,7 +101,7 @@ function YearPicker({
       {/* Sliding pill */}
       <span
         aria-hidden
-        className={`absolute top-0 left-0 rounded-md bg-primary transition-[translate,width,height,opacity] duration-500 ${BOUNCE} motion-reduce:transition-none`}
+        className={`absolute top-0 left-0 rounded-md bg-primary transition-[translate,width,height,opacity] duration-500 ease-bounce motion-reduce:transition-none`}
         style={{
           translate: `${pill.x}px ${pill.y}px`,
           width: pill.w,
@@ -107,7 +122,7 @@ function YearPicker({
             type="button"
             onClick={() => onChange(y)}
             aria-pressed={active}
-            className={`relative z-10 rounded-xl px-3.5 py-1.5 font-mono text-sm tabular-nums transition-[color,scale] duration-300 ${BOUNCE} active:scale-90 motion-reduce:transition-none ${
+            className={`relative z-10 rounded-xl px-3.5 py-1.5 font-mono text-sm tabular-nums transition-[color,scale] duration-300 ease-bounce active:scale-90 motion-reduce:transition-none ${
               active
                 ? "text-primary-foreground"
                 : "text-muted hover:text-foreground"
@@ -138,7 +153,7 @@ export function GitHubActivity() {
   return (
     <section>
       <div className="flex flex-wrap items-end justify-between gap-4 max-md:justify-center">
-        <h2 className="font-display text-3xl font-bold tracking-tight max-md:text-2xl max-md:text-center">
+        <h2 className="section-title-center">
           GitHub activity
         </h2>
         <YearPicker years={years} value={year} onChange={setYear} />

@@ -7,18 +7,6 @@ description = 'My first choice mostly. I use it regularly for various projects a
 tags = ['Data Science', 'Algorithmic Applications', 'Scripting', 'Notebooks']
 
 [[home]]
-name = 'PyTorch'
-key = 'pytorch'
-description = 'Building and training models for machine learning projects'
-tags = ['Deep Learning', 'Model Training', 'Research']
-
-[[home]]
-name = 'Pandas'
-key = 'pandas'
-description = 'Loading, cleaning and analysing tabular data. I use it in conjunction with the prior two technologies of course.'
-tags = ['Data Wrangling', 'Analysis', 'Experiment Results']
-
-[[home]]
 name = 'TypeScript'
 key = 'typescript'
 description = 'My default for anything web-related, including this site. Because plain JavaScript simply sucks. I love its functional programming integration.'
@@ -31,22 +19,34 @@ description = 'My Typescript "Framework" of choice.'
 tags = ['Components', 'Hooks', 'Tailwind CSS']
 
 [[home]]
+name = 'Rust'
+key = 'rust'
+description = '''Learning it in my free time for fast, reliable programs. Also it's the most fun I've had with a programming language ever. I love its type system, all of its iterators and of course the compile time error checking.'''
+tags = ['Systems Programming', 'Performance', 'Side Projects', 'Leetcode', 'Competitive Coding']
+
+[[home]]
+name = 'Pandas'
+key = 'pandas'
+description = 'Kind of unbeatable when it comes to doing Data Science in Python.'
+tags = ['Machine Learning', 'Analysis', 'Experiment Results']
+
+[[home]]
+name = 'PyTorch'
+key = 'pytorch'
+description = 'Also kind of unbeatable when it comes to doing Data Science in Python.'
+tags = ['Deep Learning', 'Model Training', 'Research']
+
+[[home]]
 name = 'C'
 key = 'c'
-description = 'Backends, APIs and build tooling for web projects'
+description = '''Mostly low level university stuff and systems programming. It's more of a teaching tool than an actually useful language for me. '''
 tags = ['REST APIs', 'Backend', 'CLI Tools']
 
 [[home]]
 name = 'AWS'
 key = 'aws'
-description = 'I taught it a ton at university. I love its simplicity and building small scale programs with it.'
+description = 'My backend cloud provider of choice.'
 tags = ['Teaching', 'hardware']
-
-[[home]]
-name = 'Rust'
-key = 'rust'
-description = '''Learning it in my free time for fast, reliable programs. Also it's the most fun I've had with a programming language ever. I love its type system, all of its iterators and of course the compile time error checking.'''
-tags = ['Systems Programming', 'Performance', 'Side Projects', 'Leetcode', 'Competitive Coding']
 
 [[home]]
 name = 'Java'

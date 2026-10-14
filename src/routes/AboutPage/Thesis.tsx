@@ -18,7 +18,7 @@ export default function Thesis() {
 
   return (
     <section className="mt-16 max-md:mt-8">
-      <h2 className="font-display text-3xl font-bold tracking-tight max-md:text-2xl max-md:text-center">
+      <h2 className="section-title-center">
         Bachelor's thesis
       </h2>
       <div

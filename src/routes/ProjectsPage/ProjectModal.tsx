@@ -74,7 +74,7 @@ export default function ProjectModal({
             <img
               src={header.src}
               alt=""
-              className="absolute inset-0 size-full object-cover object-top"
+              className="fill-cover object-top"
             />
             <div
               aria-hidden
@@ -164,11 +164,10 @@ export default function ProjectModal({
                 {/* Sheen sweep, clipped to the card */}
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute inset-0 -z-10 overflow-hidden rounded-[inherit]"
+                  className="sheen-clip"
                 >
                   <span
-                    className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/20 to-transparent dark:via-white/8
-                      transition-transform duration-1000 ease-smooth group-hover/learn:translate-x-full motion-reduce:hidden"
+                    className="sheen via-white/20 duration-1000 group-hover/learn:translate-x-full dark:via-white/8"
                   />
                 </span>
 

@@ -1,11 +1,6 @@
 import CustomIcon from "../CustomIcon";
 import { SOCIALS } from "../content";
 
-function scrollToTop() {
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
-}
-
 export default function Footer() {
   return (
     <footer className="mt-16 max-md:mt-8 border-t border-border">
@@ -28,14 +23,6 @@ export default function Footer() {
             </a>
           ))}
         </nav>
-
-        <button
-          type="button"
-          onClick={scrollToTop}
-          className="justify-self-center rounded-lg px-3 py-1.5 font-mono text-xs transition-colors hover:bg-foreground/6 hover:text-foreground sm:justify-self-end"
-        >
-          Back to top ↑
-        </button>
       </div>
     </footer>
   );

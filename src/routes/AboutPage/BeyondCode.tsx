@@ -16,12 +16,8 @@ export default function BeyondCode() {
 
   return (
     <section ref={sectionRef} className="py-4 max-md:py-2">
-      <h2 className="font-display text-3xl font-bold tracking-tight max-md:text-2xl max-md:text-center">
-        Beyond Code
-      </h2>
-      <p className="mt-3 text-lg text-muted max-md:text-center">
-        {BEYOND_INTRO}
-      </p>
+      <h2 className="section-title-center">Beyond Code</h2>
+      <p className="section-subtitle max-md:text-center">{BEYOND_INTRO}</p>
 
       <div className="mt-8 max-md:mt-5 grid items-center gap-14 max-md:gap-8 lg:grid-cols-[2fr_1fr_1fr]">
         {hobbies.map((h) => (
